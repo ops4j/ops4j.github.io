@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <title>Supported Technology</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400";*/
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -274,8 +274,8 @@ dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
 ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-check-square-o:first-child,ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{position:relative;top:1px}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -380,7 +380,7 @@ p{margin-bottom:1.25rem}
 *{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
 a{color:inherit!important;text-decoration:underline!important}
 a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
-a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after,a[href^="mailto:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
 abbr[title]:after{content:" (" attr(title) ")"}
 pre,blockquote,tr,img{page-break-inside:avoid}
 thead{display:table-header-group}
@@ -509,8 +509,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#PaxWeb-PaxWeb4.x">Pax Web 4.x:</a></li>
 <li><a href="#PaxWeb-PaxWeb4.0.x">Pax Web 4.0.x:</a></li>
 <li><a href="#PaxWeb-PaxWeb3.x:">Pax Web 3.x:</a></li>
+<li><a href="#_versions_already_at_end_of_life">Versions already at end of life</a>
+<ul class="sectlevel2">
 <li><a href="#PaxWeb-PaxWeb2.x:">Pax Web 2.x:</a></li>
 <li><a href="#PaxWeb-PaxWeb1.x:">Pax Web 1.x:</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -661,20 +665,13 @@ Latest stable release is 3.1.1
 </div>
 </div>
 <div class="sect1">
-<h2 id="PaxWeb-PaxWeb2.x:">Pax Web 2.x:</h2>
+<h2 id="_versions_already_at_end_of_life">Versions already at end of life</h2>
 <div class="sectionbody">
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-Version 2.0 and 2.1 are EOL
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Following versions are already at end of life.</p>
 </div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb2.x:">Pax Web 2.x:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -696,22 +693,8 @@ WABs</p>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="PaxWeb-PaxWeb1.x:">Pax Web 1.x:</h2>
-<div class="sectionbody">
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-Version 1.0.x and 1.1.x are EOL
-</td>
-</tr>
-</table>
-</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb1.x:">Pax Web 1.x:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -731,9 +714,10 @@ Version 1.0.x and 1.1.x are EOL
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-29 14:23:57 MEZ
+Last updated 2015-01-01 23:04:08 MEZ
 </div>
 </div>
 </body>

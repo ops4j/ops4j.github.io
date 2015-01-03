@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <title>Configuration</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400";*/
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -274,8 +274,8 @@ dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
 ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-check-square-o:first-child,ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{position:relative;top:1px}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -380,7 +380,7 @@ p{margin-bottom:1.25rem}
 *{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
 a{color:inherit!important;text-decoration:underline!important}
 a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
-a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after,a[href^="mailto:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
 abbr[title]:after{content:" (" attr(title) ")"}
 pre,blockquote,tr,img{page-break-inside:avoid}
 thead{display:table-header-group}
@@ -564,9 +564,7 @@ via vm -D option).</p>
 <h4 id="_basic_configuration">Basic Configuration</h4>
 <div class="paragraph">
 <p>The following is a list with basic configuration properties that can be
-used to customize Pax Web. If not specified otherwise, the property is
-available since <code>Pax Web - 0.2.0</code>
-(first version).</p>
+used to customize Pax Web.</p>
 </div>
 <div id="BasicConfiguration-org.osgi.service.http.port" class="paragraph">
 <p><code>org.osgi.service.http.port</code></p>
@@ -616,37 +614,13 @@ classes from java. If <code>true'' connections are established using NIO, if
 <div class="paragraph">
 <p>A temporary directory that can be accessed via the servlet context
 attribute with the same name. If not set a default temporary directory
-wil be created and used.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.2.
-</td>
-</tr>
-</table>
+wil be created and used.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.timeout" class="paragraph">
 <p><code>org.ops4j.pax.web.session.timeout</code></p>
 </div>
 <div class="paragraph">
-<p>The number of minutes after which an inactive session will timeout.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.2.
-</td>
-</tr>
-</table>
+<p>The number of minutes after which an inactive session will timeout.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.listening.addresses" class="paragraph">
 <p><code>org.ops4j.pax.web.listening.addresses</code></p>
@@ -655,19 +629,7 @@ Since Pax Web - 0.2.2.
 <p>This property specifies the comma separated list of addresses used to
 provide servlets and resources via HTTP<br>
  (e.g. localhost or localhost,10.0.0.1). Host names or IP addresses can
-be used. Default value is ``0.0.0.0''.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.5.0.
-</td>
-</tr>
-</table>
+be used. Default value is ``0.0.0.0''.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.cookie" class="paragraph">
 <p><code>org.ops4j.pax.web.session.cookie</code></p>
@@ -676,18 +638,6 @@ Since Pax Web - 0.5.0.
 <p>Session cookie name.<br>
  From Jetty documentation:<br>
  Defaults to JSESSIONID.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1.
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.url" class="paragraph">
 <p><code>org.ops4j.pax.web.session.url</code></p>
@@ -698,18 +648,6 @@ Since Pax Web - 0.6.1.
  Defaults to jsessionid. If set to null or ``none'' no URL rewriting
 will be done</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1.
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.worker.name" class="paragraph">
 <p><code>org.ops4j.pax.web.worker.name</code></p>
 </div>
@@ -719,36 +657,12 @@ sessions.<br>
  See: <a href="http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy" class="bare">http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy</a><br>
  Defaults to null.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.config.file" class="paragraph">
 <p><code>org.ops4j.pax.web.config.file</code></p>
 </div>
 <div class="paragraph">
 <p>Configures where to look for an external configuration file for the
 underlying web container (e.g. Jetty).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.8.0
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.format" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.format</code></p>
@@ -761,18 +675,6 @@ Since Pax Web - 0.8.0
 <pre>org.ops4j.pax.web.log.ncsa.format = /yyyy_mm_dd.request.log</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.retainDays" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.retainDays</code></p>
 </div>
@@ -780,18 +682,6 @@ Since Pax Web - 1.1.0
 <div class="content">
 <pre>org.ops4j.pax.web.log.ncsa.retainDays = 90</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0.
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.append" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.append</code></p>
@@ -801,18 +691,6 @@ Since Pax Web - 1.1.0.
 <pre>org.ops4j.pax.web.log.ncsa.append = true/false</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.extended" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.extended</code></p>
 </div>
@@ -820,18 +698,6 @@ Since Pax Web - 1.1.0
 <div class="content">
 <pre>org.ops4j.pax.web.log.ncsa.extended = true/false</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.LogTimeZone" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.LogTimeZone</code></p>
@@ -841,35 +707,9 @@ Since Pax Web - 1.1.0
 <pre>org.ops4j.pax.web.log.ncsa.LogTimeZone= GMT</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_advanced_jetty_configuration">Advanced Jetty Configuration</h4>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-The following
-described way of working is only valid starting with version
-Pax Web - 0.5.2.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>To configure advanced features of Jetty you may use jetty xml style
 configuration files. To make Pax Web aware of your Jety configuration
@@ -879,46 +719,29 @@ are not yet fully supported on all OSGi implementations!</p>
 <div class="paragraph">
 <p>As an example, it’s shown enabling JMX in Jetty.</p>
 </div>
-<div class="paragraph">
-<p>To customize Jetty used by Pax Web Service follow instructions:</p>
-</div>
 <div class="sect4">
-<h5 id="_create_a_bundle_fragment_for_pax_web_service_bundle_in_manifest_put">Create a bundle fragment for Pax Web Service bundle - in manifest put:</h5>
-<div class="listingblock">
-<div class="content">
-<pre>Fragment-Host: org.ops4j.pax.web.pax-web-jetty-bundle</pre>
-</div>
-</div>
+<h5 id="_osgi_bundle_fragment_way">OSGi-Bundle Fragment way</h5>
 <div class="paragraph">
-<p>for example:</p>
+<p>To customize Jetty used by Pax Web Service follow instructions:
+Create a bundle fragment for Pax Web Service bundle
+for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Manifest-Version: 1.0
-Fragment-Host: org.ops4j.pax.web.pax-web-jetty-bundle
+<pre class="CodeRay highlight"><code data-lang="property">Manifest-Version: 1.0
+Fragment-Host: org.ops4j.pax.web.pax-web-jetty-bundle <b class="conum">(1)</b>
 Bundle-Version: 0.1
 Bundle-Name: My Jetty config
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: my.jetty_config</pre>
+Bundle-SymbolicName: my.jetty_config</code></pre>
 </div>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-If you are using
-version Pax Web - 0.6.0 you should
-use <code>org.ops4j.pax.web.pax-web-service</code> instead of
-<code>org.ops4j.pax.web.pax-web-jetty-bundle</code> as value of <code>Fragment-Host</code>.<br>
- This because starting with version
-Pax Web - 0.7.0 symbolic name has
-been changed as we splited Pax Web into more bundles.
-</td>
-</tr>
-</table>
+<div class="colist arabic">
+<ol>
+<li>
+<p>the required line in the manifest.</p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -935,39 +758,17 @@ version the non bundled version of jetty bundle you should use
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-If you are using
-Pax Web - 0.5.2 you should
-use <code>org.ops4j.pax.web.service</code> instead of
-<code>org.ops4j.pax.web.pax-web-service</code> as value of <code>Fragment-Host</code>.<br>
- This because starting with version
-Pax Web - 0.6.0 symbolic name has
-been changed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_put_jetty_xml_in_root_directory_of_fragment">put jetty.xml in root directory of fragment</h5>
 <div class="paragraph">
-<p>For example, take a look at a simple example fragment bundle from Pax
+<p>Put jetty.xml in root directory of fragment
+For example, take a look at a simple example fragment bundle from Pax
 Web that will add an additional connector on port <code>8383</code>.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/jetty-config-fragment/src/main/resources/jetty.xml" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/jetty-config-fragment/src/main/resources/jetty.xml</a></p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_add_fragment_to_your_start_configuration">add fragment to your start configuration</h5>
 <div class="paragraph">
-<p>If you have logging at DEBUG level enabled, when you start, you should
+<p>Add fragment to your start configuration
+If you have logging at DEBUG level enabled, when you start, you should
 see in logs something like this:</p>
 </div>
 <div class="listingblock">
@@ -992,59 +793,11 @@ url is framework specific
 </div>
 </div>
 <div class="sect4">
-<h5 id="_adding_specialized_contexthandlers">Adding specialized ContextHandlers</h5>
+<h5 id="_using_external_jetty_xml_file">Using external jetty.xml file</h5>
 <div class="paragraph">
-<p>If you want to add specialized ContextHandlers to the jetty server you
-have to be<br>
- careful not to break the way Pax Web works. So Instead of defining a
-new<br>
- Collection of Handlers in the jetty.xml you need to add your
-specialized ContextHandler to the<br>
- existing Collection.</p>
-</div>
-<div class="paragraph">
-<p>Here is an example where the jetty Default Servlet is used to<br>
- server static content from the file system.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>     &lt;Get name="handler"&gt;
-        &lt;Call name="addHandler"&gt;
-          &lt;Arg&gt;
-     &lt;New class="org.eclipse.jetty.servlet.ServletContextHandler"&gt;
-              &lt;Set name="contextPath"&gt;/app&lt;/Set&gt;
-              &lt;Set name="resourceBase"&gt;/path/to/your/share&lt;/Set&gt;
-              &lt;Call name="addServlet"&gt;
-                &lt;Arg&gt;org.eclipse.jetty.servlet.DefaultServlet&lt;/Arg&gt;
-                &lt;Arg&gt;/&lt;/Arg&gt;
-              &lt;/Call&gt;
-            &lt;/New&gt;
-          &lt;/Arg&gt;
-        &lt;/Call&gt;
-    &lt;/Get&gt;</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_using_external_jetty_xml_file">using external jetty.xml file</h5>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-The following
-described way of working is only valid starting with version
-Pax Web - 1.0.0.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>An external located jetty.xml file can be used for configuration of Pax
-Web.<br>
- This can be activated by setting the following property for Pax Web</p>
+<p>Sometimes it&#8217;s needed to have a much more easier way of configuring the underlying Jetty server.
+An external located jetty.xml file can be used for configuring the jetty server.
+This can be activated by setting the following property for Pax Web</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1054,8 +807,65 @@ Web.<br>
 <div class="paragraph">
 <p>For more details on how to configure the Jetty Server take a look at the
 official
-<a href="http://wiki.eclipse.org/Jetty/Reference/jetty.xml_syntax">jetty.xml
-config page</a></p>
+<a href="http://wiki.eclipse.org/Jetty/Reference/jetty.xml_syntax">jetty.xml</a> configuring
+page.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_adding_specialized_contexthandlers">Adding specialized ContextHandlers</h5>
+<div class="paragraph">
+<p>If you want to add specialized ContextHandlers to the jetty server you
+have to be careful not to break the way Pax Web works. So Instead of defining a
+new Collection of Handlers in the jetty.xml you need to add your
+specialized ContextHandler to the existing Collection.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example where the jetty Default Servlet is used to server static
+content from the file system.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;Get</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">handler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Call</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">addHandler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;Arg&gt;</span>
+        <span class="tag">&lt;New</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.eclipse.jetty.servlet.ServletContextHandler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;Set</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">contextPath</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>/app<span class="tag">&lt;/Set&gt;</span>
+          <span class="tag">&lt;Set</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">resourceBase</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>/path/to/your/share<span class="tag">&lt;/Set&gt;</span>
+          <span class="tag">&lt;Call</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">addServlet</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;Arg&gt;</span>org.eclipse.jetty.servlet.DefaultServlet<span class="tag">&lt;/Arg&gt;</span>
+            <span class="tag">&lt;Arg&gt;</span>/<span class="tag">&lt;/Arg&gt;</span>
+          <span class="tag">&lt;/Call&gt;</span>
+        <span class="tag">&lt;/New&gt;</span>
+      <span class="tag">&lt;/Arg&gt;</span>
+    <span class="tag">&lt;/Call&gt;</span>
+  <span class="tag">&lt;/Get&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_handler_and_connectors_as_services">Using Handler and Connectors as Services</h5>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+The Following described way of working is only valid starting
+with version - 4.1.0
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All possible Handler or Connector configurations to Jetty through the jetty.xml
+file can now be registered as Services. With this it&#8217;s possible to register the
+previously made sample of specialized ContextHandler as service.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Unresolved directive in Advanced-Jetty-<span class="predefined-type">Configuration</span>.adoc - include::{sourcedir}/pax-web-itest-container-jetty-test-sources-jar/org/ops4j/pax/web/itest/jetty/JettyHandlerServiceIntegrationTest.java[lines=<span class="integer">84</span>.<span class="float">.91</span>]</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1110,9 +920,7 @@ described in
 </div>
 <div class="paragraph">
 <p>The following is a list with SSL related configuration properties that
-can be used to customize Pax Web SSL support. If not specified
-otherwise, the property is available since
-Pax Web - 0.2.0 (first version).</p>
+can be used to customize Pax Web SSL support.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.keystore" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.keystore</code></p>
@@ -1120,111 +928,39 @@ Pax Web - 0.2.0 (first version).</p>
 <div class="paragraph">
 <p>Path to the keystore file. See
 <a href="SSL-Configuration_12059277.html">ops4j:SSL Configuration</a> for
-details.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.1.
-</td>
-</tr>
-</table>
+details.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.keystore.type" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.keystore.type</code></p>
 </div>
 <div class="paragraph">
-<p>This property specifies the keystore type. Defaults to JKS.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.5.0
-</td>
-</tr>
-</table>
+<p>This property specifies the keystore type. Defaults to JKS.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.password" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.password</code></p>
 </div>
 <div class="paragraph">
-<p>Password used for keystore integrity check.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.1
-</td>
-</tr>
-</table>
+<p>Password used for keystore integrity check.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.keypassword" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.keypassword</code></p>
 </div>
 <div class="paragraph">
-<p>Password used for keystore.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.1
-</td>
-</tr>
-</table>
+<p>Password used for keystore.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.clientauthwanted" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.clientauthwanted</code></p>
 </div>
 <div class="paragraph">
 <p>This property specifies, if certificate-based client authentication at
-the server is <strong>``wanted''</strong>.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.5.0
-</td>
-</tr>
-</table>
+the server is <strong>``wanted''</strong>.</p>
 </div>
 <div id="SSLConfiguration-org.ops4j.pax.web.ssl.clientauthneeded" class="paragraph">
 <p><code>org.ops4j.pax.web.ssl.clientauthneeded</code></p>
 </div>
 <div class="paragraph">
 <p>This property specifies, if certificate-based client authentication at
-the server is <strong>``required''</strong>.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.5.0
-</td>
-</tr>
-</table>
+the server is <strong>``required''</strong>.</p>
 </div>
 </div>
 <div class="sect3">

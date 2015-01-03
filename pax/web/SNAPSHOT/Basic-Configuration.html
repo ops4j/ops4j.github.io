@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <title>Basic Configuration</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400";*/
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -274,8 +274,8 @@ dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
 ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-check-square-o:first-child,ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{position:relative;top:1px}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -380,7 +380,7 @@ p{margin-bottom:1.25rem}
 *{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
 a{color:inherit!important;text-decoration:underline!important}
 a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
-a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after,a[href^="mailto:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
 abbr[title]:after{content:" (" attr(title) ")"}
 pre,blockquote,tr,img{page-break-inside:avoid}
 thead{display:table-header-group}
@@ -511,9 +511,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="content">
 <div class="paragraph">
 <p>The following is a list with basic configuration properties that can be
-used to customize Pax Web. If not specified otherwise, the property is
-available since <code>Pax Web - 0.2.0</code>
-(first version).</p>
+used to customize Pax Web.</p>
 </div>
 <div id="BasicConfiguration-org.osgi.service.http.port" class="paragraph">
 <p><code>org.osgi.service.http.port</code></p>
@@ -563,37 +561,13 @@ classes from java. If <code>true'' connections are established using NIO, if
 <div class="paragraph">
 <p>A temporary directory that can be accessed via the servlet context
 attribute with the same name. If not set a default temporary directory
-wil be created and used.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.2.
-</td>
-</tr>
-</table>
+wil be created and used.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.timeout" class="paragraph">
 <p><code>org.ops4j.pax.web.session.timeout</code></p>
 </div>
 <div class="paragraph">
-<p>The number of minutes after which an inactive session will timeout.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.2.2.
-</td>
-</tr>
-</table>
+<p>The number of minutes after which an inactive session will timeout.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.listening.addresses" class="paragraph">
 <p><code>org.ops4j.pax.web.listening.addresses</code></p>
@@ -602,19 +576,7 @@ Since Pax Web - 0.2.2.
 <p>This property specifies the comma separated list of addresses used to
 provide servlets and resources via HTTP<br>
  (e.g. localhost or localhost,10.0.0.1). Host names or IP addresses can
-be used. Default value is ``0.0.0.0''.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.5.0.
-</td>
-</tr>
-</table>
+be used. Default value is ``0.0.0.0''.</p>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.cookie" class="paragraph">
 <p><code>org.ops4j.pax.web.session.cookie</code></p>
@@ -623,18 +585,6 @@ Since Pax Web - 0.5.0.
 <p>Session cookie name.<br>
  From Jetty documentation:<br>
  Defaults to JSESSIONID.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1.
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.session.url" class="paragraph">
 <p><code>org.ops4j.pax.web.session.url</code></p>
@@ -645,18 +595,6 @@ Since Pax Web - 0.6.1.
  Defaults to jsessionid. If set to null or ``none'' no URL rewriting
 will be done</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1.
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.worker.name" class="paragraph">
 <p><code>org.ops4j.pax.web.worker.name</code></p>
 </div>
@@ -666,36 +604,12 @@ sessions.<br>
  See: <a href="http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy" class="bare">http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy</a><br>
  Defaults to null.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.6.1
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.config.file" class="paragraph">
 <p><code>org.ops4j.pax.web.config.file</code></p>
 </div>
 <div class="paragraph">
 <p>Configures where to look for an external configuration file for the
 underlying web container (e.g. Jetty).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 0.8.0
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.format" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.format</code></p>
@@ -708,18 +622,6 @@ Since Pax Web - 0.8.0
 <pre>org.ops4j.pax.web.log.ncsa.format = /yyyy_mm_dd.request.log</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.retainDays" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.retainDays</code></p>
 </div>
@@ -727,18 +629,6 @@ Since Pax Web - 1.1.0
 <div class="content">
 <pre>org.ops4j.pax.web.log.ncsa.retainDays = 90</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0.
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.append" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.append</code></p>
@@ -748,18 +638,6 @@ Since Pax Web - 1.1.0.
 <pre>org.ops4j.pax.web.log.ncsa.append = true/false</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.extended" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.extended</code></p>
 </div>
@@ -767,18 +645,6 @@ Since Pax Web - 1.1.0
 <div class="content">
 <pre>org.ops4j.pax.web.log.ncsa.extended = true/false</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
 </div>
 <div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.LogTimeZone" class="paragraph">
 <p><code>org.ops4j.pax.web.log.ncsa.LogTimeZone</code></p>
@@ -788,22 +654,10 @@ Since Pax Web - 1.1.0
 <pre>org.ops4j.pax.web.log.ncsa.LogTimeZone= GMT</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Since Pax Web - 1.1.0
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-29 14:09:27 MEZ
+Last updated 2015-01-01 21:11:06 MEZ
 </div>
 </div>
 </body>
