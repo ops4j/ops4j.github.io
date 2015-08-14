@@ -2183,7 +2183,7 @@ start up parameters for JVM, such as:
 <div class="ulist">
 <ul>
 <li>
-<p><code>java.lang.StackOverflowError</code>: \{-Xss}}, as for example <code>-Xss=512k</code></p>
+<p><code>java.lang.StackOverflowError</code>: \{-Xss`, as for example <code>-Xss=512k</code></p>
 </li>
 <li>
 <p><code>java.lang.OutOfMemoryError</code>: <code>-Xmx</code>, as for example <code>-Xmx256m</code></p>
@@ -2780,9 +2780,19 @@ packages.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Registering
-with Servlet names becomes necessary if you want to register a Filter
-against it. See below.
+<div class="ulist">
+<ul>
+<li>
+<p>Registering with Servlet names becomes necessary if you want to register a Filter
+against it. See below.</p>
+</li>
+<li>
+<p>Starting with version 4.1.x it is possible to register Annotated Servlets as services.
+Those annotations are interpreted in the same way as properties. This way properties
+may be neglected.</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>
@@ -2840,29 +2850,53 @@ props.put("servletNames", servlets);
 bundleContext.registerService(Filter.class.getName(), new MyCrazyFilter(), props );</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>NOTE:
-1.  For URL Patterns, the pattern registered must be already mapped,
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For URL Patterns, the pattern registered must be already mapped,
 either as Resource or a Servlet alias - e.g there should already be a
-Resource or aServlet registered to the path <code>/foo</code>.
-2.  For Servlet names, the names used should have been the name that has
+Resource or aServlet registered to the path <code>/foo</code>.</p>
+</li>
+<li>
+<p>For Servlet names, the names used should have been the name that has
 been explicitly given to the Servlet (as <code>servlet-name</code>), when
 registering.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="WhiteboardExtender-Howdoesithelponlistenerregistration">How does it help on listener registration</h4>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-TODO
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Following specialization of java.util.EventListener are
+tracked by the Whiteboard-Extender:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>javax.servlet.ServletContextListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletContextAttributeListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestAttributeListener</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -2965,7 +2999,7 @@ enable these features, add them in Karaf using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>features:addurl mvn:org.ops4j.pax.web/pax-web-features/4.1.0-SNAPSHOT/xml/features</pre>
+<pre>features:addurl mvn:org.ops4j.pax.web/pax-web-features/6.0.0-SNAPSHOT/xml/features</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2975,10 +3009,10 @@ available:</p>
 <div class="listingblock">
 <div class="content">
 <pre>State         Version           Name                          Repository              Description
-[uninstalled] [4.1.0-SNAPSHOT] pax-jetty                     org.ops4j.pax.web-4.1.0-SNAPSHOT Provide Jetty engine support
-[uninstalled] [4.1.0-SNAPSHOT] pax-http                      org.ops4j.pax.web-4.1.0-SNAPSHOT Implementation of the OSGI HTTP Service
-[uninstalled] [4.1.0-SNAPSHOT] pax-http-whiteboard           org.ops4j.pax.web-4.1.0-SNAPSHOT Provide HTTP Whiteboard pattern support
-[uninstalled] [4.1.0-SNAPSHOT] pax-war                       org.ops4j.pax.web-4.1.0-SNAPSHOT Provide support of a full WebContainer</pre>
+[uninstalled] [6.0.0-SNAPSHOT] pax-jetty                     org.ops4j.pax.web-6.0.0-SNAPSHOT Provide Jetty engine support
+[uninstalled] [6.0.0-SNAPSHOT] pax-http                      org.ops4j.pax.web-6.0.0-SNAPSHOT Implementation of the OSGI HTTP Service
+[uninstalled] [6.0.0-SNAPSHOT] pax-http-whiteboard           org.ops4j.pax.web-6.0.0-SNAPSHOT Provide HTTP Whiteboard pattern support
+[uninstalled] [6.0.0-SNAPSHOT] pax-war                       org.ops4j.pax.web-6.0.0-SNAPSHOT Provide support of a full WebContainer</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3152,7 +3186,7 @@ implementation of it which is <em>com.sun.el.*</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-29 14:09:08 MEZ
+Last updated 2015-07-14 22:42:49 MESZ
 </div>
 </div>
 </body>

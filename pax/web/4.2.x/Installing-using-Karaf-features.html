@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<title>Whiteboard Examples</title>
+<title>Installing using Karaf-features</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -502,100 +502,38 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article">
 <div id="header">
-<h1>Whiteboard Examples</h1>
+<h1>Installing using Karaf-features</h1>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#WhiteboardExamples-Whiteboard">Whiteboard</a></li>
-</ul>
+
 </div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
 <div class="paragraph">
-<p>Whiteboard Extender includes a set of examples that demonstrates its usage.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-The following is outdated and subject to change.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="WhiteboardExamples-Whiteboard">Whiteboard</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The whiteboard example publishes web elements supported by whiteboard
-extender. To run the example you have to deploy to your preferred OSGi
-framework the following bundles:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Pax Web version &gt;= 0.3.1</p>
-</li>
-<li>
-<p>Whiteboard Extender version &gt;= 0.3.0</p>
-</li>
-<li>
-<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/whiteboard/">Whiteboard
-example</a></p>
-</li>
-<li>
-<p>(optional)
-<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
-— if you want to see also the log output</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Alternatively you can easy do the deployment using
-<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+<p>Pax Web provides a set of feature-descriptors for
+<a href="http://karaf.apache.org/">Apache Karaf</a> for convenient installation. To
+enable these features, add them in Karaf using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/sample-whiteboard.bundles</pre>
+<pre>features:addurl mvn:org.ops4j.pax.web/pax-web-features/4.2.0-SNAPSHOT/xml/features</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once you have everything running point your browser to:</p>
+<p>When you type <code>features:list</code> now, you will see the following features
+available:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://localhost:8080/whiteboard" class="bare">http://localhost:8080/whiteboard</a> — to see a simple servlet output</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> — to see a simple servlet output mapped to root</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/whiteboardresources/ops4j.png" class="bare">http://localhost:8080/whiteboardresources/ops4j.png</a> – to get a logo
-registered by publishing a resource</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/forbidden/" class="bare">http://localhost:8080/forbidden/</a> — to try to access a security
-protected servlet</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/whiteboard/filtered" class="bare">http://localhost:8080/whiteboard/filtered</a> — to access the whiteboard
-filter (see above) but through a filter</p>
-</li>
-<li>
-<p>on any request you can take a look in the java console to see a
-request filter in action</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre>State         Version           Name                          Repository              Description
+[uninstalled] [4.2.0-SNAPSHOT] pax-jetty                     org.ops4j.pax.web-4.2.0-SNAPSHOT Provide Jetty engine support
+[uninstalled] [4.2.0-SNAPSHOT] pax-http                      org.ops4j.pax.web-4.2.0-SNAPSHOT Implementation of the OSGI HTTP Service
+[uninstalled] [4.2.0-SNAPSHOT] pax-http-whiteboard           org.ops4j.pax.web-4.2.0-SNAPSHOT Provide HTTP Whiteboard pattern support
+[uninstalled] [4.2.0-SNAPSHOT] pax-war                       org.ops4j.pax.web-4.2.0-SNAPSHOT Provide support of a full WebContainer</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can now install each of these features using <code>features:install</code>.</p>
 </div>
 </div>
 <div id="footer">
