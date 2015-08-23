@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="author" content="OPS4J">
+<title>DADL Data Description Language</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -502,35 +503,79 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4J Documentation</h1>
+<h1>DADL Data Description Language</h1>
 <div class="details">
 <span id="author" class="author">OPS4J</span><br>
 </div>
-</div>
-
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/ops4j_logo_final.png" alt="image"></span><br>
-</div>
-<div class="paragraph">
-<p>OPS4J Documentation can be found in the following pages: </p>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./pax/web/index.html">Pax Web</a></p>
-</li>
-<li>
-<p><a href="./pax/warp/index.html">Pax Warp</a></p>
-</li>
-<li>
-<p><a href="./warp/0.1.0/index.html">OPS4J DADL</a></p>
+<div id="toc" class="toc2">
+<div id="toctitle">Pax Warp</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_java_as_target_language">1.2. Java as target language</a></li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose">1.1. Purpose</h3>
+<div class="paragraph">
+<p>DADL is a language for describing data formats, accompanied by a tool for parsing and generating
+data in a given format described by a DADL model.</p>
+</div>
+<div class="paragraph">
+<p>Unlike most data modelling languages, DADL not only defines a logical content model, but also
+a precise representation of data as a binary stream. In fact, the main purpose of DADL is
+to formalize existing data formats that are loosely specified by examples, tabular descriptions
+or technical prose.</p>
+</div>
+<div class="paragraph">
+<p>A DADL model is written in XML according to a given schema. Thus, no special tools are required
+to edit a DADL model.</p>
+</div>
+<div class="paragraph">
+<p>The DADL code generator generates types of a target language, logically corresponding to the
+data types defined in a DADL model.</p>
+</div>
+<div class="paragraph">
+<p>The DADL runtime parses a DADL model and provides marshallers and unmarshallers for binary streams
+satisfying this model. A marshaller takes a target programming language object graph and serializes
+it to a binary stream. Conversely, an unmarshaller deserializes a binary stream into a target
+language object graph.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java_as_target_language">1.2. Java as target language</h3>
+<div class="paragraph">
+<p>While the DADL language is nothing but XML and does not depend on any given target language, the
+DADL reference implementation is focused on Java and relies heavily on established Java
+specifications like JAXB and EL.</p>
+</div>
+<div class="paragraph">
+<p>DADL comes with a Maven plugin to generate Java target classes from a DADL model during the
+build process. The generated model only contains simple beans and enums. The marshalling
+and unmarshalling logic is not contained in the generated code, but in a DADL runtime library which
+does not depend on any given model.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-08-23 09:31:26 +02:00
+</div>
+</div>
+</body>
 </html>
