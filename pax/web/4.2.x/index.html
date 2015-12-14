@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="author" content="OPS4j">
-<title>Pax Web 6.0.0-SNAPSHOT</title>
+<title>Pax Web 4.2.5-SNAPSHOT</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -409,7 +409,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -504,30 +503,112 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Pax Web 6.0.0-SNAPSHOT</h1>
+<h1>Pax Web 4.2.5-SNAPSHOT</h1>
 <div class="details">
 <span id="author" class="author">OPS4j</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Pax Web</div>
-<ul class="sectlevel0">
-<li><a href="#PaxWeb-Supported-Tech">Supported Technology</a>
 <ul class="sectlevel1">
-<li><a href="#PaxWeb-PaxWeb6.0.x">Pax Web 6.0.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb4.2.x">Pax Web 4.2.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb3.x:">Pax Web 3.x:</a></li>
-<li><a href="#versions-already-at-end-of-life">Versions already at end of life</a>
+<li><a href="#PaxWeb-Supported-Tech">1. Supported Technology</a>
 <ul class="sectlevel2">
-<li><a href="#PaxWeb-PaxWeb4.1.x">Pax Web 4.1.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb4.0.x">Pax Web 4.0.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb2.x:">Pax Web 2.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb1.x:">Pax Web 1.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.1.x">1.1. Pax Web 4.1.0:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.0.x">1.2. Pax Web 4.0.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb3.x:">1.3. Pax Web 3.x:</a></li>
+<li><a href="#_versions_already_at_end_of_life">1.4. Versions already at end of life</a>
+<ul class="sectlevel3">
+<li><a href="#PaxWeb-PaxWeb2.x:">1.4.1. Pax Web 2.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb1.x:">1.4.2. Pax Web 1.x:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#a-href-user-guide-html-user-guide-a"><a href="User-Guide.html">User-Guide</a></a></li>
-<li><a href="#a-href-developer-guide-html-developer-guide-a"><a href="Developer-Guide.html">Developer-Guide</a></a></li>
+<li><a href="#_user_guide">2. User Guide</a>
+<ul class="sectlevel2">
+<li><a href="#_configuration">2.1. Configuration</a>
+<ul class="sectlevel3">
+<li><a href="#Configuration-ConfigurationviaOSGiConfigurationAdminService">2.1.1. Configuration via OSGi Configuration Admin Service</a></li>
+<li><a href="#Configuration-ConfigurationviaOSGiframework_systempropertiesproperties">2.1.2. Configuration via OSGi framework/system properties properties</a></li>
+<li><a href="#_basic_configuration">2.1.3. Basic Configuration</a></li>
+<li><a href="#_advanced_jetty_configuration">2.1.4. Advanced Jetty Configuration</a></li>
+<li><a href="#_ssl_configuration">2.1.5. SSL Configuration</a></li>
+<li><a href="#_jsp_configuration">2.1.6. JSP Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_http_service_extensions">2.2. Http Service Extensions</a>
+<ul class="sectlevel3">
+<li><a href="#_servlets">2.2.1. Servlets</a></li>
+<li><a href="#_filters">2.2.2. Filters</a></li>
+<li><a href="#_listeners">2.2.3. Listeners</a></li>
+<li><a href="#_error_pages">2.2.4. Error Pages</a></li>
+<li><a href="#_welcome_files">2.2.5. Welcome Files</a></li>
+<li><a href="#_jsp">2.2.6. JSP</a></li>
+</ul>
+</li>
+<li><a href="#_examples">2.3. Examples</a>
+<ul class="sectlevel3">
+<li><a href="#HttpServiceusage">2.3.1. Http Service usage</a></li>
+<li><a href="#_extended_http_service">2.3.2. Extended http service</a></li>
+<li><a href="#_jsp_support">2.3.3. JSP support</a></li>
+</ul>
+</li>
+<li><a href="#_war_extender">2.4. WAR Extender</a>
+<ul class="sectlevel3">
+<li><a href="#WARExtender-Howdoesitwork">2.4.1. How does it work</a></li>
+<li><a href="#WARExtender-Detailedwayofworking">2.4.2. Detailed way of working</a></li>
+<li><a href="#WARExtender-Benefits">2.4.3. Benefits</a></li>
+<li><a href="#_war_extender_examples">2.4.4. WAR Extender Examples</a></li>
+<li><a href="#_osgi_fy_your_war">2.4.5. OSGi-fy your WAR</a></li>
+<li><a href="#_supported_web_elements">2.4.6. Supported Web Elements</a></li>
+<li><a href="#_war_extender_faq">2.4.7. WAR Extender FAQ</a></li>
+</ul>
+</li>
+<li><a href="#_whiteboard_extender">2.5. Whiteboard Extender</a>
+<ul class="sectlevel3">
+<li><a href="#WhiteboardExtender-KeepingtrackofHttpServiceavailability">2.5.1. Keeping track of Http Service availability</a></li>
+<li><a href="#WhiteboardExtender-Howdoesitwork:">2.5.2. How does it work:</a></li>
+<li><a href="#WhiteboardExtender-WhatExtenderwilldo:">2.5.3. What Extender will do:</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponservletregistration">2.5.4. How does it help on servlet registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponresourceregistration">2.5.5. How does it help on resource registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponfilterregistration">2.5.6. How does it help on filter registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponlistenerregistration">2.5.7. How does it help on listener registration</a></li>
+<li><a href="#WhiteboardExtender-Webelements">2.5.8. Web elements</a></li>
+<li><a href="#_whiteboard_examples">2.5.9. Whiteboard Examples</a></li>
+</ul>
+</li>
+<li><a href="#_installing_using_karaf_features">2.6. Installing using Karaf-features</a></li>
+<li><a href="#_jsp_usage">2.7. JSP Usage</a>
+<ul class="sectlevel3">
+<li><a href="#JSPUsage-UsageguidelinesforworkingwithJSPs">2.7.1. Usage guidelines for working with JSPs</a></li>
+<li><a href="#JSPUsage-HowdoJSPsworkwithPaxWeb">2.7.2. How do JSPs work with Pax Web?</a></li>
+<li><a href="#JSPUsage-HowdoJSFworkwithPaxWeb">2.7.3. How do JSF work with Pax Web?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_developer_guide">3. Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#_source">3.1. Source</a>
+<ul class="sectlevel3">
+<li><a href="#Source-Checkoutsourcecode">3.1.1. Checkout source code</a></li>
+<li><a href="#Source-Browsesourcecode">3.1.2. Browse source code</a></li>
+</ul>
+</li>
+<li><a href="#_build">3.2. Build</a></li>
+<li><a href="#_artifacts">3.3. Artifacts</a>
+<ul class="sectlevel3">
+<li><a href="#Artifacts-pax-web-api">3.3.1. pax-web-api</a></li>
+<li><a href="#Artifacts-pax-web-spi">3.3.2. pax-web-spi</a></li>
+<li><a href="#Artifacts-pax-web-runtime">3.3.3. pax-web-runtime</a></li>
+<li><a href="#Artifacts-pax-web-jsp">3.3.4. pax-web-jsp</a></li>
+<li><a href="#Artifacts-pax-web-jetty">3.3.5. pax-web-jetty</a></li>
+<li><a href="#Artifacts-pax-web-jetty-bundle">3.3.6. pax-web-jetty-bundle</a></li>
+<li><a href="#Artifacts-pax-web-extender-war">3.3.7. pax-web-extender-war</a></li>
+<li><a href="#Artifacts-pax-web-extender-whiteboard">3.3.8. pax-web-extender-whiteboard</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -538,7 +619,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
 <a href="http://www.osgi.org">OSGi</a> R4 Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a> 9.3.5.v20151012, <a href="http://tomcat.apache.org">Tomcat</a> 8.0.14 or <a href="http://undertow.io">Undertow</a> 1.2.8.0-SNAPSHOT.</p>
+<a href="http://www.eclipse.org/jetty/">Jetty</a> 9.2.14.v20151106 or <a href="http://tomcat.apache.org">Tomcat</a> 8.0.14.</p>
 </div>
 <div class="paragraph">
 <p>Pax Web extends
@@ -556,13 +637,14 @@ specs.</p>
 </div>
 </div>
 </div>
-<h1 id="PaxWeb-Supported-Tech" class="sect0"><a class="anchor" href="#PaxWeb-Supported-Tech"></a>Supported Technology</h1>
+<div class="sect1">
+<h2 id="PaxWeb-Supported-Tech">1. Supported Technology</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Right now following Technologies are supported by Pax Web:</p>
 </div>
-<div class="sect1">
-<h2 id="PaxWeb-PaxWeb6.0.x"><a class="anchor" href="#PaxWeb-PaxWeb6.0.x"></a>Pax Web 6.0.x:</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb4.1.x">1.1. Pax Web 4.1.0:</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -570,64 +652,7 @@ specs.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Latest stable release is 4.2.4 - This is the next 6.0.0-SNAPSHOT
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Servlet 3.1.0</p>
-</li>
-<li>
-<p>JSP 2.3.1</p>
-</li>
-<li>
-<p>JSF 2.2</p>
-</li>
-<li>
-<p>Jetty 9.3.5.v20151012</p>
-</li>
-<li>
-<p>Tomcat 8.0.14 (still experimental, but better supported)</p>
-</li>
-<li>
-<p>Undertow 1.2.8.0-SNAPSHOT</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.1.0 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>support of only Servlet 3.1.0 annotated Servlets with Whiteboard extender</p>
-</li>
-<li>
-<p>support of Websockets JSR 356 (Jetty Only)</p>
-</li>
-<li>
-<p>Web-Fragments</p>
-</li>
-<li>
-<p>support of OSGi R6 Whiteboard extension.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="PaxWeb-PaxWeb4.2.x"><a class="anchor" href="#PaxWeb-PaxWeb4.2.x"></a>Pax Web 4.2.x:</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Latest stable release is 4.2.4
+Latest stable release is 4.0.0, this is for the next SNAPSHOT version
 </td>
 </tr>
 </table>
@@ -648,57 +673,6 @@ Latest stable release is 4.2.4
 </li>
 <li>
 <p>Tomcat 8.0.x (still experimental, but better supported)</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
-</li>
-<li>
-<p>support of Websockets JSR 356 (Jetty Only)</p>
-</li>
-<li>
-<p>Web-Fragments</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="PaxWeb-PaxWeb3.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.x:"></a>Pax Web 3.x:</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Latest stable release is 3.2.7
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Servlet 3.0</p>
-</li>
-<li>
-<p>JSP 1.1.2</p>
-</li>
-<li>
-<p>JSF 2.1</p>
-</li>
-<li>
-<p>Jetty 8.x</p>
-</li>
-<li>
-<p>Tomcat 7.x (still experimental)</p>
 </li>
 <li>
 <p>support of CDI (through Pax-CDI)</p>
@@ -706,43 +680,8 @@ Latest stable release is 3.2.7
 <li>
 <p>support of only Servlet 3.0 annotated Servlets in JAR</p>
 </li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="versions-already-at-end-of-life"><a class="anchor" href="#versions-already-at-end-of-life"></a>Versions already at end of life</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Following versions are already at end of life.</p>
-</div>
-<div class="sect2">
-<h3 id="PaxWeb-PaxWeb4.1.x"><a class="anchor" href="#PaxWeb-PaxWeb4.1.x"></a>Pax Web 4.1.x:</h3>
-<div class="ulist">
-<ul>
 <li>
-<p>Servlet 3.1</p>
-</li>
-<li>
-<p>JSP 2.3</p>
-</li>
-<li>
-<p>JSF 2.2</p>
-</li>
-<li>
-<p>Jetty 9.2.x</p>
-</li>
-<li>
-<p>Tomcat 8.0.x (still experimental, but better supported)</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+<p>support of only Servlet 3.0 annotated Servlets with Whiteboard extender</p>
 </li>
 <li>
 <p>support of Websockets JSR 356 (Jetty Only)</p>
@@ -754,7 +693,19 @@ Latest stable release is 3.2.7
 </div>
 </div>
 <div class="sect2">
-<h3 id="PaxWeb-PaxWeb4.0.x"><a class="anchor" href="#PaxWeb-PaxWeb4.0.x"></a>Pax Web 4.0.x:</h3>
+<h3 id="PaxWeb-PaxWeb4.0.x">1.2. Pax Web 4.0.x:</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Latest stable release is 4.0.0
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -785,7 +736,52 @@ Latest stable release is 3.2.7
 </div>
 </div>
 <div class="sect2">
-<h3 id="PaxWeb-PaxWeb2.x:"><a class="anchor" href="#PaxWeb-PaxWeb2.x:"></a>Pax Web 2.x:</h3>
+<h3 id="PaxWeb-PaxWeb3.x:">1.3. Pax Web 3.x:</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Latest stable release is 3.1.1
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_versions_already_at_end_of_life">1.4. Versions already at end of life</h3>
+<div class="paragraph">
+<p>Following versions are already at end of life.</p>
+</div>
+<div class="sect3">
+<h4 id="PaxWeb-PaxWeb2.x:">1.4.1. Pax Web 2.x:</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -807,8 +803,8 @@ WABs</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="PaxWeb-PaxWeb1.x:"><a class="anchor" href="#PaxWeb-PaxWeb1.x:"></a>Pax Web 1.x:</h3>
+<div class="sect3">
+<h4 id="PaxWeb-PaxWeb1.x:">1.4.2. Pax Web 1.x:</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -828,14 +824,2843 @@ WABs</p>
 </div>
 </div>
 </div>
-<h1 id="a-href-user-guide-html-user-guide-a" class="sect0"><a class="anchor" href="#a-href-user-guide-html-user-guide-a"></a><a href="User-Guide.html">User-Guide</a></h1>
+</div>
+<div class="sect1">
+<h2 id="_user_guide">2. User Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following guides details different aspects of using
+Pax Web from the user perspective, where user
+means somebody that uses Pax Web.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuration">2.1. Configuration</h3>
+<div class="paragraph">
+<p>Pax Web can be configured using
+Configuration Admin or via framework/system properties.</p>
+</div>
+<div class="paragraph">
+<p>While looking for a configuration property, Pax Web will first use the
+property configured via Configuration Admin. If the property is not set
+(present), it will look for a framework/system property with the same
+name. In the end, if the property is still not present it will use a
+default value (when applicable).</p>
+</div>
+<div class="paragraph">
+<p>For cases that requires advanced Jetty configuration read
+<a href="Advanced-Jetty-Configuration.html">Advanced Jetty
+Configuration</a> page.</p>
+</div>
+<div class="sect3">
+<h4 id="Configuration-ConfigurationviaOSGiConfigurationAdminService">2.1.1. Configuration via OSGi Configuration Admin Service</h4>
+<div class="paragraph">
+<p>Pax Web can be configured via Configuration
+Admin Service (if available) and it supports all properties listed
+above.<br>
+ The PID used for configuration is "<strong>org.ops4j.pax.web</strong>".</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Configuration-ConfigurationviaOSGiframework_systempropertiesproperties">2.1.2. Configuration via OSGi framework/system properties properties</h4>
+<div class="paragraph">
+<p>Pax Web can be configured via osgi
+environment properties and it supports all properties from above. Note
+that according to OSGi specs if a framework property is not set then the
+framework must fallback to using standard Java System properties (set
+via vm -D option).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_basic_configuration">2.1.3. Basic Configuration</h4>
+<div class="paragraph">
+<p>The following is a list with basic configuration properties that can be
+used to customize Pax Web.</p>
+</div>
+<div id="BasicConfiguration-org.osgi.service.http.port" class="paragraph">
+<p><code>org.osgi.service.http.port</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies the port used for servlets and resources
+accessible via HTTP. Default value for this property is 8080.<br>
+ You can specify a value of 0 (zero), if you wish to allow Pax Web to
+automatically determine a free port to use for HTTP access.</p>
+</div>
+<div id="BasicConfiguration-org.osgi.service.http.port.secure" class="paragraph">
+<p><code>org.osgi.service.http.port.secure</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies the port used for servlets and resources
+accessible via HTTPS. Default value for this property is 8443.<br>
+ You can specify a value of 0 (zero), if you wish to allow Pax Web to
+automatically determine a free port to use for HTTPS access.</p>
+</div>
+<div id="BasicConfiguration-org.osgi.service.http.enabled" class="paragraph">
+<p><code>org.osgi.service.http.enabled</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies if the HTTP is enabled. If &#8220;true&#8221; the support
+for HTTP access will be enabled. If &#8220;false&#8221; the support for HTTP
+access will be disabled. Default value is &#8220;true&#8221;.</p>
+</div>
+<div id="BasicConfiguration-org.osgi.service.http.secure.enabled" class="paragraph">
+<p><code>org.osgi.service.http.secure.enabled</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies if the HTTPS is enabled. If &#8220;true&#8221; the support
+for HTTPS access will be enables. If &#8220;false&#8221; the support for HTTPS
+access will be disabled. Default value is &#8220;false&#8221;.</p>
+</div>
+<div id="BasicConfiguration-org.osgi.service.http.useNIO" class="paragraph">
+<p><code>org.osgi.service.http.useNIO</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies if the connections established use the nio
+classes from java. If &#8220;true&#8221; connections are established using NIO, if
+&#8220;false&#8221; connections are established the standard way.</p>
+</div>
+<div id="BasicConfiguration-javax.servlet.context.tempdir" class="paragraph">
+<p><code>javax.servlet.context.tempdir</code></p>
+</div>
+<div class="paragraph">
+<p>A temporary directory that can be accessed via the servlet context
+attribute with the same name. If not set a default temporary directory
+wil be created and used.</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.session.timeout" class="paragraph">
+<p><code>org.ops4j.pax.web.session.timeout</code></p>
+</div>
+<div class="paragraph">
+<p>The number of minutes after which an inactive session will timeout.</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.listening.addresses" class="paragraph">
+<p><code>org.ops4j.pax.web.listening.addresses</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies the comma separated list of addresses used to
+provide servlets and resources via HTTP<br>
+ (e.g. localhost or localhost,10.0.0.1). Host names or IP addresses can
+be used. Default value is &#8220;0.0.0.0&#8221;.</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.session.cookie" class="paragraph">
+<p><code>org.ops4j.pax.web.session.cookie</code></p>
+</div>
+<div class="paragraph">
+<p>Session cookie name.<br>
+ From Jetty documentation:<br>
+ Defaults to JSESSIONID.</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.session.url" class="paragraph">
+<p><code>org.ops4j.pax.web.session.url</code></p>
+</div>
+<div class="paragraph">
+<p>Session URL.<br>
+ From Jetty documentation:<br>
+ Defaults to jsessionid. If set to null or &#8220;none&#8221; no URL rewriting
+will be done</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.worker.name" class="paragraph">
+<p><code>org.ops4j.pax.web.worker.name</code></p>
+</div>
+<div class="paragraph">
+<p>Sets worker name for use with Apache mod_proxy_balancer sticky
+sessions.<br>
+ See: <a href="http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy" class="bare">http://docs.codehaus.org/display/JETTY/Configuring+mod_proxy</a><br>
+ Defaults to null.</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.config.file" class="paragraph">
+<p><code>org.ops4j.pax.web.config.file</code></p>
+</div>
+<div class="paragraph">
+<p>Configures where to look for an external configuration file for the
+underlying web container (e.g. Jetty).</p>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.format" class="paragraph">
+<p><code>org.ops4j.pax.web.log.ncsa.format</code></p>
+</div>
+<div class="paragraph">
+<p>Sets the format for logging access logs</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.log.ncsa.format = /yyyy_mm_dd.request.log</pre>
+</div>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.retainDays" class="paragraph">
+<p><code>org.ops4j.pax.web.log.ncsa.retainDays</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.log.ncsa.retainDays = 90</pre>
+</div>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.append" class="paragraph">
+<p><code>org.ops4j.pax.web.log.ncsa.append</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.log.ncsa.append = true/false</pre>
+</div>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.extended" class="paragraph">
+<p><code>org.ops4j.pax.web.log.ncsa.extended</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.log.ncsa.extended = true/false</pre>
+</div>
+</div>
+<div id="BasicConfiguration-org.ops4j.pax.web.log.ncsa.LogTimeZone" class="paragraph">
+<p><code>org.ops4j.pax.web.log.ncsa.LogTimeZone</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.log.ncsa.LogTimeZone= GMT</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_advanced_jetty_configuration">2.1.4. Advanced Jetty Configuration</h4>
+<div class="paragraph">
+<p>To configure advanced features of Jetty you may use jetty xml style
+configuration files. To make Pax Web aware of your Jety configuration
+files you will have to use <strong>fragments</strong>. Be aware that fragment bundles
+are not yet fully supported on all OSGi implementations!</p>
+</div>
+<div class="paragraph">
+<p>As an example, it’s shown enabling JMX in Jetty.</p>
+</div>
+<div class="sect4">
+<h5 id="_osgi_bundle_fragment_way">OSGi-Bundle Fragment way</h5>
+<div class="paragraph">
+<p>To customize Jetty used by Pax Web Service follow instructions:
+Create a bundle fragment for Pax Web Service bundle
+for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="property">Manifest-Version: 1.0
+Fragment-Host: org.ops4j.pax.web.pax-web-jetty-bundle <i class="conum" data-value="1"></i><b>(1)</b>
+Bundle-Version: 0.1
+Bundle-Name: My Jetty config
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: my.jetty_config</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the required line in the manifest.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If the version you are using is
+the non bundled version of jetty bundle you should use
+<code>org.ops4j.pax.web.pax-web-jetty</code> instead of
+<code>org.ops4j.pax.web.pax-web-jetty-bundle</code> as value of <code>Fragment-Host</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Put jetty.xml in root directory of fragment.
+For example, take a look at a simple example fragment bundle from Pax
+Web that will add an additional connector on port <code>8383</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/jetty-config-fragment/src/main/resources/jetty.xml" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/jetty-config-fragment/src/main/resources/jetty.xml</a></p>
+</div>
+<div class="paragraph">
+<p>Add fragment to your start configuration
+If you have logging at DEBUG level enabled, when you start, you should
+see in logs something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DEBUG  pax.web.service.internal.JettyServerImpl  - starting JettyServerImpl{}
+DEBUG  pax.web.service.internal.JettyServerImpl  - configure using bundleresource://100/jetty.xml</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that the url
+&#8220;bundleresource://100/jetty.xml&#8221; from above is just an example as the
+url is framework specific
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_external_jetty_xml_file">Using external jetty.xml file</h5>
+<div class="paragraph">
+<p>Sometimes it&#8217;s needed to have a much more easier way of configuring the underlying Jetty server.
+An external located jetty.xml file can be used for configuring the jetty server.
+This can be activated by setting the following property for Pax Web</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.ops4j.pax.web.config.file=&lt;FILE-IN-FILESYSTEM&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details on how to configure the Jetty Server take a look at the
+official
+<a href="http://wiki.eclipse.org/Jetty/Reference/jetty.xml_syntax">jetty.xml</a> configuring
+page.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_adding_specialized_contexthandlers">Adding specialized ContextHandlers</h5>
+<div class="paragraph">
+<p>If you want to add specialized ContextHandlers to the jetty server you
+have to be careful not to break the way Pax Web works. So Instead of defining a
+new Collection of Handlers in the jetty.xml you need to add your
+specialized ContextHandler to the existing Collection.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example where the jetty Default Servlet is used to server static
+content from the file system.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;Get</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">handler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Call</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">addHandler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;Arg&gt;</span>
+        <span class="tag">&lt;New</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.eclipse.jetty.servlet.ServletContextHandler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;Set</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">contextPath</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>/app<span class="tag">&lt;/Set&gt;</span>
+          <span class="tag">&lt;Set</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">resourceBase</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>/path/to/your/share<span class="tag">&lt;/Set&gt;</span>
+          <span class="tag">&lt;Call</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">addServlet</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;Arg&gt;</span>org.eclipse.jetty.servlet.DefaultServlet<span class="tag">&lt;/Arg&gt;</span>
+            <span class="tag">&lt;Arg&gt;</span>/<span class="tag">&lt;/Arg&gt;</span>
+          <span class="tag">&lt;/Call&gt;</span>
+        <span class="tag">&lt;/New&gt;</span>
+      <span class="tag">&lt;/Arg&gt;</span>
+    <span class="tag">&lt;/Call&gt;</span>
+  <span class="tag">&lt;/Get&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_handler_and_connectors_as_services">Using Handler and Connectors as Services</h5>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The Following described way of working is only valid starting
+with version - 4.1.0
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All possible Handler or Connector configurations to Jetty through the jetty.xml
+file can now be registered as Services. With this it&#8217;s possible to register the
+previously made sample of specialized ContextHandler as service.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">ContextHandler ctxtHandler = <span class="keyword">new</span> ContextHandler();
+ctxtHandler.setContextPath(<span class="string"><span class="delimiter">&quot;</span><span class="content">/static-content</span><span class="delimiter">&quot;</span></span>);
+ResourceHandler resourceHandler = <span class="keyword">new</span> ResourceHandler();
+resourceHandler.setResourceBase(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>);
+resourceHandler.setDirectoriesListed(<span class="predefined-constant">true</span>);
+ctxtHandler.setHandler(resourceHandler);
 
-<h1 id="a-href-developer-guide-html-developer-guide-a" class="sect0"><a class="anchor" href="#a-href-developer-guide-html-developer-guide-a"></a><a href="Developer-Guide.html">Developer-Guide</a></h1>
-
+ServiceRegistration&lt;<span class="predefined-type">Handler</span>&gt; registerService = bundleContext.registerService(<span class="predefined-type">Handler</span>.class, ctxtHandler, <span class="predefined-constant">null</span>);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ssl_configuration">2.1.5. SSL Configuration</h4>
+<div class="paragraph">
+<p>Pax Web supports SSL (https) via Jetty built
+in SSL support. To get used with Jetty support you may read
+<a href="http://docs.codehaus.org/display/JETTY/How+to+configure+SSL">How to
+configure SSL in Jetty</a> and skip step 4 from that page, as the
+configuration part must be done in <a href="Configuration.html">Pax
+Web specific way</a>.</p>
+</div>
+<div class="paragraph">
+<p>To enable SSL support you must set the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>org.osgi.service.http.secure.enabled</strong> to <strong>true</strong></p>
+</li>
+<li>
+<p><strong>org.ops4j.pax.web.ssl.keystore</strong> to the path to the keystore to be
+used. If not set the default path <strong>${user.home}/.keystore</strong> is used.</p>
+</li>
+<li>
+<p><strong>org.ops4j.pax.web.ssl.password</strong> to the password used for keystore
+integrity check. The value can be in plain text or obfuscated ( starting
+with OBF: ) as described in
+<a href="http://docs.codehaus.org/display/JETTY/How+to+configure+SSL#HowtoconfigureSSL-step4">step
+4 of jetty docummentation</a></p>
+</li>
+<li>
+<p><strong>org.ops4j.pax.web.ssl.keypassword</strong> to the password used for keystore.
+The value can be in plain text or obfuscated ( starting with OBF: ) as
+described in
+<a href="http://docs.codehaus.org/display/JETTY/How+to+configure+SSL#HowtoconfigureSSL-step4">step
+4 of jetty docummentation</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You may also set the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>org.osgi.service.http.port.secure</strong> to change the port. Default is
+<strong>8443</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following is a list with SSL related configuration properties that
+can be used to customize Pax Web SSL support.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.keystore" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.keystore</code></p>
+</div>
+<div class="paragraph">
+<p>Path to the keystore file. See
+<a href="SSL-Configuration_12059277.html">ops4j:SSL Configuration</a> for
+details.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.keystore.type" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.keystore.type</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies the keystore type. Defaults to JKS.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.password" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.password</code></p>
+</div>
+<div class="paragraph">
+<p>Password used for keystore integrity check.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.keypassword" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.keypassword</code></p>
+</div>
+<div class="paragraph">
+<p>Password used for keystore.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.clientauthwanted" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.clientauthwanted</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies, if certificate-based client authentication at
+the server is <strong>&#8220;wanted&#8221;</strong>.</p>
+</div>
+<div id="SSLConfiguration-org.ops4j.pax.web.ssl.clientauthneeded" class="paragraph">
+<p><code>org.ops4j.pax.web.ssl.clientauthneeded</code></p>
+</div>
+<div class="paragraph">
+<p>This property specifies, if certificate-based client authentication at
+the server is <strong>&#8220;required&#8221;</strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jsp_configuration">2.1.6. JSP Configuration</h4>
+<div class="paragraph">
+<p>The following is a list with extra configuration properties for JSP
+compilation, these can be used to customize Pax Web. If not specified
+otherwise, the property is available since
+Pax Web - 1.0.0.<br>
+ These properties are send to the underlying JSP servlet Container
+<a href="http://docs.codehaus.org/display/JETTY/Jsp+Configuration">see</a></p>
+</div>
+<div class="paragraph">
+<p>The default configuration used can be seen via the MetaTypeService or in
+the metatype.xml of the runtime bundle.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.scratch.dir" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.scratch.dir</code></p>
+</div>
+<div class="paragraph">
+<p>This property defines the Directory where servlets are generated.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.check.interval" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.check.interval</code></p>
+</div>
+<div class="paragraph">
+<p>Interval in seconds between background recompile checks. Only relevant
+if org.ops4j.pax.web.jsp.development=false.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.debug.info" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.debug.info</code></p>
+</div>
+<div class="paragraph">
+<p>Include debugging info in class file.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.development" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.development</code></p>
+</div>
+<div class="paragraph">
+<p>If true, recompilation checks are made on each request.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.enable.pooling" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.enable.pooling</code></p>
+</div>
+<div class="paragraph">
+<p>Determines whether tag handler pooling is enabled.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.ie.classid" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.ie.classid</code></p>
+</div>
+<div class="paragraph">
+<p>Classid used for InternetExplorer</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.java.encoding" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.java.encoding</code></p>
+</div>
+<div class="paragraph">
+<p>Pass through the encoding to use for the compilation.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.keep.generated" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.keep.generated</code></p>
+</div>
+<div class="paragraph">
+<p>Do you want to keep the generated Java files around?</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.log.verbosity.level" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.log.verbosity.level</code></p>
+</div>
+<div class="paragraph">
+<p>Log verbosity level used.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.mapped.file" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.mapped.file</code></p>
+</div>
+<div class="paragraph">
+<p>Support for mapped Files. Generates a servlet that has a print statement
+per line of the jsp file.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.tagpool.max.size" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.tagpool.max.size</code></p>
+</div>
+<div class="paragraph">
+<p>Maximum size for tags in pool.</p>
+</div>
+<div id="JSPConfiguration-org.ops4j.pax.web.jsp.precompilation" class="paragraph">
+<p><code>org.ops4j.pax.web.jsp.precompilation</code></p>
+</div>
+<div class="paragraph">
+<p>If JSPs should be precompiled (see for more details
+<a href="http://team.ops4j.org/browse/PAXWEB-370">here</a>)</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Since Pax Web - 2.0.0
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http_service_extensions">2.2. Http Service Extensions</h3>
+<div class="paragraph">
+<p>Pax Web extends OSGi Http Service in
+order to align OSGi web support with latest developments of Servlet
+specs.</p>
+</div>
+<div class="paragraph">
+<p>In order to make use of this extensions you will have to get hold of a
+<strong>WebContainer</strong> service instead of HttpService as in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bundleContext.getServiceReference( "org.ops4j.pax.web.service.WebContainer" );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Having an <code>WebContainer</code> service instance you will be able to
+dynamically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>set context parameters for a Http Context</p>
+</li>
+<li>
+<p>register and unregister servlets with
+multiple url mappings (including wild card &#8216;*&#8217; support)</p>
+</li>
+<li>
+<p>register and unregister filters into the
+URI namespace of Http Service (including wild card &#8216;*&#8217; support)</p>
+</li>
+<li>
+<p>register and unregister event listeners,
+for better control over the life cycle of ServletContext, HttpSession
+and ServletRequest;</p>
+</li>
+<li>
+<p>register and unregister error pages</p>
+</li>
+<li>
+<p>register and unregister welcome
+files</p>
+</li>
+<li>
+<p>enable and disable JSP support</p>
+</li>
+</ul>
+</div>
+<div id="HttpServiceExtensions-AccessingtheBundleContext" class="paragraph">
+<p>Accessing the <code>BundleContext</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>BundleContext</code> is exposed as attribute of the <code>ServletContext</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>BundleContext ctx = (BundleContext) servletContext.getAttribute(
+                                WebContainerConstants.BUNDLE_CONTEXT_ATTRIBUTE);</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_servlets">2.2.1. Servlets</h4>
+<div class="sect4">
+<h5 id="Servlets-RegisterservletbyURLpattern">Register servlet by URL pattern</h5>
+<div class="paragraph">
+<p><strong><code>public void registerServlet( Servlet servlet, String[] urlPatterns, Dictionary initParams, HttpContext httpContext ) throws ServletException</code></strong><br>
+ Registers a servlet.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">servlet</th>
+<th class="tableblock halign-left valign-top">The servlet object to register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urlPatterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of url patterns this servlet maps to. Cannot be
+null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initParams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization arguments for the servlet or null if there
+are none. This argument is used by the servlet’s ServletConfig object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The HttpContext object for the registered servlet, or null
+if a default HttpContext is to be created and used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ServletException — if given servlet object has already been
+registered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — in the following situations: servlet
+is null urlPatterns is null or empty</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To give a name to the registered servlet you can add an element named
+<em>*servlet-name*</em> to <em>initParams</em> and as value the servlet name.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+starting with 1.1.4
+it’s possible to filter init parameters. As shown in
+<a href="http://wiki.osgi.org/wiki/WebExperience">WebExperience</a> it’s now possible
+to configure the init.parameters for the servlets and filters with the
+prefix <strong><em>init.</em></strong><br>
+ For background info take a look at
+<a href="http://team.ops4j.org/browse/PAXWEB-349">here</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="Servlets-Unregisteraservlet">Unregister a servlet</h5>
+<div class="paragraph">
+<p><strong><code>public void unregisterServlet( Servlet servlet )</code></strong><br>
+ Unregisters a previously registered servlet.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">servlet</th>
+<th class="tableblock halign-left valign-top">The servlet to be unregistered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: servlet is null the servlet is
+unknown to Web Container (never registered or unregistered before)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_filters">2.2.2. Filters</h4>
+<div class="sect4">
+<h5 id="Filters-Registerfilters">Register filters</h5>
+<div class="paragraph">
+<p><code>public void registerFilter( Filter filter, String[] urlPatterns, String[] servletNames, Dictionary initParams, HttpContext httpContext )</code><br>
+ Registers a servlet filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">filter</th>
+<th class="tableblock halign-left valign-top">The flter to register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urlPatterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of url patterns this filter maps to. Can be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">servletNames</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of servlets names this filter maps to. Can be
+null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initParams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization arguments for the servlet or null if there
+are none. This argument is used by the filter’s FilterConfig object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the http context this filter is for. If null a default
+http context will be used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: filter is null both urlPatterns
+and servletNames are null or empty</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To give a name to the registered servlet you can add an element named
+<strong><em>filter-name</em></strong> to <em>initParams</em> and as value the filter name.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+starting with Pax
+Web 1.1.4 it’s possible to filter init parameters. As shown in
+<a href="http://wiki.osgi.org/wiki/WebExperience">WebExperience</a> it’s now possible
+to configure the init.parameters for the servlets and filters with the
+prefix <strong><em>init.</em></strong><br>
+ For background info take a look at
+<a href="http://team.ops4j.org/browse/PAXWEB-349">here</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="Filters-Unregisterfilters">Unregister filters</h5>
+<div class="paragraph">
+<p><code>public void unregisterFilter( Filter filter )</code><br>
+ Unregisters a previously registered servlet filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">filter</th>
+<th class="tableblock halign-left valign-top">The servlet filter to be unregistered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: filter is null the filter is
+unknown to Web Container (never registered or unregistered before)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listeners">2.2.3. Listeners</h4>
+<div class="sect4">
+<h5 id="Listeners-Registereventlisteners">Register event listeners</h5>
+<div class="paragraph">
+<p><strong><code>public void registerEventListener( EventListener listener, HttpContext httpContext )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Registers an event listener. Depending on the listener type, the
+listener will be notified on different life cycle events. The following
+listeners are supported: HttpSessionActivationListener,
+HttpSessionAttributeListener, HttpSessionBindingListener,
+HttpSessionListener, ServletContextListener,
+ServletContextAttributeListener, ServletRequestListener,
+ServletRequestAttributeListener.<br>
+ Check out Servlet specification for details on what type of event the
+registered listener will be notified.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="Listeners-Unregistereventlisteners">Unregister event listeners</h5>
+<div class="paragraph">
+<p><strong><code>public void unregisterEventListener( EventListener listener )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Unregisters a previously registered listener.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">listener</th>
+<th class="tableblock halign-left valign-top">The event listener to be unregistered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: listener is null the listener is
+unknown to the http service (never registered or unregistered before)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_error_pages">2.2.4. Error Pages</h4>
+<div class="sect4">
+<h5 id="ErrorPages-Registererrorpages">Register error pages</h5>
+<div class="paragraph">
+<p><strong><code>public void registerErrorPage( String error, String location, HttpContext httpContext )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Registers an error page to customize the response sent back to the web
+client in case that an exception or error propagates back to the web
+container, or the servlet/filter calls sendError() on the response
+object for a specific status code.<br>
+ Read Servlet specs for details related to error pages.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A fully qualified Exception class name or an error status code.
+Cannot be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request path that will fill the response page. The
+location must start with an &#8220;/&#8221;. Cannot be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context this error page is for. If null a default
+http context will be used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: error is null or empty location
+is null location does not start with a slash &#8220;/&#8221;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="ErrorPages-Unregistererrorpages">Unregister error pages</h5>
+<div class="paragraph">
+<p><strong><code>public void unregisterErrorPage( String error, HttpContext httpContext )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Unregisters a previous registered error page.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A fully qualified Exception class name or an error status code
+to be unregistered. Cannot be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context from which the error page should be
+unregistered. Cannot be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: error is null or empty error
+page was not registered before httpContext is null</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_welcome_files">2.2.5. Welcome Files</h4>
+<div class="sect4">
+<h5 id="WelcomeFiles-Registerwelcomefiles">Register welcome files</h5>
+<div class="paragraph">
+<p><strong><code>public void registerWelcomeFiles( String[] welcomeFiles, boolean redirect, HttpContext httpContext )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Registers an ordered list of partial URIs. The purpose of this mechanism
+is to allow the deployer to specify an ordered list of partial URIs for
+the container to use for appending to URIs when there is a request for a
+URI that corresponds to a directory entry in the WAR not mapped to a Web
+component. Read Servlet specs for details related to welcome files.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">welcomeFiles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of welcome files paths. Paths must not start or
+end with &#8220;/&#8221;.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redirect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if the client should be rediected to welcome file or
+false if forwarded.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context these welcome files is for. If null a
+default http context will be used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: welcome files is null or empty
+entries in array are null or empty entries in array start or end with
+&#8220;/&#8221;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalStateException — if welcome files are already registered</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="WelcomeFiles-Unregisterwelcomefiles">Unregister welcome files</h5>
+<div class="paragraph">
+<p><strong><code>public void unregisterWelcomeFiles( HttpContext httpContext )</code></strong></p>
+</div>
+<div class="paragraph">
+<p>Unregisters previous registered welcome files.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context from which the welcome files should be
+unregistered. Cannot be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: no welcome files were registered
+before httpContext is null</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jsp">2.2.6. JSP</h4>
+<div class="paragraph">
+<p>Pax Web has support for Java Server Pages
+(JSP) via using
+<a href="http://tomcat.apache.org/tomcat-6.0-doc/jasper-howto.html">Tomcat Jasper
+2</a></p>
+</div>
+<div class="sect4">
+<h5 id="JSP-Why">Why</h5>
+<div class="paragraph">
+<p>Quoted from <a href="http://java.sun.com/products/jsp/">Java Server Pages home
+page</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>JavaServer Pages (JSP) technology provides a simplified, fast way to
+create dynamic web content. JSP technology enables rapid development of
+web-based applications that are server- and platform-independent.</p>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect4">
+<h5 id="JSP-Howdoesitwork">How does it work</h5>
+<div class="paragraph">
+<p>First of all you must have your JSPs (not mandatory but useful). Then
+you have to let Pax Web know that you have
+jsps by calling the <code>registerJsps()</code> method on <em>WebContainer</em>.<br>
+ At runtime you have to also deploy the jsp support bundle
+<strong><em>org.ops4j.pax.web.jsp</em></strong> (see installation
+instructions bellow) together with Pax
+Web.<br>
+ You can find an example of the
+<a href="Examples_5046927.html#Examples-helloworld-jsp">example page</a>.</p>
+</div>
+<div class="sect5">
+<h6 id="JSP-TagLibs">Tag Libs</h6>
+<div class="paragraph">
+<p>In order to get your custom tag libs working your TLD files will have to
+be reachable in your bundle in &#8220;special&#8221; places:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>all <em>tld</em> files in any jar referenced by your <strong><em>Bundle-ClassPath</em></strong>
+manifest entry</p>
+</li>
+<li>
+<p>all <em>tld</em> files in <strong><em>WEB-INF</em></strong> directory or sub-directory of <em>WEB-INF</em>
+in your bundle jar</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Imported packages
+are being searched too as of 1.1.2 and 2.0.0. See PAXWEB-86 and
+PAXWEB-130. PAX Web JSP’s only scans the META-INF/ directory within each
+imported (Import-Package) or required bundle (Require-Bundle), thus
+mimicking Jasper’s behaviour when searching JAR files for TLDs.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="JSP-EnableJSPsupport">Enable JSP support</h5>
+<div class="paragraph">
+<p><code>public void registerJsps( String[] urlPatterns, HttpContext httpContext )</code></p>
+</div>
+<div class="paragraph">
+<p>Enables jsp support. For more details take a look
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=Pax+Web+-+Jsp&amp;linkCreation=true&amp;fromPageId=5047050">here</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urlPatterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of url patterns this jsp support maps to. If
+null, a default &#8220;*.jsp&#8221; will be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context for which the jsp support should be
+enabled. If null a default http context will be used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnsupportedOperationException — If jsp support is not available
+(optional org.ops4j.pax.web.jsp package is not resolved)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="JSP-DisableJSPsupport">Disable JSP support</h5>
+<div class="paragraph">
+<p><code>public void unregisterJsps( HttpContext httpContext )</code></p>
+</div>
+<div class="paragraph">
+<p>Disable jsp support.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context for which the jsp support should be
+disabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — If http context is null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnsupportedOperationException — If jsp support is not available
+(optional org.ops4j.pax.web.jsp package is not resolved)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">2.3. Examples</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This page is out of Date and needs rework
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Pax Web includes a set of examples that
+demonstrates its usage. These can be found at the github <a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples">samples</a></p>
+</div>
+<div class="sect3">
+<h4 id="HttpServiceusage">2.3.1. Http Service usage</h4>
+<div class="paragraph">
+<p>This example shows you how to register a servlet and resources using the
+standard Http Service. Source code can be found at the samples on
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-hs/src/main/java/org/ops4j/pax/web/samples/helloworld/hs/internal/">GitHub</a>.<br>
+ Once the example is started (see below) you can point your web browser
+to <a href="http://localhost:8080/helloworld/hs" class="bare">http://localhost:8080/helloworld/hs</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-hs.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-hs.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-hs.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-helloworld-hs.bundles</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extended_http_service">2.3.2. Extended http service</h4>
+<div class="paragraph">
+<p>This example shows you how to register servlets, resources, filters,
+listeners and error pages using the extended Http Service, WebContainer.
+Source code can be found in
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-wc/src/main/java/org/ops4j/pax/web/samples/helloworld/wc/internal">GitHub</a>.<br>
+ Once the example is started (see bellow) you can point your web browser
+to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/helloworld/wc" class="bare">http://localhost:8080/helloworld/wc</a> — to see the result of servlet
+invocation being wrapped by a filter (see example source for details).
+In this case the filter is applied based on an url pattern.</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/helloworld/wc/sn/" class="bare">http://localhost:8080/helloworld/wc/sn/</a> — to see the result of servlet
+invocation being wrapped by a filter (see example source for details).
+In this case the filter is applied based on a servlet name.<br>
+ To see that a different filter was applied you can check out the page
+title for each of the above urls.
+*
+<a href="http://localhost:8080/helloworld/wc/error/create?type=java.lang.IllegalArgumentException" class="bare">http://localhost:8080/helloworld/wc/error/create?type=java.lang.IllegalArgumentException</a>
+— to see how the error page will be triggered when a servlet throws an
+exception. The exception to be thrown is specified by the <em>type</em>
+parameter. The error page will display all servlet request attributes
+related to an exception page as specified by Servlet spec.</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/helloworld/wc/a.page.that.not.exist" class="bare">http://localhost:8080/helloworld/wc/a.page.that.not.exist</a> — to see how
+the error page will be triggered based on the error type (404 in this
+case — page not found).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To verify that the listener (a ServletRequestListener is working you can
+repeat the request and check out the bottom of the page that displays a
+counter for the request made to the server.</p>
+</div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile.1" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-wc.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-wc.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-wc.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct.1" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-helloworld-wc.bundles</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jsp_support">2.3.3. JSP support</h4>
+<div class="paragraph">
+<p>This example shows you how to register jsps using the extended Http
+Service, WebContainer. Source code can be found in
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-jsp/src/main/java/org/ops4j/pax/web/samples/helloworld/jsp/internal/">SVN</a>.<br>
+ Once the example is started (see bellow) you can point your web browser
+to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/helloworld/jsp/helloworld.jsp" class="bare">http://localhost:8080/helloworld/jsp/helloworld.jsp</a> — to see the
+result of invoking a jsp.</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/helloworld/jsp/helloworld-tld.jsp/" class="bare">http://localhost:8080/helloworld/jsp/helloworld-tld.jsp/</a> — to see the
+result of invoking a jsp that uses taglibs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile.2" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-jsp.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-jsp.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-jsp.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct.3" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-deptstore.bundles</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_war_extender">2.4. WAR Extender</h3>
+<div class="paragraph">
+<p>Pax Web Extender WAR is an extender bundle that makes possible to deploy
+WAR files into OSGi.</p>
+</div>
+<div class="sect3">
+<h4 id="WARExtender-Howdoesitwork">2.4.1. How does it work</h4>
+<div class="paragraph">
+<p>First you should have a war file compliant with Servlet specs. As the
+war file will have to be deployed as a bundle the war file must have the
+necessary OSGi manifest headers (take a
+look what is required and how you can easily add them). Once you have
+this preconditions you just have to deploy your bundle in your preferred
+OSGi framework. Of course, what you need more is that pax web extender
+war bundle to be installed together
+with an http service (preferred Pax Web).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WARExtender-Detailedwayofworking">2.4.2. Detailed way of working</h4>
+<div class="paragraph">
+<p>Once installed the war extender will watch over the bundles that get
+started / stopped.<br>
+ Once your war bundle gets deployed and started, the war extender will
+parse your web.xml and registers all elements with http service. If the
+http service is <a href="Pax-Web_3375105.html">Pax Web</a> then most likely that
+you will get a fully working web application. If the http service is a
+standard one some of the elements will not be registered as standard
+http service only supports servlets and resources.<br>
+ Once your war bundle gets stopped all the prior registered elements
+will be unregistered.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WARExtender-Benefits">2.4.3. Benefits</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>with
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">no</a>/<a href="OSGi-fy-your-WAR_12060384.html">minimum</a>
+modifications to your war you can deploy it into an osgi framework</p>
+</li>
+<li>
+<p>you do not depend on any OSGi api</p>
+</li>
+<li>
+<p>you do not have to keep track of http service availability</p>
+</li>
+<li>
+<p>you do not have to register/unregister your
+servlets/resources/filters/listeners</p>
+</li>
+<li>
+<p>easy to use</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_war_extender_examples">2.4.4. WAR Extender Examples</h4>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This page is outdated!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>WAR Extender includes a set of
+examples that demonstrates its usage. While running the examples bellow
+under Felix, version &#8656; 1.0.1 you may get will logging enabled quite a
+lot of error messages. You can ignore them as Felix logs a
+FrameworkEvent.ERROR every time it cannot find a class, fact that
+clashes with Spring way of searching for BeanInfo classes. This issue is
+resolved in the upcoming version on Felix.</p>
+</div>
+<div class="sect4">
+<h5 id="WARExtenderExamples-WicketExamples">Wicket Examples</h5>
+<div class="paragraph">
+<p><a href="http://wicket.apache.org/">Wicket</a> provides an example war file that
+includes various <a href="http://wicketstuff.org/wicket13/">examples related to
+Wicket</a><br>
+ To deploy the wicket examples war (that is available in maven central
+repo) you just have to deploy to your preferred OSGi framework the
+following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Pax Web Extender - War version &gt;=
+0.3.0</p>
+</li>
+<li>
+<p>JSP API — required by Wicket Examples (you need an OSGi version of it)</p>
+</li>
+<li>
+<p>Wicket Examples war repackaged as bundle
+(<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/wicket-examples-1.3.0.bnd">OSGi
+manifest headers added</a>)</p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/wicket-examples-1.3.0-wrap.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/wicket-examples-1.3.0-wrap.bundles">wicket-examples-1.3.0-wrap.bundles</a>
+file above is a simple text file that lists all the bundles to be
+installed.</p>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to
+<a href="http://localhost:8080/wicket.examples/index.html" class="bare">http://localhost:8080/wicket.examples/index.html</a>. Notice that
+re-packaging of Wicket Examples War may take a while as the war file has
+about 9Mb (depending on your connection speed - file is downloaded from
+maven central repository). Anyhow, this is done just first time you run
+the example and it helps if you already have the war file in your local
+maven repository.</p>
+</div>
+<div class="paragraph">
+<p>You can start it up even simpler by using the new
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">war:</a> protocol
+handler (you need
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+version &gt;= 0.6.0):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run war:mvn:org.apache.wicket/wicket-examples/1.3.0/war --profiles=war</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you will see the war: protocol handler will do all that is necessary
+to directly deploy a war file. Note that in this case the context name
+will be generated automatically, so you should use
+<a href="http://localhost:8080/mvn_org.apache.wicket_wicket-examples_1.3.0_war/index.html" class="bare">http://localhost:8080/mvn_org.apache.wicket_wicket-examples_1.3.0_war/index.html</a>
+to access the application (upcoming version 0.2.0 of war protocol will
+permit context name setup).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="WARExtenderExamples-SpringPetClinic">Spring PetClinic</h5>
+<div class="paragraph">
+<p><a href="http://www.springframework.org/">Spring</a> provides an
+<a href="http://www.springframework.org/docs/petclinic.html">example application
+named PetClinic</a>. The Petclinic sample application is designed to show
+how the Spring application frameworks can be used to build simple, but
+powerful database-oriented enterprise applications.<br>
+ To deploy the PetClinic war you will have first to build it by yourself
+(Spring PetClinic is not available in a maven repository and anyhow it
+needs some small changes):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.springframework.org/docs/petclinic.html">Follow the build
+instructions</a> provided by Spring</p>
+</li>
+<li>
+<p>Before building the war file you have to change
+<em>petclinic-servlet.xml</em> as follows. You have to do this change not
+because of Pax Web but because the <em>&lt;context:component-scan …/&gt;</em> does
+not work in an OSGi environment (Spring DM guys are working on that).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit <em>petclinic-servlet.xml</em></p>
+</li>
+<li>
+<p>Replace line</p>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;context:component-scan base-package="org.springframework.samples.petclinic.web"&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;context:annotation-config/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.ClinicController"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddOwnerForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddPetForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddVisitForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.EditOwnerForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.EditPetForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.FindOwnersForm"/&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save the file and build Spring PetClinic according to instructions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Start the PetClinic database (not required but otherwise you cannot
+use the whole application)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then deploy to your preferred OSGi framework the following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>JSP version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Pax Web Extender - War version &gt;= 0.3.0</p>
+</li>
+<li>
+<p>PetClinic war repackaged as bundle
+(<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources//spring-petclinic-2.5-wrap.bnd">OSGi
+manifest headers added</a>)</p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+(you must start Pax Runner from PetClinic’s dist directory so it can
+find the war file):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/spring-petclinic-2.5-wrap.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/spring-petclinic-2.5-wrap.bundles">spring-petclinic-2.5-wrap.bundles</a>
+file above is a simple text file that lists all the bundles to be
+installed.</p>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to
+<a href="http://localhost:8080/petclinic/index.jsp" class="bare">http://localhost:8080/petclinic/index.jsp</a>. Notice that re-packaging of
+Spring PetClinic war file may take a while as the war file has about
+15Mb. Anyhow, this is done just first time you run the example.</p>
+</div>
+<div class="paragraph">
+<p>Note also then when running under Felix version before 1.0.3 you will
+see quite a lot of stack traces displayed on the screen (if you have
+logging enabled). Just ignore them as they are only log messages from
+Felix shown when a class cannot be found and Spring tries to load
+classes related to bean support, classes that do not exist. This (error
+messages) are all gone if you use Felix &gt;= 1.0.3.</p>
+</div>
+<div class="paragraph">
+<p>You can start it up even simpler by using the new
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">war:</a> protocol
+handler (you need
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+version &gt;= 0.6.0):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run war:file:petclinic.war --profiles=war mvn:org.ops4j.pax.web/pax-web-jsp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you will see the war: protocol handler will do all that is necessary
+to directly deploy a war file. Spring PetClinic makes use of JSP so the
+command line provision also <a href="JSP_5047050.html">Pax Web JSP Support</a>.
+Note that in this case the context name will be generated automatically,
+so you should use <a href="http://localhost:8080/file_petclinic.war/" class="bare">http://localhost:8080/file_petclinic.war/</a> to access
+the application (upcoming version 0.2.0 of war protocol will permit
+context name setup).</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Using the above mentioned methods involves that Spring Petclinic WAR
+file is processed first by <code>war:</code> url protocol handler in order to make
+it a bundle. As the WAR file is particularly large it requires
+&#8220;extensive&#8221; resources to process in terms of memory, so you may
+encounter <code>java.lang.StackOverflowError</code> or <code>java.lang.OutOfMemoryError</code>
+depending on your execution platform (Windows/*nix) as they differ in
+&#8220;defaults&#8221;. To avoid this problems you will have to set some extra
+start up parameters for JVM, such as:
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>java.lang.StackOverflowError</code>: \{-Xss`, as for example <code>-Xss=512k</code></p>
+</li>
+<li>
+<p><code>java.lang.OutOfMemoryError</code>: <code>-Xmx</code>, as for example <code>-Xmx256m</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It may be that the example values are too much or too less for your case
+so feel free to experiment.<br>
+ In order to set this options you have to do the following (example uses
+both settings but you may only need one of them):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>set JAVA_OPTS=-Xss512k -Xmx256m
+pax-run ...</pre>
+</div>
+</div>
+</li>
+<li>
+<p>*nix</p>
+<div class="listingblock">
+<div class="content">
+<pre>export JAVA_OPTS=-Xss512k -Xmx256m
+pax-run ...</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_osgi_fy_your_war">2.4.5. OSGi-fy your WAR</h4>
+<div class="paragraph">
+<p>This page explains what it takes to make a standard war file deployable
+into OSGi. For detailed information read <em>OSGi Service Platform Core
+Specification</em> section 3.2 — <em>Module Layer — Bundles</em>. The pages
+specified bellow refers to <em>Release 4, Version 4.1 April 2007</em>.</p>
+</div>
+<div class="paragraph">
+<p>The quickest way is for your project to use Maven and utilize Maven
+Bundle Plugin to generate OSGi manifest for your WAR project. See:
+<a href="https://ops4j1.jira.com/wiki/display/ops4j/Getting+the+benefits+of+maven-bundle-plugin+in+other+project+types">Getting
+the benefits of maven-bundle-plugin in other project types</a></p>
+</div>
+<div class="paragraph">
+<p>If you opt for a lower level way, read on…</p>
+</div>
+<div class="paragraph">
+<p>First of all the war has to be a valid OSGi bundle. As minimum the war
+file must contain the following manifest headers in
+<code>META-INF/MANIFEST.MF</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ManifestVersion: 2</em></strong> — This header defines that the bundle
+follows the rules of R4 specification.</p>
+</li>
+<li>
+<p><strong><em>Bundle-SymbolicName</em></strong> — This header specifies a unique,
+non-localizable name for this bundle. This name should be based on the
+reverse domain name convention. See <em>Bundle-SymbolicName</em> on page 35.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Version</em></strong> — This header specifies the version of
+this bundle. The default value is 0.0.0. See <em>Version</em> on page 28.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Name</em></strong> — This header defines a readable name for
+this bundle. This should be a short, human-readable name that can
+contain spaces.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Vendor</em></strong> — This header contains a human-readable
+description of the bundle vendor.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Copyright</em></strong> — This header contains the copyright
+specification for this bundle.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Webapp-Context</em></strong> — servlet context path. If not specified
+<em>Bundle-SymbolicName</em> will be used. Note that this header is a War
+extender specific header not an OSGi header.
+<span class="image"><img src="images/images/icons/emoticons/warning.png" alt="(warning)"></span> Deprecated since
+1.0.0 use</p>
+</li>
+<li>
+<p>(optional) <strong><em>Web-ContextPath</em></strong> — servlet context path, as specified in
+the OSGi spec. If not specified <em>Bundle-SymbolicName</em> will be used. Note
+this is a official OSGi header.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have this header, will suffice to deploy the war into OSGi. But
+this is not enough to have it working in most of the situations as OSGi
+has a very strict class loading policy. So next, you will have to
+specify how the classes you need in runtime will be found via the
+following headers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ClassPath</em></strong> — This header defines a comma-separated list of
+JAR file path names or directories (inside the bundle) containing
+classes and resources. The period (’.’) specifies the root directory of
+the bundle’s JAR. The period is also the default. See <em>Bundle Class
+Path</em> on page 49.</p>
+</li>
+<li>
+<p><strong><em>Import-Package</em></strong> — This header declares the imported packages for
+this bundle. See <em>Import-Package Header</em> on page 36.</p>
+</li>
+<li>
+<p>(not recommended) <strong><em>Require-Bundle</em></strong> — This header specifies the
+required exports from another bundle. See <em>Require-Bundle</em> on page 65.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most likely the above headers will have to have the following values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ClassPath</em></strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WEB_INF/classes</code> — this will find any class / file in
+WEB-INF/classes</p>
+</li>
+<li>
+<p><code>lib/&lt;dependency&gt;.jar</code> — you should have an entry for each jar you
+have in your lib directory, where <em>&lt;dependency&gt;</em> is the name of jar<br>
+ So, as an example the header can look like:<br></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>Bundle-ClassPath: WEB-INF/classes,lib/commons-logging.jar,lib/spring.jar</code>
+* <strong><em>Import-Package</em></strong> : should contain any package that your web
+application depends on but is not included into one of your dependencies
+that you listed in the <em>Bundle-ClassPath</em> header. Usually a war will not
+include <em>J2EE</em> apis:
+<strong> <code>javax.servlet</code> - servlet api
+</strong> <code>javax.servlet.http</code> - servlet api<br>
+ So, as an example the header can look like:<br>
+ <code>Import-Package: javax.servlet,javax.servlet.http</code></p>
+</div>
+<div class="paragraph">
+<p>Now you are ready to
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">deploy your
+war</a>. If you still get class loading exceptions then is most likely that
+you did not include all the jars you need in the <em>Bundle-ClassPath</em> or
+<em>Import-Package</em>.</p>
+</div>
+<div class="sect4">
+<h5 id="OSGi-fyyourWAR-Preprocess">Preprocess</h5>
+<div class="paragraph">
+<p>If you find this process hard to grasp or if you cannot change the
+manifest of your war or maybe you simple want to automate it take a look
+at how you can automate it in a
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=static&amp;linkCreation=true&amp;fromPageId=12060384">static</a>
+or
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=dynamic&amp;linkCreation=true&amp;fromPageId=12060384">dynamic</a>
+way. You may also use
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">War Protocol</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_supported_web_elements">2.4.6. Supported Web Elements</h4>
+<div class="paragraph">
+<p>The following is a list showing what elements are supported in both
+standard http service and Pax Web. If the
+list bellow does not contain the descriptior element you are looking for
+it means that is not (yet) supported.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>*context name*</em> : name of the context (known as context path)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service
+: servlets/resources will be deployed into the root path (&#8216;`&#8217;')</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*context params*</em> : &lt;context-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*session timeout*</em> : &lt;session-config&gt; / &lt;session-timeout&gt; element in
+web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web (starting with version 0.4.0)</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets*</em> : &lt;servlet&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets init params*</em> : &lt;servlet&gt;&lt;init-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets mapping*</em> : &lt;servlet-mapping&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service
+: only exact match, no wild card (&#8220;*&#8221;) support</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters*</em> : &lt;filter&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters init params*</em> : &lt;filter&gt;&lt;init-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters mapping*</em> : &lt;filter-mapping&gt; elements in web.xml; both
+&lt;url-pattern&gt; and &lt;servlet-name&gt;</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*listeners*</em> : &lt;listener&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*error pages*</em> : &lt;error-page&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*welcome files*</em> : &lt;welcome-file-list&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*mime mappings*</em> : &lt;mime-mapping&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_war_extender_faq">2.4.7. WAR Extender FAQ</h4>
+<div class="sect4">
+<h5 id="_is_the_order_the_bundles_are_installed_started_important">Is the order the bundles are installed / started important?</h5>
+<div class="paragraph">
+<p>No. Http service (Pax Web), war extender or
+your war bundle(s) can be installed / uninstalled / started / stopped in
+any order. Everything will function as you expect.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_will_happen_if_i_stop_uninstall_my_war">What will happen if I stop / uninstall my war?</h5>
+<div class="paragraph">
+<p>All the registered elements for the web application corresponding to the
+stopped war (servlet context, servlets, resources, filters, listeners)
+will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_if_i_restart_it_or_update_it">What if I restart it? Or update it?</h5>
+<div class="paragraph">
+<p>A new web application corresponding to your war will be registered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_happens_if_i_stop_uninstall_the_http_service">What happens if I stop / uninstall the http service?</h5>
+<div class="paragraph">
+<p>All deployed web applications will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_if_i_restart_it">What if I restart it?</h5>
+<div class="paragraph">
+<p>New web applications will be registered for all deployed wars.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_happens_if_i_stop_uninstall_the_pax_war_extender">What happens if I stop / uninstall the pax war extender?</h5>
+<div class="paragraph">
+<p>All deployed web applications will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_if_i_restart_it_2">What if I restart it?</h5>
+<div class="paragraph">
+<p>New web applications will be registered for all deployed wars.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_i_have_a_standard_war_can_i_deploy_it_into_an_osgi_framework">I have a standard war. Can I deploy it into an OSGi framework?</h5>
+<div class="paragraph">
+<p>Yes,
+OSGi-fy-your-WAR tells you how you can do that.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_i_do_not_want_can_change_the_war_can_i_still_deploy_it">I do not want / can change the war. Can I still deploy it?</h5>
+<div class="paragraph">
+<p>Yes, you can do that in a
+static or dynamic way.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_now_that_i_deployed_my_war_how_can_i_get_a_service_from_osgi_service_registry">Now that I deployed my war, how can I get a service from OSGi Service Registry?</h5>
+<div class="paragraph">
+<p>A deployed war is as any OSGi bundle. A bundle accesses the OSGi
+framework’s services through the bundle’s <em>BundleContext</em>. To enable a
+web application to access its <em>BundleContext</em> you must develop a
+<em>BundleActivator</em> and add the <em>Bundle-Activator</em> manifest header. This
+<em>BundleActivator</em> should store the <em>BundleContext</em> in a location that is
+accessible by the application’s servlets, filters or listeners. You can
+achieve this by using a static field/method set by your
+<em>BundleActivator</em> or store it in a <em>ServletContext</em> attribute.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_my_application_uses_jsps_are_them_supported">My application uses JSPs. Are them supported?</h5>
+<div class="paragraph">
+<p>Yes, JSPs are supported via Pax Web
+Extensions. Take a look at how you can enable JSP
+support.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_can_i_set_the_servlet_context_path">How can I set the servlet context path?</h5>
+<div class="paragraph">
+<p>Pax Web War extender will use as servlet path by default the symbolic
+name of the bundle. If you want to change that you can set the
+<code>Webapp-Context</code> manifest attribute to the name you want. This attribute
+should be set into the manifest (MANIFEST.MF) of the bundle that
+contains the web app (same bundle as the one containing the web.xml
+file). For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Web-ContextPath: myApp</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_whiteboard_extender">2.5. Whiteboard Extender</h3>
+<div class="paragraph">
+<p>Pax Web Extender Whiteboard is an extender bundle that ease the pain of
+registering servlets, resources, filters and listeners and keeping track
+of Http Service availability.<br>
+ Note it is not mandatory for the extender to work with Pax Web, it can
+work with any Http Service implementation.</p>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-KeepingtrackofHttpServiceavailability">2.5.1. Keeping track of Http Service availability</h4>
+<div class="paragraph">
+<p>There are many situations that you have to handle as a bundle developer
+to keep track of http service availability:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Http Service is not present</p>
+</li>
+<li>
+<p>The Http Service gets started after your bundle starts</p>
+</li>
+<li>
+<p>The service gets unregister during the lifetime of your servlet</p>
+</li>
+<li>
+<p>A new service gets registered</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pax Web Extender handles all of this cases for you. You just have to
+have a servlet <span class="image"><img src="images/icons/emoticons/smile.png" alt="(smile)"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Howdoesitwork:">2.5.2. How does it work:</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Publish your web elements using one of the
+methods below;</p>
+</li>
+<li>
+<p>Start the Pax Web Extender bundle. It does not matter if the
+Extender starts before or after you bundle or if is not even installed
+by the time your bundle starts.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-WhatExtenderwilldo:">2.5.3. What Extender will do:</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Once it starts it will find out all published web elements;</p>
+</li>
+<li>
+<p>Once a http service become available (including the moment when
+Extender starts) it will register all the
+published web elements;</p>
+</li>
+<li>
+<p>If the in use http service gets unregister it will automatically
+unregister the (already) registered web elements;</p>
+</li>
+<li>
+<p>If you register a web element as a service it will register it automatically with the http
+service in use (if any);</p>
+</li>
+<li>
+<p>If you unregister a web element it will unregister it automatically from the http service (if
+was registered before);</p>
+</li>
+<li>
+<p>If you stop your bundle all registered web elements are automatically
+unregistered</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Howdoesithelponservletregistration">2.5.4. How does it help on servlet registration</h4>
+<div class="paragraph">
+<p>Usually you will have to register servlets by getting an http service
+and registering each servlet you have with the http service.<br>
+ By using the whiteboard approach you will just have to register each
+servlet that you expect to be published to an http service under the
+Servlet interface (<a href="http://issues.ops4j.org/jira/browse/PAXWEBEX-2">see in
+jira</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Dictionary props = new Hashtable();
+props.put( "alias", "/whiteboard" );
+props.put("servlet-name", "My Servlet");
+bundleContext.registerService( Servlet.class.getName(), new MyServlet(), props );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is all you have to do to register a servlet. As you can see there
+is no necessity to lookup a http service or to track it’s availability.</p>
+</div>
+<div class="paragraph">
+<p>Nice to know: your bundle will not have to import/depend on Http Service
+packages.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Registering with Servlet names becomes necessary if you want to register a Filter
+against it. See below.</p>
+</li>
+<li>
+<p>Starting with version 4.1.x it is possible to register Annotated Servlets as services.
+Those annotations are interpreted in the same way as properties. This way properties
+may be neglected.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Howdoesithelponresourceregistration">2.5.5. How does it help on resource registration</h4>
+<div class="paragraph">
+<p>Usually you will have to register resources by getting an http service
+and registering each resource dir you have with the http service.<br>
+ By using the whiteboard approach you will just have to register each
+resource dir that you expect to be published to an http service under
+the Resources class (<a href="http://issues.ops4j.org/jira/browse/PAXWEBEX-4">see
+in jira</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import org.ops4j.pax.web.extender.whiteboard.ResourceMapping;
+import org.ops4j.pax.web.extender.whiteboard.runtime.DefaultResourceMapping;
+...
+DefaultResourceMapping resourceMapping = new DefaultResourceMapping();
+resourceMapping.setAlias( "/whiteboardresources" );
+resourceMapping.setPath( "/images" );
+bundleContext=bundleContext.registerService( ResourceMapping.class.getName(), resourceMapping, null );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Don’t forget to import org.ops4j.pax.web.extender.whiteboard package.</p>
+</div>
+<div class="paragraph">
+<p>This is all you have to do to register resources. As you can see there
+is no necesity to lookup a http service or to track it’s availablity.
+The resources are served upon exact match, so listing directories in
+this fashion is not supported right now.</p>
+</div>
+<div class="paragraph">
+<p>Note: your bundle must import org.ops4j.pax.web.extender.whiteboard
+package.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Howdoesithelponfilterregistration">2.5.6. How does it help on filter registration</h4>
+<div class="paragraph">
+<p>Filters can be registered against URL Patterns and/or against Servlets
+(identified using their names).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Dictionary props = new Hashtable();
+String[] urls = {"/foo", "/protected"};
+String[] servlets = {"My Servlet", "Faces Servlet"};
+props.put("filter-name", "My Crazy Filter");
+props.put("urlPatterns", urls);
+props.put("servletNames", servlets);
+bundleContext.registerService(Filter.class.getName(), new MyCrazyFilter(), props );</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For URL Patterns, the pattern registered must be already mapped,
+either as Resource or a Servlet alias - e.g there should already be a
+Resource or aServlet registered to the path <code>/foo</code>.</p>
+</li>
+<li>
+<p>For Servlet names, the names used should have been the name that has
+been explicitly given to the Servlet (as <code>servlet-name</code>), when
+registering.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Howdoesithelponlistenerregistration">2.5.7. How does it help on listener registration</h4>
+<div class="paragraph">
+<p>Following specialization of java.util.EventListener are
+tracked by the Whiteboard-Extender:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>javax.servlet.ServletContextListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletContextAttributeListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestAttributeListener</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="WhiteboardExtender-Webelements">2.5.8. Web elements</h4>
+<div class="paragraph">
+<p>By web elements we mean any of http context, servlet, resources, filter,
+listener.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_whiteboard_examples">2.5.9. Whiteboard Examples</h4>
+<div class="paragraph">
+<p>Whiteboard Extender includes a set of examples that demonstrates its usage.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The following is outdated and subject to change.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="WhiteboardExamples-Whiteboard">Whiteboard</h5>
+<div class="paragraph">
+<p>The whiteboard example publishes web elements supported by whiteboard
+extender. To run the example you have to deploy to your preferred OSGi
+framework the following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Whiteboard Extender version &gt;= 0.3.0</p>
+</li>
+<li>
+<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/whiteboard/">Whiteboard
+example</a></p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/sample-whiteboard.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/whiteboard" class="bare">http://localhost:8080/whiteboard</a> — to see a simple servlet output</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> — to see a simple servlet output mapped to root</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/whiteboardresources/ops4j.png" class="bare">http://localhost:8080/whiteboardresources/ops4j.png</a> – to get a logo
+registered by publishing a resource</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/forbidden/" class="bare">http://localhost:8080/forbidden/</a> — to try to access a security
+protected servlet</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/whiteboard/filtered" class="bare">http://localhost:8080/whiteboard/filtered</a> — to access the whiteboard
+filter (see above) but through a filter</p>
+</li>
+<li>
+<p>on any request you can take a look in the java console to see a
+request filter in action</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_using_karaf_features">2.6. Installing using Karaf-features</h3>
+<div class="paragraph">
+<p>Pax Web provides a set of feature-descriptors for
+<a href="http://karaf.apache.org/">Apache Karaf</a> for convenient installation. To
+enable these features, add them in Karaf using the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>features:addurl mvn:org.ops4j.pax.web/pax-web-features/4.2.5-SNAPSHOT/xml/features</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you type <code>features:list</code> now, you will see the following features
+available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>State         Version           Name                          Repository              Description
+[uninstalled] [4.2.5-SNAPSHOT] pax-jetty                     org.ops4j.pax.web-4.2.5-SNAPSHOT Provide Jetty engine support
+[uninstalled] [4.2.5-SNAPSHOT] pax-http                      org.ops4j.pax.web-4.2.5-SNAPSHOT Implementation of the OSGI HTTP Service
+[uninstalled] [4.2.5-SNAPSHOT] pax-http-whiteboard           org.ops4j.pax.web-4.2.5-SNAPSHOT Provide HTTP Whiteboard pattern support
+[uninstalled] [4.2.5-SNAPSHOT] pax-war                       org.ops4j.pax.web-4.2.5-SNAPSHOT Provide support of a full WebContainer</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now install each of these features using <code>features:install</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jsp_usage">2.7. JSP Usage</h3>
+<div class="sect3">
+<h4 id="JSPUsage-UsageguidelinesforworkingwithJSPs">2.7.1. Usage guidelines for working with JSPs</h4>
+<div class="paragraph">
+<p>This page will give you some guidelines how to use the most out of pax
+web regarding JSPs.</p>
+</div>
+<div class="paragraph">
+<p>First of all get to know the possible
+jsp configuration properties,
+these might help you already.</p>
+</div>
+<div class="sect4">
+<h5 id="JSPUsage-ProvidedpackagesbytheJSPbundle">Provided packages by the JSP bundle</h5>
+<div class="paragraph">
+<p>Following packages are exported by the JSP bundle of Pax Web:</p>
+</div>
+<div class="paragraph">
+<p>JSP in version 1.1.2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.servlet.jsp; version="1.1.2"
+javax.servlet.jsp.el; version="1.1.2"
+javax.servlet.jsp.jstl.core; version="1.1.2"
+javax.servlet.jsp.jstl.fmt; version="1.1.2"
+javax.servlet.jsp.jstl.sql; version="1.1.2"
+javax.servlet.jsp.jstl.tlv; version="1.1.2"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>JSP in version 2.1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.servlet.jsp; version="2.1"
+javax.servlet.jsp.el; version="2.1"
+javax.servlet.jsp.jstl.core; version="2.1"
+javax.servlet.jsp.jstl.fmt; version="2.1"
+javax.servlet.jsp.jstl.sql; version="2.1"
+javax.servlet.jsp.jstl.tlv; version="2.1"
+javax.servlet.jsp.resources; version="2.1"
+javax.servlet.jsp.tagext; version="2.1"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Javax el in version 2.1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.el;version="2.1.0"
+com.sun.el;version="2.1.0.v20091210"
+com.sun.el.lang;version="2.1.0.v20091210"
+com.sun.el.parser;version="2.1.0.v20091210"
+com.sun.el.util;version="2.1.0.v20091210"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jasper compiler</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.apache.jasper;version="2.1.0.v20091210"
+ org.apache.jasper.compiler;version="2.1.0.v20091210"
+ org.apache.jasper.compiler.tagplugin;version="2.1.0.v20091210"
+ org.apache.jasper.resources;version="2.1.0.v20091210"
+ org.apache.jasper.runtime;version="2.1.0.v20091210"
+ org.apache.jasper.security;version="2.1.0.v20091210"
+ org.apache.jasper.servlet;version="2.1.0.v20091210"
+ org.apache.jasper.tagplugins.jstl;version="2.1.0.v20091210"
+ org.apache.jasper.util;version="2.1.0.v20091210"
+ org.apache.jasper.xmlparser;version="2.1.0.v20091210"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Standard Taglibs</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.apache.taglibs.standard
+org.apache.taglibs.standard.extra.spath
+org.apache.taglibs.standard.functions
+org.apache.taglibs.standard.lang.jstl
+org.apache.taglibs.standard.lang.jstl.parser
+org.apache.taglibs.standard.lang.jstl.test
+org.apache.taglibs.standard.lang.jstl.test.beans
+org.apache.taglibs.standard.lang.support
+org.apache.taglibs.standard.resources
+org.apache.taglibs.standard.tag.common.core
+org.apache.taglibs.standard.tag.common.fmt
+org.apache.taglibs.standard.tag.common.sql
+org.apache.taglibs.standard.tag.common.xml
+org.apache.taglibs.standard.tag.el.core
+org.apache.taglibs.standard.tag.el.fmt
+org.apache.taglibs.standard.tag.el.sql
+org.apache.taglibs.standard.tag.el.xml
+org.apache.taglibs.standard.tag.rt.core
+org.apache.taglibs.standard.tag.rt.fmt
+org.apache.taglibs.standard.tag.rt.sql
+org.apache.taglibs.standard.tag.rt.xml
+org.apache.taglibs.standard.tei
+org.apache.taglibs.standard.tlv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Eclipse Compiler for compiling JSP pages</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.eclipse.jdt.core
+org.eclipse.jdt.core.compiler
+org.eclipse.jdt.core.compiler.batch
+org.eclipse.jdt.internal.antadapter
+org.eclipse.jdt.internal.compiler
+org.eclipse.jdt.internal.compiler.apt.dispatch
+org.eclipse.jdt.internal.compiler.apt.model
+org.eclipse.jdt.internal.compiler.apt.util
+org.eclipse.jdt.internal.compiler.ast
+org.eclipse.jdt.internal.compiler.batch
+org.eclipse.jdt.internal.compiler.classfmt
+org.eclipse.jdt.internal.compiler.codegen
+org.eclipse.jdt.internal.compiler.env
+org.eclipse.jdt.internal.compiler.flow
+org.eclipse.jdt.internal.compiler.impl
+org.eclipse.jdt.internal.compiler.lookup
+org.eclipse.jdt.internal.compiler.parser
+org.eclipse.jdt.internal.compiler.parser.diagnose
+org.eclipse.jdt.internal.compiler.problem
+org.eclipse.jdt.internal.compiler.tool
+org.eclipse.jdt.internal.compiler.util</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="JSPUsage-HowdoJSPsworkwithPaxWeb">2.7.2. How do JSPs work with Pax Web?</h4>
+<div class="paragraph">
+<p>Standard JSPs are handled by Pax Web through a specialized Servlet that
+does use the Jasper compiler with a extra class loader. This class
+loader takes the current bundle (the war) and its containing jars into
+account for compiling the JSP files. Tag libs are searched within this
+war and it’s containing jars. With version 1.1.0 the bundles which are
+imported by the war are also taken into the class loader for searching
+the right TLD files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="JSPUsage-HowdoJSFworkwithPaxWeb">2.7.3. How do JSF work with Pax Web?</h4>
+<div class="paragraph">
+<p>Since version 1.0.2 and 1.1.0 JSF is supported by Pax Web.</p>
+</div>
+<div class="paragraph">
+<p>Standard war files should work out of the box since
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/Pax+URL+-+1.3.0">Pax Url -
+1.3.0</a> does optionally import the exported packages of Pax Web.</p>
+</div>
+<div class="paragraph">
+<p>For Web Application Bundles - war archives with Manifest - it is
+required not only to import the <em>javax.el</em> package but also the
+implementation of it which is <em>com.sun.el.*</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_developer_guide">3. Developer Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following guides details different aspects of
+Pax Web internals and are aimed towards
+developers that wants to understand the inner workings of
+Pax Web and/or develop/maintain current code
+base of Pax Web and/or develop extensions in
+top of Pax Web.</p>
+</div>
+<div class="sect2">
+<h3 id="_source">3.1. Source</h3>
+<div class="sect3">
+<h4 id="Source-Checkoutsourcecode">3.1.1. Checkout source code</h4>
+<div class="paragraph">
+<p>You can checkout the source code of Pax Web by using the following
+command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>git clone git://github.com/ops4j/org.ops4j.pax.web.git</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or you may use your IDE specific support for Git.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Source-Browsesourcecode">3.1.2. Browse source code</h4>
+<div class="paragraph">
+<p>You can browse the source code by pointing your browse to
+<code>http://github.com/ops4j/org.ops4j.pax.web</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build">3.2. Build</h3>
+<div class="paragraph">
+<p>The following instructions are explaining how to build
+Pax Web by using
+<a href="http://maven.apache.org">Apache Maven</a>. You may also use another means
+for building as for example your preferred IDE, since most IDE’s will
+support Maven.</p>
+</div>
+<div class="paragraph">
+<p>To build Pax Web follow this steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download and
+<a href="http://maven.apache.org/download.html#Installation">install Apache Maven</a></p>
+</li>
+<li>
+<p>Download the latest source from OPS4J Pax
+Web GIT Repository</p>
+</li>
+<li>
+<p>In a terminal window go the the root folder where you have downloaded
+the source and execute the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mvn install</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_artifacts">3.3. Artifacts</h3>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-api">3.3.1. pax-web-api</h4>
+<div class="paragraph">
+<p>This artifact contains Pax Web API which are the classes that are added
+in extension to standard HTTP
+Service. This is the only artifact you should depend, at compile time,
+if you are in need of Pax Web extensions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-spi">3.3.2. pax-web-spi</h4>
+<div class="paragraph">
+<p>This artifact contains the interfaces that should be implemented by a
+service provider wishing to provide an alternative implementation that
+is not Jetty based. The Jetty artifact
+implements this SPI in order to be used by Pax Web
+Runtime.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-runtime">3.3.3. pax-web-runtime</h4>
+<div class="paragraph">
+<p>This artifact is the core of Pax Web (the engine if you like so). It
+implements the API and will make use of an
+SPI, such as
+Jetty in order to fulfill is job.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-jsp">3.3.4. pax-web-jsp</h4>
+<div class="paragraph">
+<p>This artifact contains Pax Web JSP support based on Jasper. It is an
+optional component that will be used by
+runtime if present. If you do not use JSPs
+in your project you can leave this artifact out of your deployment
+setup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-jetty">3.3.5. pax-web-jetty</h4>
+<div class="paragraph">
+<p>This artifact is the Jetty based implementation of
+SPI. This artifact <strong>does not include</strong>
+Jetty, so you will have to deploy Jetty along by yourself. The reason
+behind not including Jetty is to allow you to make your choice about the
+version of Jetty to be used, as for example, in case that a new version
+of Jetty is available and you are in need to use it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-jetty-bundle">3.3.6. pax-web-jetty-bundle</h4>
+<div class="paragraph">
+<p>This artifact is a convenience artifact that bundles together most of
+the artifacts above plus a version of jetty. This in order to make your
+deployment easier. It includes the following:
+pax-web-api,
+pax-web-spi,
+pax-web-runtime,
+pax-web-jetty and necessary jetty bundles.
+Basically, if you deploy this bundle you are good to go without any
+additional bundles (beside the jsp or extenders that you should deploy
+as you need).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-extender-war">3.3.7. pax-web-extender-war</h4>
+<div class="paragraph">
+<p>This artifact is the implementation of
+Pax Web WAR Extender and should be
+included in case that you want to deploy WAR files into the OSGi
+framework.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Artifacts-pax-web-extender-whiteboard">3.3.8. pax-web-extender-whiteboard</h4>
+<div class="paragraph">
+<p>This artifact is the implementation of
+Pax Web Whiteboard Extender and
+should be included if you wish to publish your web elements simply by
+registering them as a service.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-14 23:12:15 MEZ
+Last updated 2015-12-14 23:47:31 MEZ
 </div>
 </div>
 </body>

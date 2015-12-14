@@ -408,7 +408,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -501,10 +500,10 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
 <h1>Servlets</h1>
-<div id="toc" class="toc2">
+<div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#Servlets-RegisterservletbyURLpattern">Register servlet by URL pattern</a></li>
@@ -514,7 +513,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="Servlets-RegisterservletbyURLpattern"><a class="anchor" href="#Servlets-RegisterservletbyURLpattern"></a>Register servlet by URL pattern</h2>
+<h2 id="Servlets-RegisterservletbyURLpattern">Register servlet by URL pattern</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void registerServlet( Servlet servlet, String[] urlPatterns, Dictionary initParams, HttpContext httpContext ) throws ServletException</code></strong><br>
@@ -567,7 +566,7 @@ is null urlPatterns is null or empty</p></td>
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 starting with 1.1.4
@@ -584,7 +583,7 @@ prefix <strong><em>init.</em></strong><br>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Servlets-Unregisteraservlet"><a class="anchor" href="#Servlets-Unregisteraservlet"></a>Unregister a servlet</h2>
+<h2 id="Servlets-Unregisteraservlet">Unregister a servlet</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void unregisterServlet( Servlet servlet )</code></strong><br>

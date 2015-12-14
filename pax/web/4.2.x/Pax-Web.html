@@ -408,7 +408,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -501,19 +500,17 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body id="PaxWeb-Supported-Tech" class="article toc2 toc-left">
+<body id="PaxWeb-Supported-Tech" class="article">
 <div id="header">
 <h1>Supported Technology</h1>
-<div id="toc" class="toc2">
+<div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#PaxWeb-PaxWeb6.0.x">Pax Web 6.0.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb4.2.x">Pax Web 4.2.x:</a></li>
-<li><a href="#PaxWeb-PaxWeb3.x:">Pax Web 3.x:</a></li>
-<li><a href="#versions-already-at-end-of-life">Versions already at end of life</a>
-<ul class="sectlevel2">
-<li><a href="#PaxWeb-PaxWeb4.1.x">Pax Web 4.1.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.1.x">Pax Web 4.1.0:</a></li>
 <li><a href="#PaxWeb-PaxWeb4.0.x">Pax Web 4.0.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb3.x:">Pax Web 3.x:</a></li>
+<li><a href="#_versions_already_at_end_of_life">Versions already at end of life</a>
+<ul class="sectlevel2">
 <li><a href="#PaxWeb-PaxWeb2.x:">Pax Web 2.x:</a></li>
 <li><a href="#PaxWeb-PaxWeb1.x:">Pax Web 1.x:</a></li>
 </ul>
@@ -530,73 +527,16 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect1">
-<h2 id="PaxWeb-PaxWeb6.0.x"><a class="anchor" href="#PaxWeb-PaxWeb6.0.x"></a>Pax Web 6.0.x:</h2>
+<h2 id="PaxWeb-PaxWeb4.1.x">Pax Web 4.1.0:</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
-Latest stable release is 4.2.4 - This is the next 6.0.0-SNAPSHOT
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Servlet 3.1.0</p>
-</li>
-<li>
-<p>JSP 2.3.1</p>
-</li>
-<li>
-<p>JSF 2.2</p>
-</li>
-<li>
-<p>Jetty 9.3.5.v20151012</p>
-</li>
-<li>
-<p>Tomcat 8.0.14 (still experimental, but better supported)</p>
-</li>
-<li>
-<p>Undertow 1.2.8.0-SNAPSHOT</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.1.0 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>support of only Servlet 3.1.0 annotated Servlets with Whiteboard extender</p>
-</li>
-<li>
-<p>support of Websockets JSR 356 (Jetty Only)</p>
-</li>
-<li>
-<p>Web-Fragments</p>
-</li>
-<li>
-<p>support of OSGi R6 Whiteboard extension.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="PaxWeb-PaxWeb4.2.x"><a class="anchor" href="#PaxWeb-PaxWeb4.2.x"></a>Pax Web 4.2.x:</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Latest stable release is 4.2.4
+Latest stable release is 4.0.0, this is for the next SNAPSHOT version
 </td>
 </tr>
 </table>
@@ -622,10 +562,10 @@ Latest stable release is 4.2.4
 <p>support of CDI (through Pax-CDI)</p>
 </li>
 <li>
-<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
 </li>
 <li>
-<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+<p>support of only Servlet 3.0 annotated Servlets with Whiteboard extender</p>
 </li>
 <li>
 <p>support of Websockets JSR 356 (Jetty Only)</p>
@@ -638,16 +578,61 @@ Latest stable release is 4.2.4
 </div>
 </div>
 <div class="sect1">
-<h2 id="PaxWeb-PaxWeb3.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.x:"></a>Pax Web 3.x:</h2>
+<h2 id="PaxWeb-PaxWeb4.0.x">Pax Web 4.0.x:</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
-Latest stable release is 3.2.7
+Latest stable release is 4.0.0
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 2.0</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 9.0.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb3.x:">Pax Web 3.x:</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Latest stable release is 3.1.1
 </td>
 </tr>
 </table>
@@ -680,81 +665,13 @@ Latest stable release is 3.2.7
 </div>
 </div>
 <div class="sect1">
-<h2 id="versions-already-at-end-of-life"><a class="anchor" href="#versions-already-at-end-of-life"></a>Versions already at end of life</h2>
+<h2 id="_versions_already_at_end_of_life">Versions already at end of life</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Following versions are already at end of life.</p>
 </div>
 <div class="sect2">
-<h3 id="PaxWeb-PaxWeb4.1.x"><a class="anchor" href="#PaxWeb-PaxWeb4.1.x"></a>Pax Web 4.1.x:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Servlet 3.1</p>
-</li>
-<li>
-<p>JSP 2.3</p>
-</li>
-<li>
-<p>JSF 2.2</p>
-</li>
-<li>
-<p>Jetty 9.2.x</p>
-</li>
-<li>
-<p>Tomcat 8.0.x (still experimental, but better supported)</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
-</li>
-<li>
-<p>support of Websockets JSR 356 (Jetty Only)</p>
-</li>
-<li>
-<p>Web-Fragments</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="PaxWeb-PaxWeb4.0.x"><a class="anchor" href="#PaxWeb-PaxWeb4.0.x"></a>Pax Web 4.0.x:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Servlet 3.0</p>
-</li>
-<li>
-<p>JSP 2.0</p>
-</li>
-<li>
-<p>JSF 2.1</p>
-</li>
-<li>
-<p>Jetty 9.0.x</p>
-</li>
-<li>
-<p>Tomcat 7.x (still experimental, but better supported)</p>
-</li>
-<li>
-<p>support of CDI (through Pax-CDI)</p>
-</li>
-<li>
-<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
-</li>
-<li>
-<p>Web-Fragments</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="PaxWeb-PaxWeb2.x:"><a class="anchor" href="#PaxWeb-PaxWeb2.x:"></a>Pax Web 2.x:</h3>
+<h3 id="PaxWeb-PaxWeb2.x:">Pax Web 2.x:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -777,7 +694,7 @@ WABs</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="PaxWeb-PaxWeb1.x:"><a class="anchor" href="#PaxWeb-PaxWeb1.x:"></a>Pax Web 1.x:</h3>
+<h3 id="PaxWeb-PaxWeb1.x:">Pax Web 1.x:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -800,7 +717,7 @@ WABs</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-14 23:40:59 MEZ
+Last updated 2015-12-14 23:47:31 MEZ
 </div>
 </div>
 </body>
