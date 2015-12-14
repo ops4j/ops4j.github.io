@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -500,10 +501,10 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Filters</h1>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#Filters-Registerfilters">Register filters</a></li>
@@ -513,7 +514,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="Filters-Registerfilters">Register filters</h2>
+<h2 id="Filters-Registerfilters"><a class="anchor" href="#Filters-Registerfilters"></a>Register filters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>public void registerFilter( Filter filter, String[] urlPatterns, String[] servletNames, Dictionary initParams, HttpContext httpContext )</code><br>
@@ -565,7 +566,7 @@ and servletNames are null or empty</p></td>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 starting with Pax
@@ -582,7 +583,7 @@ prefix <strong><em>init.</em></strong><br>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Filters-Unregisterfilters">Unregister filters</h2>
+<h2 id="Filters-Unregisterfilters"><a class="anchor" href="#Filters-Unregisterfilters"></a>Unregister filters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>public void unregisterFilter( Filter filter )</code><br>
@@ -612,7 +613,7 @@ unknown to Web Container (never registered or unregistered before)</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-14 22:42:49 MESZ
+Last updated 2015-11-25 22:22:25 MEZ
 </div>
 </div>
 </body>

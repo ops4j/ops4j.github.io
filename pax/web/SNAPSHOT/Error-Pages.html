@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -500,10 +501,10 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Error Pages</h1>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#ErrorPages-Registererrorpages">Register error pages</a></li>
@@ -513,7 +514,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="ErrorPages-Registererrorpages">Register error pages</h2>
+<h2 id="ErrorPages-Registererrorpages"><a class="anchor" href="#ErrorPages-Registererrorpages"></a>Register error pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void registerErrorPage( String error, String location, HttpContext httpContext )</code></strong></p>
@@ -556,7 +557,7 @@ is null location does not start with a slash &#8220;/&#8221;</p></td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="ErrorPages-Unregistererrorpages">Unregister error pages</h2>
+<h2 id="ErrorPages-Unregistererrorpages"><a class="anchor" href="#ErrorPages-Unregistererrorpages"></a>Unregister error pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void unregisterErrorPage( String error, HttpContext httpContext )</code></strong></p>
@@ -592,7 +593,7 @@ page was not registered before httpContext is null</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-14 22:42:49 MESZ
+Last updated 2015-11-25 22:22:25 MEZ
 </div>
 </div>
 </body>

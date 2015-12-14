@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -500,10 +501,10 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Welcome Files</h1>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#WelcomeFiles-Registerwelcomefiles">Register welcome files</a></li>
@@ -513,7 +514,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="WelcomeFiles-Registerwelcomefiles">Register welcome files</h2>
+<h2 id="WelcomeFiles-Registerwelcomefiles"><a class="anchor" href="#WelcomeFiles-Registerwelcomefiles"></a>Register welcome files</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void registerWelcomeFiles( String[] welcomeFiles, boolean redirect, HttpContext httpContext )</code></strong></p>
@@ -561,7 +562,7 @@ entries in array are null or empty entries in array start or end with
 </div>
 </div>
 <div class="sect1">
-<h2 id="WelcomeFiles-Unregisterwelcomefiles">Unregister welcome files</h2>
+<h2 id="WelcomeFiles-Unregisterwelcomefiles"><a class="anchor" href="#WelcomeFiles-Unregisterwelcomefiles"></a>Unregister welcome files</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong><code>public void unregisterWelcomeFiles( HttpContext httpContext )</code></strong></p>
@@ -592,7 +593,7 @@ before httpContext is null</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-14 22:42:49 MESZ
+Last updated 2015-11-25 22:22:25 MEZ
 </div>
 </div>
 </body>

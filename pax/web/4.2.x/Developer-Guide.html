@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -500,15 +501,31 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Developer Guide</h1>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel2">
-<li><a href="#_source">Source</a></li>
-<li><a href="#_build">Build</a></li>
-<li><a href="#_artifacts">Artifacts</a></li>
+<li><a href="#source">Source</a>
+<ul class="sectlevel3">
+<li><a href="#Source-Checkoutsourcecode">Checkout source code</a></li>
+<li><a href="#Source-Browsesourcecode">Browse source code</a></li>
+</ul>
+</li>
+<li><a href="#build">Build</a></li>
+<li><a href="#artifacts">Artifacts</a>
+<ul class="sectlevel3">
+<li><a href="#Artifacts-pax-web-api">pax-web-api</a></li>
+<li><a href="#Artifacts-pax-web-spi">pax-web-spi</a></li>
+<li><a href="#Artifacts-pax-web-runtime">pax-web-runtime</a></li>
+<li><a href="#Artifacts-pax-web-jsp">pax-web-jsp</a></li>
+<li><a href="#Artifacts-pax-web-jetty">pax-web-jetty</a></li>
+<li><a href="#Artifacts-pax-web-jetty-bundle">pax-web-jetty-bundle</a></li>
+<li><a href="#Artifacts-pax-web-extender-war">pax-web-extender-war</a></li>
+<li><a href="#Artifacts-pax-web-extender-whiteboard">pax-web-extender-whiteboard</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -526,9 +543,9 @@ top of Pax Web.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_source">Source</h3>
+<h3 id="source"><a class="anchor" href="#source"></a>Source</h3>
 <div class="sect3">
-<h4 id="Source-Checkoutsourcecode">Checkout source code</h4>
+<h4 id="Source-Checkoutsourcecode"><a class="anchor" href="#Source-Checkoutsourcecode"></a>Checkout source code</h4>
 <div class="paragraph">
 <p>You can checkout the source code of Pax Web by using the following
 command:</p>
@@ -543,7 +560,7 @@ command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Source-Browsesourcecode">Browse source code</h4>
+<h4 id="Source-Browsesourcecode"><a class="anchor" href="#Source-Browsesourcecode"></a>Browse source code</h4>
 <div class="paragraph">
 <p>You can browse the source code by pointing your browse to
 <code><a href="http://github.com/ops4j/org.ops4j.pax.web" class="bare">http://github.com/ops4j/org.ops4j.pax.web</a></code>.</p>
@@ -551,7 +568,7 @@ command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_build">Build</h3>
+<h3 id="build"><a class="anchor" href="#build"></a>Build</h3>
 <div class="paragraph">
 <p>The following instructions are explaining how to build
 Pax Web by using
@@ -585,9 +602,9 @@ the source and execute the following command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_artifacts">Artifacts</h3>
+<h3 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h3>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-api">pax-web-api</h4>
+<h4 id="Artifacts-pax-web-api"><a class="anchor" href="#Artifacts-pax-web-api"></a>pax-web-api</h4>
 <div class="paragraph">
 <p>This artifact contains Pax Web API which are the classes that are added
 in extension to standard HTTP
@@ -596,7 +613,7 @@ if you are in need of Pax Web extensions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-spi">pax-web-spi</h4>
+<h4 id="Artifacts-pax-web-spi"><a class="anchor" href="#Artifacts-pax-web-spi"></a>pax-web-spi</h4>
 <div class="paragraph">
 <p>This artifact contains the interfaces that should be implemented by a
 service provider wishing to provide an alternative implementation that
@@ -606,7 +623,7 @@ Runtime.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-runtime">pax-web-runtime</h4>
+<h4 id="Artifacts-pax-web-runtime"><a class="anchor" href="#Artifacts-pax-web-runtime"></a>pax-web-runtime</h4>
 <div class="paragraph">
 <p>This artifact is the core of Pax Web (the engine if you like so). It
 implements the API and will make use of an
@@ -615,7 +632,7 @@ Jetty in order to fulfill is job.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-jsp">pax-web-jsp</h4>
+<h4 id="Artifacts-pax-web-jsp"><a class="anchor" href="#Artifacts-pax-web-jsp"></a>pax-web-jsp</h4>
 <div class="paragraph">
 <p>This artifact contains Pax Web JSP support based on Jasper. It is an
 optional component that will be used by
@@ -625,7 +642,7 @@ setup.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-jetty">pax-web-jetty</h4>
+<h4 id="Artifacts-pax-web-jetty"><a class="anchor" href="#Artifacts-pax-web-jetty"></a>pax-web-jetty</h4>
 <div class="paragraph">
 <p>This artifact is the Jetty based implementation of
 SPI. This artifact <strong>does not include</strong>
@@ -636,7 +653,7 @@ of Jetty is available and you are in need to use it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-jetty-bundle">pax-web-jetty-bundle</h4>
+<h4 id="Artifacts-pax-web-jetty-bundle"><a class="anchor" href="#Artifacts-pax-web-jetty-bundle"></a>pax-web-jetty-bundle</h4>
 <div class="paragraph">
 <p>This artifact is a convenience artifact that bundles together most of
 the artifacts above plus a version of jetty. This in order to make your
@@ -651,7 +668,7 @@ as you need).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-extender-war">pax-web-extender-war</h4>
+<h4 id="Artifacts-pax-web-extender-war"><a class="anchor" href="#Artifacts-pax-web-extender-war"></a>pax-web-extender-war</h4>
 <div class="paragraph">
 <p>This artifact is the implementation of
 Pax Web WAR Extender and should be
@@ -660,7 +677,7 @@ framework.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="Artifacts-pax-web-extender-whiteboard">pax-web-extender-whiteboard</h4>
+<h4 id="Artifacts-pax-web-extender-whiteboard"><a class="anchor" href="#Artifacts-pax-web-extender-whiteboard"></a>pax-web-extender-whiteboard</h4>
 <div class="paragraph">
 <p>This artifact is the implementation of
 Pax Web Whiteboard Extender and
@@ -672,7 +689,7 @@ registering them as a service.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-14 22:42:49 MESZ
+Last updated 2015-11-25 22:22:25 MEZ
 </div>
 </div>
 </body>
