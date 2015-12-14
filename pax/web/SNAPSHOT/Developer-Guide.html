@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<title>Developer Guide</title>
+<title>Pax Web Developer Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -503,19 +503,19 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Developer Guide</h1>
+<h1>Pax Web Developer Guide</h1>
 <div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel2">
+<div id="toctitle">Pax Web Developer Guide</div>
+<ul class="sectlevel1">
 <li><a href="#source">Source</a>
-<ul class="sectlevel3">
+<ul class="sectlevel2">
 <li><a href="#Source-Checkoutsourcecode">Checkout source code</a></li>
 <li><a href="#Source-Browsesourcecode">Browse source code</a></li>
 </ul>
 </li>
 <li><a href="#build">Build</a></li>
 <li><a href="#artifacts">Artifacts</a>
-<ul class="sectlevel3">
+<ul class="sectlevel2">
 <li><a href="#Artifacts-pax-web-api">pax-web-api</a></li>
 <li><a href="#Artifacts-pax-web-spi">pax-web-spi</a></li>
 <li><a href="#Artifacts-pax-web-runtime">pax-web-runtime</a></li>
@@ -538,14 +538,16 @@ Pax Web internals and are aimed towards
 developers that wants to understand the inner workings of
 Pax Web and/or develop/maintain current code
 base of Pax Web and/or develop extensions in
-top of Pax Web.</p>
+top of Pax Web.
+Details on Pax Web can be found at the <a href="index.html">overview</a>.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="source"><a class="anchor" href="#source"></a>Source</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="source"><a class="anchor" href="#source"></a>Source</h3>
-<div class="sect3">
-<h4 id="Source-Checkoutsourcecode"><a class="anchor" href="#Source-Checkoutsourcecode"></a>Checkout source code</h4>
+<h3 id="Source-Checkoutsourcecode"><a class="anchor" href="#Source-Checkoutsourcecode"></a>Checkout source code</h3>
 <div class="paragraph">
 <p>You can checkout the source code of Pax Web by using the following
 command:</p>
@@ -559,16 +561,18 @@ command:</p>
 <p>or you may use your IDE specific support for Git.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Source-Browsesourcecode"><a class="anchor" href="#Source-Browsesourcecode"></a>Browse source code</h4>
+<div class="sect2">
+<h3 id="Source-Browsesourcecode"><a class="anchor" href="#Source-Browsesourcecode"></a>Browse source code</h3>
 <div class="paragraph">
 <p>You can browse the source code by pointing your browse to
-<code><a href="http://github.com/ops4j/org.ops4j.pax.web" class="bare">http://github.com/ops4j/org.ops4j.pax.web</a></code>.</p>
+<code>http://github.com/ops4j/org.ops4j.pax.web</code>.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="build"><a class="anchor" href="#build"></a>Build</h3>
+</div>
+<div class="sect1">
+<h2 id="build"><a class="anchor" href="#build"></a>Build</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following instructions are explaining how to build
 Pax Web by using
@@ -601,10 +605,12 @@ the source and execute the following command:</p>
 </ul>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h3>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-api"><a class="anchor" href="#Artifacts-pax-web-api"></a>pax-web-api</h4>
+<h3 id="Artifacts-pax-web-api"><a class="anchor" href="#Artifacts-pax-web-api"></a>pax-web-api</h3>
 <div class="paragraph">
 <p>This artifact contains Pax Web API which are the classes that are added
 in extension to standard HTTP
@@ -612,8 +618,8 @@ Service. This is the only artifact you should depend, at compile time,
 if you are in need of Pax Web extensions.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-spi"><a class="anchor" href="#Artifacts-pax-web-spi"></a>pax-web-spi</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-spi"><a class="anchor" href="#Artifacts-pax-web-spi"></a>pax-web-spi</h3>
 <div class="paragraph">
 <p>This artifact contains the interfaces that should be implemented by a
 service provider wishing to provide an alternative implementation that
@@ -622,8 +628,8 @@ implements this SPI in order to be used by Pax Web
 Runtime.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-runtime"><a class="anchor" href="#Artifacts-pax-web-runtime"></a>pax-web-runtime</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-runtime"><a class="anchor" href="#Artifacts-pax-web-runtime"></a>pax-web-runtime</h3>
 <div class="paragraph">
 <p>This artifact is the core of Pax Web (the engine if you like so). It
 implements the API and will make use of an
@@ -631,8 +637,8 @@ SPI, such as
 Jetty in order to fulfill is job.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-jsp"><a class="anchor" href="#Artifacts-pax-web-jsp"></a>pax-web-jsp</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-jsp"><a class="anchor" href="#Artifacts-pax-web-jsp"></a>pax-web-jsp</h3>
 <div class="paragraph">
 <p>This artifact contains Pax Web JSP support based on Jasper. It is an
 optional component that will be used by
@@ -641,8 +647,8 @@ in your project you can leave this artifact out of your deployment
 setup.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-jetty"><a class="anchor" href="#Artifacts-pax-web-jetty"></a>pax-web-jetty</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-jetty"><a class="anchor" href="#Artifacts-pax-web-jetty"></a>pax-web-jetty</h3>
 <div class="paragraph">
 <p>This artifact is the Jetty based implementation of
 SPI. This artifact <strong>does not include</strong>
@@ -652,8 +658,8 @@ version of Jetty to be used, as for example, in case that a new version
 of Jetty is available and you are in need to use it.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-jetty-bundle"><a class="anchor" href="#Artifacts-pax-web-jetty-bundle"></a>pax-web-jetty-bundle</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-jetty-bundle"><a class="anchor" href="#Artifacts-pax-web-jetty-bundle"></a>pax-web-jetty-bundle</h3>
 <div class="paragraph">
 <p>This artifact is a convenience artifact that bundles together most of
 the artifacts above plus a version of jetty. This in order to make your
@@ -667,8 +673,8 @@ additional bundles (beside the jsp or extenders that you should deploy
 as you need).</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-extender-war"><a class="anchor" href="#Artifacts-pax-web-extender-war"></a>pax-web-extender-war</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-extender-war"><a class="anchor" href="#Artifacts-pax-web-extender-war"></a>pax-web-extender-war</h3>
 <div class="paragraph">
 <p>This artifact is the implementation of
 Pax Web WAR Extender and should be
@@ -676,8 +682,8 @@ included in case that you want to deploy WAR files into the OSGi
 framework.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="Artifacts-pax-web-extender-whiteboard"><a class="anchor" href="#Artifacts-pax-web-extender-whiteboard"></a>pax-web-extender-whiteboard</h4>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-extender-whiteboard"><a class="anchor" href="#Artifacts-pax-web-extender-whiteboard"></a>pax-web-extender-whiteboard</h3>
 <div class="paragraph">
 <p>This artifact is the implementation of
 Pax Web Whiteboard Extender and
@@ -687,9 +693,10 @@ registering them as a service.</p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-25 22:22:25 MEZ
+Last updated 2015-12-14 23:57:55 MEZ
 </div>
 </div>
 </body>
