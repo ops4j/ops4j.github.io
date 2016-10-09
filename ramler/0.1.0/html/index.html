@@ -1,0 +1,824 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Docker Registry HTTP API V2</title>
+
+    <link href="css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Fira+Mono">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/darcula.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script src="js/lib/jquery.highlight.js"></script>
+    <script src="js/lib/jquery.tocify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+    <script src="js/app/lang.js"></script>
+    <script src="js/app/search.js"></script>
+    <script src="js/app/toc.js"></script>
+
+  </head>
+
+  <body class="index" data-languages="[&quot;json&quot;]">
+    <a href="#" id="nav-button">
+      <span>        
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+            <a href="#" data-language-name="json"> JSON</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href="http://github.com/hwellmann/org.ops4j.ramler">Powered by OPS4J Ramler</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+        <div class="content">
+            <h1 id="resources">Resources</h1>
+            <h2>Catalog</h2>
+            <p>The catalog is a list of all repositories stored in the registry.</p>
+
+            <h3>Find Repositories</h3>
+
+<p>Returns a list of all existing repositories. A repository is a set of images with the same name and different tags.</p>
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/_catalog</p>
+
+
+<h4>Query Parameters</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>n</td>
+    <td><a href="#integer">integer</a></td>
+    <td><p>Maximum number of results</p></td>
+</tr>
+<tr>
+    <td>last</td>
+    <td><a href="#string">string</a></td>
+    <td><p>Last result from previous response</p></td>
+</tr>
+</table>
+
+<h4>Responses</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>200</td>
+    <td><a href="#Repositories">Repositories</a>
+</td>
+    <td></td>
+</tr>
+</table>
+
+                        <h2>Registry</h2>
+            
+            <h3>Find API version</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/</p>
+
+
+
+<h4>Responses</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>200</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>401</td>
+    <td><a href="#Errors">Errors</a>
+</td>
+    <td><p>Unauthorized</p></td>
+</tr>
+<tr>
+    <td>404</td>
+    <td></td>
+    <td><p>Endpoint does not implement registry v2 protocol</p></td>
+</tr>
+</table>
+
+                        <h2>Repository</h2>
+            
+            
+            <h3>Find Tags</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/{repository}/tags/list</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+</table>
+
+
+<h4>Responses</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>200</td>
+    <td><a href="#Tags">Tags</a>
+</td>
+    <td></td>
+</tr>
+</table>
+<h3>Find Manifest</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/{repository}/manifests/{reference}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>reference</td>
+    <td><a href="#Reference">Reference</a></td>
+    <td><p>Manifest reference</p></td>
+</tr>
+</table>
+
+
+<h4>Responses</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>200</td>
+    <td><a href="#Manifest">Manifest</a>
+</td>
+    <td></td>
+</tr>
+</table>
+<h3>Update Manifest</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">PUT /v2/{repository}/manifests/{reference}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>reference</td>
+    <td><a href="#Reference">Reference</a></td>
+    <td><p>Manifest reference</p></td>
+</tr>
+</table>
+
+
+<h3>Delete Manifest</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">DELETE /v2/{repository}/manifests/{reference}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>reference</td>
+    <td><a href="#Reference">Reference</a></td>
+    <td><p>Manifest reference</p></td>
+</tr>
+</table>
+
+
+<h3>Find Blob</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/{repository}/blobs/{digest}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>digest</td>
+    <td><a href="#Digest">Digest</a></td>
+    <td></td>
+</tr>
+</table>
+
+
+<h3>Delete Blob</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">DELETE /v2/{repository}/blobs/{digest}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>digest</td>
+    <td><a href="#Digest">Digest</a></td>
+    <td></td>
+</tr>
+</table>
+
+
+<h4>Responses</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tr>
+    <td>202</td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+<h3>Create Upload</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">POST /v2/{repository}/blobs/uploads</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+</table>
+
+
+<h3>Find Upload</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">GET /v2/{repository}/blobs/uploads/{uuid}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>uuid</td>
+    <td><a href="#string">string</a></td>
+    <td></td>
+</tr>
+</table>
+
+
+<h3>Update Upload</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">PUT /v2/{repository}/blobs/uploads/{uuid}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>uuid</td>
+    <td><a href="#string">string</a></td>
+    <td></td>
+</tr>
+</table>
+
+
+<h3>Delete Upload</h3>
+
+
+
+<h4>HTTP Request</h4>
+<p class="request">DELETE /v2/{repository}/blobs/uploads/{uuid}</p>
+
+<h4>Path Parameters</h4>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+<tr>
+    <td>repository</td>
+    <td><a href="#RepositoryName">RepositoryName</a></td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>uuid</td>
+    <td><a href="#string">string</a></td>
+    <td></td>
+</tr>
+</table>
+
+
+                    
+            <h1 id="types">Types</h1>
+            <h2 id="Configuration">Configuration</h2>
+            
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>mediaType*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>size*</td>
+    <td><a href="#integer">integer</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>digest*</td>
+    <td><a href="#Digest">Digest</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="Digest">Digest</h2>
+            
+                        <h2 id="Error">Error</h2>
+            <p>The error codes encountered via the API are enumerated in the following table:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Message</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>BLOB_UNKNOWN</code> </td>
+      <td>blob unknown to registry </td>
+      <td>This error may be returned when a blob is unknown to the registry in a specified repository. This can be returned with a standard get or if a manifest references an unknown layer during upload.</td>
+    </tr>
+    <tr>
+      <td><code>BLOB_UPLOAD_INVALID</code> </td>
+      <td>blob upload invalid </td>
+      <td>The blob upload encountered an error and can no longer proceed.</td>
+    </tr>
+    <tr>
+      <td><code>BLOB_UPLOAD_UNKNOWN</code> </td>
+      <td>blob upload unknown to registry </td>
+      <td>If a blob upload has been cancelled or was never started, this error code may be returned.</td>
+    </tr>
+    <tr>
+      <td><code>DIGEST_INVALID</code> </td>
+      <td>provided digest did not match uploaded content </td>
+      <td>When a blob is uploaded, the registry will check that the content matches the digest provided by the client. The error may include a detail structure with the key &quot;digest&quot;, including the invalid digest string. This error may also be returned when a manifest includes an invalid layer digest.</td>
+    </tr>
+    <tr>
+      <td><code>MANIFEST_BLOB_UNKNOWN</code> </td>
+      <td>blob unknown to registry </td>
+      <td>This error may be returned when a manifest blob is unknown to the registry.</td>
+    </tr>
+    <tr>
+      <td><code>MANIFEST_INVALID</code> </td>
+      <td>manifest invalid </td>
+      <td>During upload, manifests undergo several checks ensuring validity. If those checks fail, this error may be returned, unless a more specific error is included. The detail will contain information the failed validation.</td>
+    </tr>
+    <tr>
+      <td><code>MANIFEST_UNKNOWN</code> </td>
+      <td>manifest unknown </td>
+      <td>This error is returned when the manifest, identified by name and tag is unknown to the repository.</td>
+    </tr>
+    <tr>
+      <td><code>MANIFEST_UNVERIFIED</code> </td>
+      <td>manifest failed signature verification </td>
+      <td>During manifest upload, if the manifest fails signature verification, this error will be returned.</td>
+    </tr>
+    <tr>
+      <td><code>NAME_INVALID</code> </td>
+      <td>invalid repository name </td>
+      <td>Invalid repository name encountered either during manifest validation or any API operation.</td>
+    </tr>
+    <tr>
+      <td><code>NAME_UNKNOWN</code> </td>
+      <td>repository name not known to registry </td>
+      <td>This is returned if the name used during an operation is unknown to the registry.</td>
+    </tr>
+    <tr>
+      <td><code>SIZE_INVALID</code> </td>
+      <td>provided length did not match content length </td>
+      <td>When a layer is uploaded, the provided size will be checked against the uploaded content. If they do not match, this error will be returned.</td>
+    </tr>
+    <tr>
+      <td><code>TAG_INVALID</code> </td>
+      <td>manifest tag did not match URI </td>
+      <td>During a manifest upload, if the tag in the manifest does not match the uri tag, this error will be returned.</td>
+    </tr>
+    <tr>
+      <td><code>UNAUTHORIZED</code> </td>
+      <td>authentication required </td>
+      <td>The access controller was unable to authenticate the client. Often this will be accompanied by a Www-Authenticate HTTP response header indicating how to authenticate.</td>
+    </tr>
+    <tr>
+      <td><code>DENIED</code> </td>
+      <td>requested access to the resource is denied </td>
+      <td>The access controller denied access for the operation on a resource.</td>
+    </tr>
+    <tr>
+      <td><code>UNSUPPORTED</code> </td>
+      <td>The operation is unsupported. </td>
+      <td>The operation was unsupported due to a missing implementation or invalid set of parameters.</td>
+    </tr>
+  </tbody>
+</table>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>code*</td>
+    <td><a href="#ErrorCode">ErrorCode</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>message*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>detail*</td>
+    <td><a href="#any">any</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="ErrorCode">ErrorCode</h2>
+            
+                        <h2 id="Errors">Errors</h2>
+            <pre><code class="json">
+{
+    "errors":[
+        {
+            "code":"NAME_UNKNOWN",
+            "message":"repository not known to registry",
+            "detail":"i-do-not-exist"
+        }
+    ]
+}</code></pre>
+<p>List of errors.</p>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>errors*</td>
+    <td><a href="#Error">Error[]</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="Layer">Layer</h2>
+            <pre><code class="json">
+{
+    "mediaType":"application/vnd.docker.image.rootfs.diff.tar.gzip",
+    "size":1605,
+    "digest":"sha256:c39b7f8739a4278307195461d3f7e9d4751f446c55822356a941d2a15a4008c4"
+}</code></pre>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>mediaType*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>size*</td>
+    <td><a href="#integer">integer</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>digest*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>urls</td>
+    <td><a href="#string">string[]</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="Manifest">Manifest</h2>
+            <pre><code class="json">
+{
+    "schemaVersion":2,
+    "mediaType":"application/vnd.docker.distribution.manifest.v2+json",
+    "config":{
+        "mediaType":"application/vnd.docker.container.image.v1+json",
+        "size":7023,
+        "digest":"sha256:b5b2b2c507a0944348e0303114d8d93aaaa081732b86451d9bce1f432a537bc7"
+    },
+    "layers":[
+        {
+            "mediaType":"application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size":32654,
+            "digest":"sha256:e692418e4cbaf90ca69d05a66403747baa33ee08806650b51fab815ad7fc331f"
+        },
+        {
+            "mediaType":"application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size":16724,
+            "digest":"sha256:3c3a4604a545cdc127456d94e421cd355bca5b528f4a9c1905b15da2eb4a4c6b"
+        },
+        {
+            "mediaType":"application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size":73109,
+            "digest":"sha256:ec4b8955958665577945c89419d1af06b5f7636b4ac3da7f12184802ad867736"
+        }
+    ]
+}</code></pre>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>schemaVersion*</td>
+    <td><a href="#integer">integer</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>mediaType*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>config*</td>
+    <td><a href="#Configuration">Configuration</a>
+</td>
+    <td></td>
+</tr>
+<tr>
+    <td>layers*</td>
+    <td><a href="#Layer">Layer[]</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="Reference">Reference</h2>
+            <p>Name or digest</p>
+
+                        <h2 id="Repositories">Repositories</h2>
+            <p>List of repositories.</p>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>repositories*</td>
+    <td><a href="#string">string[]</a>
+</td>
+    <td></td>
+</tr>
+</table>
+            <h2 id="RepositoryName">RepositoryName</h2>
+            
+                        <h2 id="Tags">Tags</h2>
+            <p>List of tags of a given repository</p>
+
+            <table>
+    <thead>
+        <tr>
+            <th>Property name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>        
+    </thead>
+<tr>
+    <td>name*</td>
+    <td><a href="#string">string</a>
+</td>
+    <td><p>Repository name</p></td>
+</tr>
+<tr>
+    <td>tags*</td>
+    <td><a href="#string">string[]</a>
+</td>
+    <td><p>List of tags</p></td>
+</tr>
+</table>
+                    
+            <h1 id="builtInTypes">Built-in Types</h1>
+            <h2 id="any">any</h2>
+            
+            <p>Any simple or complex type.</p>
+            
+            <h2 id="date-only">date-only</h2>
+            
+            <p>The "full-date" notation of RFC3339, namely yyyy-mm-dd. Does not support time or time zone-offset notation.</p>
+            
+            <h2 id="datetime">datetime</h2>
+            
+            <p>A timestamp in one of the following formats: if the format is omitted or set to rfc3339, uses the "date-time" notation of RFC3339; if format is set to rfc2616, uses the format defined in RFC2616.</p>
+            
+            <h2 id="datetime-only">datetime-only</h2>
+            
+            <p>Combined date-only and time-only with a separator of "T", namely yyyy-mm-ddThh:mm:ss[.ff...]. Does not support a time zone offset.</p>
+            
+            <h2 id="file">file</h2>
+            
+            <p>The ​file​ type can constrain the content to send through forms. When this type is used in the context of web forms it <em>should</em> be represented as a valid file upload in JSON format. File content <em>should</em> be a base64-encoded string.</p>
+            
+            <h2 id="integer">integer</h2>
+            
+            <p>Any positive or negative integer JSON number in decimal representation.</p>
+            
+            <h2 id="number">number</h2>
+            
+            <p>Any integer or floating-point JSON number in decimal representation.</p>
+            
+            <h2 id="string">string</h2>
+            
+            <p>Any Unicode character string, encoded in UTF-8.</p>
+            
+            <h2 id="time-only">time-only</h2>
+            
+            <p>The "partial-time" notation of RFC3339, namely hh:mm:ss[.ff...]. Does not support date or time zone-offset notation.</p>
+            
+                    
+        </div>
+        <div class="dark-box">
+          <div class="lang-selector">
+              <a href="#" data-language-name="json"> JSON</a>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
