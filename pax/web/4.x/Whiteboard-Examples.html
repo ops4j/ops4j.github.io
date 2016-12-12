@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>Whiteboard Examples</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -500,45 +500,108 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
+<h1>Whiteboard Examples</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#WhiteboardExamples-Whiteboard">Whiteboard</a></li>
+</ul>
 </div>
 </div>
-
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
 <div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
+<p>Whiteboard Extender includes a set of examples that demonstrates its usage.</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+The following is outdated and subject to change.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExamples-Whiteboard">Whiteboard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The whiteboard example publishes web elements supported by whiteboard
+extender. To run the example you have to deploy to your preferred OSGi
+framework the following bundles:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
+<p>Pax Web version &gt;= 0.3.1</p>
 </li>
 <li>
-<p><a href="./4.x/index.html">Pax Web - 4.4.x</a></p>
+<p>Whiteboard Extender version &gt;= 0.3.0</p>
 </li>
 <li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
+<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/whiteboard/">Whiteboard
+example</a></p>
 </li>
 <li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/sample-whiteboard.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/whiteboard" class="bare">http://localhost:8080/whiteboard</a> — to see a simple servlet output</p>
 </li>
 <li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
+<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> — to see a simple servlet output mapped to root</p>
 </li>
 <li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<p><a href="http://localhost:8080/whiteboardresources/ops4j.png" class="bare">http://localhost:8080/whiteboardresources/ops4j.png</a> – to get a logo
+registered by publishing a resource</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/forbidden/" class="bare">http://localhost:8080/forbidden/</a> — to try to access a security
+protected servlet</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/whiteboard/filtered" class="bare">http://localhost:8080/whiteboard/filtered</a> — to access the whiteboard
+filter (see above) but through a filter</p>
+</li>
+<li>
+<p>on any request you can take a look in the java console to see a
+request filter in action</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:42:58 +01:00
+</div>
+</div>
+</body>
 </html>
