@@ -866,7 +866,14 @@ previously made sample of specialized ContextHandler as service.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">Unresolved directive in Advanced-Jetty-<span class="predefined-type">Configuration</span>.adoc - include::{projectdir}/target/test-sources/pax-web-itest-container-jetty-test-sources-jar/org/ops4j/pax/web/itest/jetty/JettyHandlerServiceIntegrationTest.java[lines=<span class="integer">84</span>.<span class="float">.91</span>]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">ContextHandler ctxtHandler = <span class="keyword">new</span> ContextHandler();
+ctxtHandler.setContextPath(<span class="string"><span class="delimiter">&quot;</span><span class="content">/static-content</span><span class="delimiter">&quot;</span></span>);
+ResourceHandler resourceHandler = <span class="keyword">new</span> ResourceHandler();
+resourceHandler.setResourceBase(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>);
+resourceHandler.setDirectoriesListed(<span class="predefined-constant">true</span>);
+ctxtHandler.setHandler(resourceHandler);
+
+ServiceRegistration&lt;<span class="predefined-type">Handler</span>&gt; registerService = bundleContext.registerService(<span class="predefined-type">Handler</span>.class, ctxtHandler, <span class="predefined-constant">null</span>);</code></pre>
 </div>
 </div>
 </div>
