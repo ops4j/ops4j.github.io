@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<title>Whiteboard Examples</title>
+<title>Resources</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -503,11 +503,16 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Whiteboard Examples</h1>
+<h1>Resources</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#WhiteboardExamples-Whiteboard">Whiteboard</a></li>
+<li><a href="#resources-extender">Resources Extender</a>
+<ul class="sectlevel2">
+<li><a href="#customize">Customize</a></li>
+</ul>
+</li>
+<li><a href="#resources-jsf">Resources JSF</a></li>
 </ul>
 </div>
 </div>
@@ -515,86 +520,123 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Whiteboard Extender includes a set of examples that demonstrates its usage.</p>
+<p>The resources-submodule provides resource-lookup according to Servlet 3.0.</p>
 </div>
-<div class="admonitionblock warning">
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources-extender"><a class="anchor" href="#resources-extender"></a>Resources Extender</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The pax-web-resources-extender will track all bundles which have been wired with the extender-
+capability <code>pax.web.resource</code>.
+The relevant bundles will be passed to a default implementation of <code>OsgiResourceLocator</code>
+(shipped with the extender-bundle), which will index all resources under <code>/META-INF/resources</code></p>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The following is outdated and subject to change.
+pax-web-resources-extender also exports all packages from pax-web-resource-api, so the
+api-bundle is not needed during runtime.
 </td>
+</tr>
+</table>
+</div>
+<div id="ResourceBundle-Configure" class="exampleblock">
+<div class="title">Example 1. Configure a Resource-Bundle</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">bnd.bnd / MANIFEST.MF</div>
+<div class="content">
+<pre>Bundle-SymbolicName: resources-bundle
+Require-Capability: osgi.extender; filter:="(&amp;(osgi.extender=pax.web.resources)(version=6.0.0))" <i class="conum" data-value="1"></i><b>(1)</b>
+Include-Resource: src/main/resources/ <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Require the extender with the name pax.web.resources</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>include your resources into the bundle (this is a bnd-instruction)</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="customize"><a class="anchor" href="#customize"></a>Customize</h3>
+<div class="paragraph">
+<p>If you want to hook your own <code>OsgiResourceLocator</code>-implementation, just register it as a service.
+The default-implementation is registered with a <code>service-rank = -1</code>, so it will be overriden by any
+service with a higher rank.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="WhiteboardExamples-Whiteboard"><a class="anchor" href="#WhiteboardExamples-Whiteboard"></a>Whiteboard</h2>
+<h2 id="resources-jsf"><a class="anchor" href="#resources-jsf"></a>Resources JSF</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The whiteboard example publishes web elements supported by whiteboard
-extender. To run the example you have to deploy to your preferred OSGi
-framework the following bundles:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Pax Web version &gt;= 0.3.1</p>
-</li>
-<li>
-<p>Whiteboard Extender version &gt;= 0.3.0</p>
-</li>
-<li>
-<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/whiteboard/">Whiteboard
-example</a></p>
-</li>
-<li>
-<p>(optional)
-<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
-— if you want to see also the log output</p>
-</li>
-</ul>
+<p>The <code>OsgiResourceHandler</code> provided by this module, adds resource-lookup according to the JSF
+specification and uses a provided <code>OsgiResourceLocator</code>-implementation.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively you can easy do the deployment using
-<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+<p>It will try to find resources (templates, views, images, &#8230;&#8203;) in the jsf-application first
+by using the default ResourceHandler. If no resource is found, it will try to find the
+resource within an external <a href="#ResourceBundle-Configure">webresource-bundle</a>.</p>
 </div>
-<div class="listingblock">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently "Contracts" as specified in JSF 2.2, chapter 2.7 are not supported in external
+bundles. In order to use them, they must reside within the jsf-application.
+</td>
+</tr>
+</table>
+</div>
+<div id="ResourceJSF-Configure" class="paragraph">
+<div class="title">Configure JSF</div>
+<p>In order to use it, the OsgiResourceHandler must be configured for the application.</p>
+</div>
+<div class="exampleblock">
 <div class="content">
-<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/sample-whiteboard.bundles</pre>
+<div id="app-listing" class="listingblock">
+<div class="title">faces-config.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;faces-config</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://xmlns.jcp.org/xml/ns/javaee</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://xmlns.jcp.org/xml/ns/javaee</span>
+    <span class="content">http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;application&gt;</span>
+    <span class="tag">&lt;resource-handler&gt;</span>
+      org.ops4j.pax.web.resources.jsf.OsgiResourceHandler <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;/resource-handler&gt;</span>
+  <span class="tag">&lt;/application&gt;</span>
+<span class="tag">&lt;/faces-config&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Once you have everything running point your browser to:</p>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Configure OsgiResourceHandler for the application</td>
+</tr>
+</table>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://localhost:8080/whiteboard" class="bare">http://localhost:8080/whiteboard</a> — to see a simple servlet output</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> — to see a simple servlet output mapped to root</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/whiteboardresources/ops4j.png" class="bare">http://localhost:8080/whiteboardresources/ops4j.png</a> – to get a logo
-registered by publishing a resource</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/forbidden/" class="bare">http://localhost:8080/forbidden/</a> — to try to access a security
-protected servlet</p>
-</li>
-<li>
-<p><a href="http://localhost:8080/whiteboard/filtered" class="bare">http://localhost:8080/whiteboard/filtered</a> — to access the whiteboard
-filter (see above) but through a filter</p>
-</li>
-<li>
-<p>on any request you can take a look in the java console to see a
-request filter in action</p>
-</li>
-</ul>
+</div>
 </div>
 </div>
 </div>

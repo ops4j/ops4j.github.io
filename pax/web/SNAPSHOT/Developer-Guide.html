@@ -524,6 +524,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#Artifacts-pax-web-jetty-bundle">pax-web-jetty-bundle</a></li>
 <li><a href="#Artifacts-pax-web-extender-war">pax-web-extender-war</a></li>
 <li><a href="#Artifacts-pax-web-extender-whiteboard">pax-web-extender-whiteboard</a></li>
+<li><a href="#Artifacts-pax-web-resources">pax-web-resources-api</a></li>
+<li><a href="#pax-web-resources-extender">pax-web-resources-extender</a></li>
+<li><a href="#pax-web-resources-jsf">pax-web-resources-jsf</a></li>
 </ul>
 </li>
 </ul>
@@ -691,12 +694,32 @@ should be included if you wish to publish your web elements simply by
 registering them as a service.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="Artifacts-pax-web-resources"><a class="anchor" href="#Artifacts-pax-web-resources"></a>pax-web-resources-api</h3>
+<div class="paragraph">
+<p>Compile-only module for Servlet 3.0 resource-lookup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pax-web-resources-extender"><a class="anchor" href="#pax-web-resources-extender"></a>pax-web-resources-extender</h3>
+<div class="paragraph">
+<p>This artifact is the default implementation of Pax Web Resources API.
+It exports the api packages as well, so there is no need to deploy the api-bundle.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pax-web-resources-jsf"><a class="anchor" href="#pax-web-resources-jsf"></a>pax-web-resources-jsf</h3>
+<div class="paragraph">
+<p>This artifact provides a JSF-ResourceHandler which will lookup resources in other bundles
+when they are not found within JSF-WAB.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-14 23:57:55 MEZ
+Last updated 2016-12-02 15:08:12 +01:00
 </div>
 </div>
 </body>

@@ -567,6 +567,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#JSPUsage-HowdoJSFworkwithPaxWeb">How do JSF work with Pax Web?</a></li>
 </ul>
 </li>
+<li><a href="#resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#resources-extender">Resources Extender</a></li>
+<li><a href="#resources-jsf">Resources JSF</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2868,7 +2874,7 @@ in jira</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>import org.ops4j.pax.web.extender.whiteboard.ResourceMapping;
+<pre>import org.ops4j.pax.web.service.whiteboard.ResourceMapping;
 import org.ops4j.pax.web.extender.whiteboard.runtime.DefaultResourceMapping;
 ...
 DefaultResourceMapping resourceMapping = new DefaultResourceMapping();
@@ -2878,7 +2884,7 @@ bundleContext=bundleContext.registerService( ResourceMapping.class.getName(), re
 </div>
 </div>
 <div class="paragraph">
-<p>Don’t forget to import org.ops4j.pax.web.extender.whiteboard package.</p>
+<p>Don’t forget to import org.ops4j.pax.web.service.whiteboard package.</p>
 </div>
 <div class="paragraph">
 <p>This is all you have to do to register resources. As you can see there
@@ -2887,7 +2893,7 @@ The resources are served upon exact match, so listing directories in
 this fashion is not supported right now.</p>
 </div>
 <div class="paragraph">
-<p>Note: your bundle must import org.ops4j.pax.web.extender.whiteboard
+<p>Note: your bundle must import org.ops4j.pax.web.service.whiteboard
 package.</p>
 </div>
 </div>
@@ -3241,12 +3247,130 @@ implementation of it which is <em>com.sun.el.*</em></p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="resources"><a class="anchor" href="#resources"></a>Resources</h3>
+<div class="paragraph">
+<p>The resources-submodule provides resource-lookup according to Servlet 3.0.</p>
+</div>
+<div class="sect3">
+<h4 id="resources-extender"><a class="anchor" href="#resources-extender"></a>Resources Extender</h4>
+<div class="paragraph">
+<p>The pax-web-resources-extender will track all bundles which have been wired with the extender-
+capability <code>pax.web.resource</code>.
+The relevant bundles will be passed to a default implementation of <code>OsgiResourceLocator</code>
+(shipped with the extender-bundle), which will index all resources under <code>/META-INF/resources</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+pax-web-resources-extender also exports all packages from pax-web-resource-api, so the
+api-bundle is not needed during runtime.
+</td>
+</tr>
+</table>
+</div>
+<div id="ResourceBundle-Configure" class="exampleblock">
+<div class="title">Example 1. Configure a Resource-Bundle</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">bnd.bnd / MANIFEST.MF</div>
+<div class="content">
+<pre>Bundle-SymbolicName: resources-bundle
+Require-Capability: osgi.extender; filter:="(&amp;(osgi.extender=pax.web.resources)(version=6.0.0))" <i class="conum" data-value="1"></i><b>(1)</b>
+Include-Resource: src/main/resources/ <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Require the extender with the name pax.web.resources</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>include your resources into the bundle (this is a bnd-instruction)</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="customize"><a class="anchor" href="#customize"></a>Customize</h5>
+<div class="paragraph">
+<p>If you want to hook your own <code>OsgiResourceLocator</code>-implementation, just register it as a service.
+The default-implementation is registered with a <code>service-rank = -1</code>, so it will be overriden by any
+service with a higher rank.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="resources-jsf"><a class="anchor" href="#resources-jsf"></a>Resources JSF</h4>
+<div class="paragraph">
+<p>The <code>OsgiResourceHandler</code> provided by this module, adds resource-lookup according to the JSF
+specification and uses a provided <code>OsgiResourceLocator</code>-implementation.</p>
+</div>
+<div class="paragraph">
+<p>It will try to find resources (templates, views, images, &#8230;&#8203;) in the jsf-application first
+by using the default ResourceHandler. If no resource is found, it will try to find the
+resource within an external <a href="#ResourceBundle-Configure">webresource-bundle</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently "Contracts" as specified in JSF 2.2, chapter 2.7 are not supported in external
+bundles. In order to use them, they must reside within the jsf-application.
+</td>
+</tr>
+</table>
+</div>
+<div id="ResourceJSF-Configure" class="paragraph">
+<div class="title">Configure JSF</div>
+<p>In order to use it, the OsgiResourceHandler must be configured for the application.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div id="app-listing" class="listingblock">
+<div class="title">faces-config.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;faces-config</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://xmlns.jcp.org/xml/ns/javaee</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://xmlns.jcp.org/xml/ns/javaee</span>
+    <span class="content">http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;application&gt;</span>
+    <span class="tag">&lt;resource-handler&gt;</span>
+      org.ops4j.pax.web.resources.jsf.OsgiResourceHandler <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;/resource-handler&gt;</span>
+  <span class="tag">&lt;/application&gt;</span>
+<span class="tag">&lt;/faces-config&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Configure OsgiResourceHandler for the application</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-14 23:52:01 MEZ
+Last updated 2016-12-02 15:08:12 +01:00
 </div>
 </div>
 </body>
