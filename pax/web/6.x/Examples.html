@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>Examples</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,225 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
+<h1>Examples</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#HttpServiceusage">Http Service usage</a></li>
+<li><a href="#extended-http-service">Extended http service</a></li>
+<li><a href="#jsp-support">JSP support</a></li>
+</ul>
 </div>
 </div>
-
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This page is out of Date and needs rework
+</td>
+</tr>
+</table>
 </div>
+<div class="paragraph">
+<p>Pax Web includes a set of examples that
+demonstrates its usage. These can be found at the github <a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples">samples</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="HttpServiceusage"><a class="anchor" href="#HttpServiceusage"></a>Http Service usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example shows you how to register a servlet and resources using the
+standard Http Service. Source code can be found at the samples on
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-hs/src/main/java/org/ops4j/pax/web/samples/helloworld/hs/internal/">GitHub</a>.<br>
+ Once the example is started (see below) you can point your web browser
+to <a href="http://localhost:8080/helloworld/hs" class="bare">http://localhost:8080/helloworld/hs</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-hs.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-hs.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-hs.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-helloworld-hs.bundles</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extended-http-service"><a class="anchor" href="#extended-http-service"></a>Extended http service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example shows you how to register servlets, resources, filters,
+listeners and error pages using the extended Http Service, WebContainer.
+Source code can be found in
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-wc/src/main/java/org/ops4j/pax/web/samples/helloworld/wc/internal">GitHub</a>.<br>
+ Once the example is started (see bellow) you can point your web browser
+to</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
+<p><a href="http://localhost:8080/helloworld/wc" class="bare">http://localhost:8080/helloworld/wc</a> — to see the result of servlet
+invocation being wrapped by a filter (see example source for details).
+In this case the filter is applied based on an url pattern.</p>
 </li>
 <li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
+<p><a href="http://localhost:8080/helloworld/wc/sn/" class="bare">http://localhost:8080/helloworld/wc/sn/</a> — to see the result of servlet
+invocation being wrapped by a filter (see example source for details).
+In this case the filter is applied based on a servlet name.<br>
+ To see that a different filter was applied you can check out the page
+title for each of the above urls.
+*
+<a href="http://localhost:8080/helloworld/wc/error/create?type=java.lang.IllegalArgumentException" class="bare">http://localhost:8080/helloworld/wc/error/create?type=java.lang.IllegalArgumentException</a>
+— to see how the error page will be triggered when a servlet throws an
+exception. The exception to be thrown is specified by the <em>type</em>
+parameter. The error page will display all servlet request attributes
+related to an exception page as specified by Servlet spec.</p>
 </li>
 <li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<p><a href="http://localhost:8080/helloworld/wc/a.page.that.not.exist" class="bare">http://localhost:8080/helloworld/wc/a.page.that.not.exist</a> — to see how
+the error page will be triggered based on the error type (404 in this
+case — page not found).</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>To verify that the listener (a ServletRequestListener is working you can
+repeat the request and check out the bottom of the page that displays a
+counter for the request made to the server.</p>
 </div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile.1" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-wc.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-wc.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-wc.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct.1" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-helloworld-wc.bundles</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jsp-support"><a class="anchor" href="#jsp-support"></a>JSP support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example shows you how to register jsps using the extended Http
+Service, WebContainer. Source code can be found in
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/helloworld-jsp/src/main/java/org/ops4j/pax/web/samples/helloworld/jsp/internal/">SVN</a>.<br>
+ Once the example is started (see bellow) you can point your web browser
+to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/helloworld/jsp/helloworld.jsp" class="bare">http://localhost:8080/helloworld/jsp/helloworld.jsp</a> — to see the
+result of invoking a jsp.</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/helloworld/jsp/helloworld-tld.jsp/" class="bare">http://localhost:8080/helloworld/jsp/helloworld-tld.jsp/</a> — to see the
+result of invoking a jsp that uses taglibs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can simply start the example by using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+using one of the two methods below:</p>
+</div>
+<div id="Examples-Downloadtheprovisionfile.2" class="paragraph">
+<p>Download the provision file</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download
+<a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-jsp.bundles" class="bare">https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/provision/src/main/resources/sample-helloworld-jsp.bundles</a>
+to an arbitrary location</p>
+</li>
+<li>
+<p>Start Pax Runner from the directory you have downloaded the
+provision file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run sample-helloworld-jsp.bundles</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="Examples-Direct.3" class="paragraph">
+<p>Direct</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web.samples/provision!/sample-deptstore.bundles</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

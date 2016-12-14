@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<title>Pax Web 6.0.0</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +409,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +504,511 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
+<h1>Pax Web 6.0.0</h1>
 <div class="details">
 <span id="author" class="author">OPS4j</span><br>
 </div>
+<div id="toc" class="toc2">
+<div id="toctitle">Pax Web</div>
+<ul class="sectlevel0">
+<li><a href="#PaxWeb-Supported-Tech">Supported Technology</a>
+<ul class="sectlevel1">
+<li><a href="#PaxWeb-PaxWeb6.0.x">Pax Web 6.0.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.x">Pax Web 4.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb3.x:">Pax Web 3.x:</a></li>
+<li><a href="#versions-already-at-end-of-life">Versions already at end of life</a>
+<ul class="sectlevel2">
+<li><a href="#PaxWeb-PaxWeb4.3.x">Pax Web 4.3.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.2.x">Pax Web 4.2.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.1.x">Pax Web 4.1.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb4.0.x">Pax Web 4.0.x:</a></li>
+</ul>
+</li>
+<li><a href="#PaxWeb-PaxWeb3.2.x:">Pax Web 3.2.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb3.1.x:">Pax Web 3.1.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb3.0.x:">Pax Web 3.0.x:</a>
+<ul class="sectlevel2">
+<li><a href="#PaxWeb-PaxWeb2.x:">Pax Web 2.x:</a></li>
+<li><a href="#PaxWeb-PaxWeb1.x:">Pax Web 1.x:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#a-href-user-guide-html-user-guide-a"><a href="User-Guide.html">User-Guide</a></a></li>
+<li><a href="#a-href-developer-guide-html-developer-guide-a"><a href="Developer-Guide.html">Developer-Guide</a></a></li>
+</ul>
 </div>
-
+</div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
 <div class="paragraph">
 <p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
+<a href="http://www.osgi.org">OSGi</a> R4 Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
+<a href="http://www.eclipse.org/jetty/">Jetty</a> 9.3.11.v20160721, <a href="http://tomcat.apache.org">Tomcat</a> 8.0.14 or <a href="http://undertow.io">Undertow</a> .</p>
 </div>
+<div class="paragraph">
+<p>Pax Web extends
+OSGi Http Service with better
+<a href="Http-Service-Extensions.html">servlet</a> support,
+<a href="Http-Service-Extensions.html">filters</a>,
+<a href="Http-Service-Extensions.html">listeners</a>,
+<a href="Http-Service-Extensions.html">error pages</a> and
+<a href="Http-Service-Extensions.html">JSPs</a> and some others in order
+to meet the latest versions of Servlet specs.
+Pax Web facilitates an easy installation of WAR bundles as well as
+discovery of web elements published as OSGi services. All of this beside
+the, standard, programmatic registration as detailed in the HTTP Service
+specs.</p>
+</div>
+</div>
+</div>
+<h1 id="PaxWeb-Supported-Tech" class="sect0"><a class="anchor" href="#PaxWeb-Supported-Tech"></a>Supported Technology</h1>
+<div class="paragraph">
+<p>Right now following Technologies are supported by Pax Web:</p>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb6.0.x"><a class="anchor" href="#PaxWeb-PaxWeb6.0.x"></a>Pax Web 6.0.x:</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Latest stable release is 4.4.0 - This is the next 6.0.0
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
+<p>Servlet 3.1.0</p>
 </li>
 <li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
+<p>JSP 2.3.1</p>
 </li>
 <li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
+<p>JSF 2.2</p>
 </li>
 <li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
+<p>Jetty 9.3.11.v20160721</p>
 </li>
 <li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
+<p>Tomcat 8.0.14 (still experimental, but better supported)</p>
 </li>
 <li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
+<p>Undertow </p>
 </li>
 <li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.1.0 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>support of only Servlet 3.1.0 annotated Servlets with Whiteboard extender</p>
+</li>
+<li>
+<p>support of Websockets JSR 356 (Jetty Only)</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+<li>
+<p>support of OSGi R6 Whiteboard extension.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb4.x"><a class="anchor" href="#PaxWeb-PaxWeb4.x"></a>Pax Web 4.x:</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Latest stable release is 4.4.0
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.1</p>
+</li>
+<li>
+<p>JSP 2.3</p>
+</li>
+<li>
+<p>JSF 2.2</p>
+</li>
+<li>
+<p>Jetty 9.2.x</p>
+</li>
+<li>
+<p>Tomcat 8.0.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+</li>
+<li>
+<p>support of Websockets JSR 356 (Jetty Only)</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb3.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.x:"></a>Pax Web 3.x:</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Latest stable release is 3.3.0
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="versions-already-at-end-of-life"><a class="anchor" href="#versions-already-at-end-of-life"></a>Versions already at end of life</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following versions are already at end of life.</p>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb4.3.x"><a class="anchor" href="#PaxWeb-PaxWeb4.3.x"></a>Pax Web 4.3.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.1</p>
+</li>
+<li>
+<p>JSP 2.3</p>
+</li>
+<li>
+<p>JSF 2.2</p>
+</li>
+<li>
+<p>Jetty 9.2.x</p>
+</li>
+<li>
+<p>Tomcat 8.0.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+</li>
+<li>
+<p>support of Websockets JSR 356 (Jetty Only)</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb4.2.x"><a class="anchor" href="#PaxWeb-PaxWeb4.2.x"></a>Pax Web 4.2.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.1</p>
+</li>
+<li>
+<p>JSP 2.3</p>
+</li>
+<li>
+<p>JSF 2.2</p>
+</li>
+<li>
+<p>Jetty 9.2.x</p>
+</li>
+<li>
+<p>Tomcat 8.0.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+</li>
+<li>
+<p>support of Websockets JSR 356 (Jetty Only)</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb4.1.x"><a class="anchor" href="#PaxWeb-PaxWeb4.1.x"></a>Pax Web 4.1.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.1</p>
+</li>
+<li>
+<p>JSP 2.3</p>
+</li>
+<li>
+<p>JSF 2.2</p>
+</li>
+<li>
+<p>Jetty 9.2.x</p>
+</li>
+<li>
+<p>Tomcat 8.0.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>support of only Servlet 3.1 annotated Servlets with Whiteboard extender</p>
+</li>
+<li>
+<p>support of Websockets JSR 356 (Jetty Only)</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb4.0.x"><a class="anchor" href="#PaxWeb-PaxWeb4.0.x"></a>Pax Web 4.0.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 2.0</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 9.0.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental, but better supported)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+<li>
+<p>Web-Fragments</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb3.2.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.2.x:"></a>Pax Web 3.2.x:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb3.1.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.1.x:"></a>Pax Web 3.1.x:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PaxWeb-PaxWeb3.0.x:"><a class="anchor" href="#PaxWeb-PaxWeb3.0.x:"></a>Pax Web 3.0.x:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>Tomcat 7.x (still experimental)</p>
+</li>
+<li>
+<p>support of CDI (through Pax-CDI)</p>
+</li>
+<li>
+<p>support of only Servlet 3.0 annotated Servlets in JAR</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb2.x:"><a class="anchor" href="#PaxWeb-PaxWeb2.x:"></a>Pax Web 2.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 3.0</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 2.1</p>
+</li>
+<li>
+<p>Jetty 8.x</p>
+</li>
+<li>
+<p>support of application binding to a virtual host (Http-Connector) for
+WABs</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="PaxWeb-PaxWeb1.x:"><a class="anchor" href="#PaxWeb-PaxWeb1.x:"></a>Pax Web 1.x:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Servlet 2.5</p>
+</li>
+<li>
+<p>JSP 1.1.2</p>
+</li>
+<li>
+<p>JSF 1.2</p>
+</li>
+<li>
+<p>Jetty 7.x</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h1 id="a-href-user-guide-html-user-guide-a" class="sect0"><a class="anchor" href="#a-href-user-guide-html-user-guide-a"></a><a href="User-Guide.html">User-Guide</a></h1>
+
+<h1 id="a-href-developer-guide-html-developer-guide-a" class="sect0"><a class="anchor" href="#a-href-developer-guide-html-developer-guide-a"></a><a href="Developer-Guide.html">Developer-Guide</a></h1>
+
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

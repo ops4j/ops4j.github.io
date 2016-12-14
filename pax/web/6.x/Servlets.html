@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>Servlets</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,119 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
-</div>
-</div>
-
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
-</li>
-<li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
-</li>
-<li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
-</li>
+<h1>Servlets</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#Servlets-RegisterservletbyURLpattern">Register servlet by URL pattern</a></li>
+<li><a href="#Servlets-Unregisteraservlet">Unregister a servlet</a></li>
 </ul>
 </div>
 </div>
+<div id="content">
+<div class="sect1">
+<h2 id="Servlets-RegisterservletbyURLpattern"><a class="anchor" href="#Servlets-RegisterservletbyURLpattern"></a>Register servlet by URL pattern</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong><code>public void registerServlet( Servlet servlet, String[] urlPatterns, Dictionary initParams, HttpContext httpContext ) throws ServletException</code></strong><br>
+ Registers a servlet.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">servlet</th>
+<th class="tableblock halign-left valign-top">The servlet object to register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urlPatterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of url patterns this servlet maps to. Cannot be
+null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initParams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization arguments for the servlet or null if there
+are none. This argument is used by the servlet’s ServletConfig object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The HttpContext object for the registered servlet, or null
+if a default HttpContext is to be created and used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ServletException — if given servlet object has already been
+registered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — in the following situations: servlet
+is null urlPatterns is null or empty</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To give a name to the registered servlet you can add an element named
+<em>*servlet-name*</em> to <em>initParams</em> and as value the servlet name.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+starting with 1.1.4
+it’s possible to filter init parameters. As shown in
+<a href="http://wiki.osgi.org/wiki/WebExperience">WebExperience</a> it’s now possible
+to configure the init.parameters for the servlets and filters with the
+prefix <strong><em>init.</em></strong><br>
+ For background info take a look at
+<a href="http://team.ops4j.org/browse/PAXWEB-349">here</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Servlets-Unregisteraservlet"><a class="anchor" href="#Servlets-Unregisteraservlet"></a>Unregister a servlet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong><code>public void unregisterServlet( Servlet servlet )</code></strong><br>
+ Unregisters a previously registered servlet.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">servlet</th>
+<th class="tableblock halign-left valign-top">The servlet to be unregistered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — if: servlet is null the servlet is
+unknown to Web Container (never registered or unregistered before)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

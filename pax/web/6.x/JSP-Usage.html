@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>JSP Usage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,193 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
-</div>
-</div>
-
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
+<h1>JSP Usage</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#JSPUsage-UsageguidelinesforworkingwithJSPs">Usage guidelines for working with JSPs</a>
+<ul class="sectlevel2">
+<li><a href="#JSPUsage-ProvidedpackagesbytheJSPbundle">Provided packages by the JSP bundle</a></li>
+</ul>
 </li>
-<li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
-</li>
-<li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
-</li>
+<li><a href="#JSPUsage-HowdoJSPsworkwithPaxWeb">How do JSPs work with Pax Web?</a></li>
+<li><a href="#JSPUsage-HowdoJSFworkwithPaxWeb">How do JSF work with Pax Web?</a></li>
 </ul>
 </div>
 </div>
+<div id="content">
+<div class="sect1">
+<h2 id="JSPUsage-UsageguidelinesforworkingwithJSPs"><a class="anchor" href="#JSPUsage-UsageguidelinesforworkingwithJSPs"></a>Usage guidelines for working with JSPs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page will give you some guidelines how to use the most out of pax
+web regarding JSPs.</p>
+</div>
+<div class="paragraph">
+<p>First of all get to know the possible
+jsp configuration properties,
+these might help you already.</p>
+</div>
+<div class="sect2">
+<h3 id="JSPUsage-ProvidedpackagesbytheJSPbundle"><a class="anchor" href="#JSPUsage-ProvidedpackagesbytheJSPbundle"></a>Provided packages by the JSP bundle</h3>
+<div class="paragraph">
+<p>Following packages are exported by the JSP bundle of Pax Web:</p>
+</div>
+<div class="paragraph">
+<p>JSP in version 1.1.2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.servlet.jsp; version="1.1.2"
+javax.servlet.jsp.el; version="1.1.2"
+javax.servlet.jsp.jstl.core; version="1.1.2"
+javax.servlet.jsp.jstl.fmt; version="1.1.2"
+javax.servlet.jsp.jstl.sql; version="1.1.2"
+javax.servlet.jsp.jstl.tlv; version="1.1.2"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>JSP in version 2.1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.servlet.jsp; version="2.1"
+javax.servlet.jsp.el; version="2.1"
+javax.servlet.jsp.jstl.core; version="2.1"
+javax.servlet.jsp.jstl.fmt; version="2.1"
+javax.servlet.jsp.jstl.sql; version="2.1"
+javax.servlet.jsp.jstl.tlv; version="2.1"
+javax.servlet.jsp.resources; version="2.1"
+javax.servlet.jsp.tagext; version="2.1"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Javax el in version 2.1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>javax.el;version="2.1.0"
+com.sun.el;version="2.1.0.v20091210"
+com.sun.el.lang;version="2.1.0.v20091210"
+com.sun.el.parser;version="2.1.0.v20091210"
+com.sun.el.util;version="2.1.0.v20091210"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jasper compiler</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.apache.jasper;version="2.1.0.v20091210"
+ org.apache.jasper.compiler;version="2.1.0.v20091210"
+ org.apache.jasper.compiler.tagplugin;version="2.1.0.v20091210"
+ org.apache.jasper.resources;version="2.1.0.v20091210"
+ org.apache.jasper.runtime;version="2.1.0.v20091210"
+ org.apache.jasper.security;version="2.1.0.v20091210"
+ org.apache.jasper.servlet;version="2.1.0.v20091210"
+ org.apache.jasper.tagplugins.jstl;version="2.1.0.v20091210"
+ org.apache.jasper.util;version="2.1.0.v20091210"
+ org.apache.jasper.xmlparser;version="2.1.0.v20091210"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Standard Taglibs</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.apache.taglibs.standard
+org.apache.taglibs.standard.extra.spath
+org.apache.taglibs.standard.functions
+org.apache.taglibs.standard.lang.jstl
+org.apache.taglibs.standard.lang.jstl.parser
+org.apache.taglibs.standard.lang.jstl.test
+org.apache.taglibs.standard.lang.jstl.test.beans
+org.apache.taglibs.standard.lang.support
+org.apache.taglibs.standard.resources
+org.apache.taglibs.standard.tag.common.core
+org.apache.taglibs.standard.tag.common.fmt
+org.apache.taglibs.standard.tag.common.sql
+org.apache.taglibs.standard.tag.common.xml
+org.apache.taglibs.standard.tag.el.core
+org.apache.taglibs.standard.tag.el.fmt
+org.apache.taglibs.standard.tag.el.sql
+org.apache.taglibs.standard.tag.el.xml
+org.apache.taglibs.standard.tag.rt.core
+org.apache.taglibs.standard.tag.rt.fmt
+org.apache.taglibs.standard.tag.rt.sql
+org.apache.taglibs.standard.tag.rt.xml
+org.apache.taglibs.standard.tei
+org.apache.taglibs.standard.tlv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Eclipse Compiler for compiling JSP pages</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.eclipse.jdt.core
+org.eclipse.jdt.core.compiler
+org.eclipse.jdt.core.compiler.batch
+org.eclipse.jdt.internal.antadapter
+org.eclipse.jdt.internal.compiler
+org.eclipse.jdt.internal.compiler.apt.dispatch
+org.eclipse.jdt.internal.compiler.apt.model
+org.eclipse.jdt.internal.compiler.apt.util
+org.eclipse.jdt.internal.compiler.ast
+org.eclipse.jdt.internal.compiler.batch
+org.eclipse.jdt.internal.compiler.classfmt
+org.eclipse.jdt.internal.compiler.codegen
+org.eclipse.jdt.internal.compiler.env
+org.eclipse.jdt.internal.compiler.flow
+org.eclipse.jdt.internal.compiler.impl
+org.eclipse.jdt.internal.compiler.lookup
+org.eclipse.jdt.internal.compiler.parser
+org.eclipse.jdt.internal.compiler.parser.diagnose
+org.eclipse.jdt.internal.compiler.problem
+org.eclipse.jdt.internal.compiler.tool
+org.eclipse.jdt.internal.compiler.util</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSPUsage-HowdoJSPsworkwithPaxWeb"><a class="anchor" href="#JSPUsage-HowdoJSPsworkwithPaxWeb"></a>How do JSPs work with Pax Web?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Standard JSPs are handled by Pax Web through a specialized Servlet that
+does use the Jasper compiler with a extra class loader. This class
+loader takes the current bundle (the war) and its containing jars into
+account for compiling the JSP files. Tag libs are searched within this
+war and it’s containing jars. With version 1.1.0 the bundles which are
+imported by the war are also taken into the class loader for searching
+the right TLD files.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSPUsage-HowdoJSFworkwithPaxWeb"><a class="anchor" href="#JSPUsage-HowdoJSFworkwithPaxWeb"></a>How do JSF work with Pax Web?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since version 1.0.2 and 1.1.0 JSF is supported by Pax Web.</p>
+</div>
+<div class="paragraph">
+<p>Standard war files should work out of the box since
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/Pax+URL+-+1.3.0">Pax Url -
+1.3.0</a> does optionally import the exported packages of Pax Web.</p>
+</div>
+<div class="paragraph">
+<p>For Web Application Bundles - war archives with Manifest - it is
+required not only to import the <em>javax.el</em> package but also the
+implementation of it which is <em>com.sun.el.*</em></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

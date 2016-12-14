@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>WAR Extender</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,841 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
-</div>
-</div>
-
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
-</li>
-<li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
-</li>
-<li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<h1>WAR Extender</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#WARExtender-Howdoesitwork">How does it work</a></li>
+<li><a href="#WARExtender-Detailedwayofworking">Detailed way of working</a></li>
+<li><a href="#WARExtender-Benefits">Benefits</a>
+<ul class="sectlevel3">
+<li><a href="#war-extender-examples">WAR Extender Examples</a></li>
+<li><a href="#osgi-fy-your-war">OSGi-fy your WAR</a></li>
+<li><a href="#supported-web-elements">Supported Web Elements</a></li>
+<li><a href="#war-extender-faq">WAR Extender FAQ</a></li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pax Web Extender WAR is an extender bundle that makes possible to deploy
+WAR files into OSGi.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WARExtender-Howdoesitwork"><a class="anchor" href="#WARExtender-Howdoesitwork"></a>How does it work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First you should have a war file compliant with Servlet specs. As the
+war file will have to be deployed as a bundle the war file must have the
+necessary OSGi manifest headers (take a
+look what is required and how you can easily add them). Once you have
+this preconditions you just have to deploy your bundle in your preferred
+OSGi framework. Of course, what you need more is that pax web extender
+war bundle to be installed together
+with an http service (preferred Pax Web).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WARExtender-Detailedwayofworking"><a class="anchor" href="#WARExtender-Detailedwayofworking"></a>Detailed way of working</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once installed the war extender will watch over the bundles that get
+started / stopped.<br>
+ Once your war bundle gets deployed and started, the war extender will
+parse your web.xml and registers all elements with http service. If the
+http service is <a href="Pax-Web_3375105.html">Pax Web</a> then most likely that
+you will get a fully working web application. If the http service is a
+standard one some of the elements will not be registered as standard
+http service only supports servlets and resources.<br>
+ Once your war bundle gets stopped all the prior registered elements
+will be unregistered.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WARExtender-Benefits"><a class="anchor" href="#WARExtender-Benefits"></a>Benefits</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>with
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">no</a>/<a href="OSGi-fy-your-WAR_12060384.html">minimum</a>
+modifications to your war you can deploy it into an osgi framework</p>
+</li>
+<li>
+<p>you do not depend on any OSGi api</p>
+</li>
+<li>
+<p>you do not have to keep track of http service availability</p>
+</li>
+<li>
+<p>you do not have to register/unregister your
+servlets/resources/filters/listeners</p>
+</li>
+<li>
+<p>easy to use</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="war-extender-examples"><a class="anchor" href="#war-extender-examples"></a>WAR Extender Examples</h4>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This page is outdated!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>WAR Extender includes a set of
+examples that demonstrates its usage. While running the examples bellow
+under Felix, version &#8656; 1.0.1 you may get will logging enabled quite a
+lot of error messages. You can ignore them as Felix logs a
+FrameworkEvent.ERROR every time it cannot find a class, fact that
+clashes with Spring way of searching for BeanInfo classes. This issue is
+resolved in the upcoming version on Felix.</p>
+</div>
+<div class="sect4">
+<h5 id="WARExtenderExamples-WicketExamples"><a class="anchor" href="#WARExtenderExamples-WicketExamples"></a>Wicket Examples</h5>
+<div class="paragraph">
+<p><a href="http://wicket.apache.org/">Wicket</a> provides an example war file that
+includes various <a href="http://wicketstuff.org/wicket13/">examples related to
+Wicket</a><br>
+ To deploy the wicket examples war (that is available in maven central
+repo) you just have to deploy to your preferred OSGi framework the
+following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Pax Web Extender - War version &gt;=
+0.3.0</p>
+</li>
+<li>
+<p>JSP API — required by Wicket Examples (you need an OSGi version of it)</p>
+</li>
+<li>
+<p>Wicket Examples war repackaged as bundle
+(<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/wicket-examples-1.3.0.bnd">OSGi
+manifest headers added</a>)</p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/wicket-examples-1.3.0-wrap.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/wicket-examples-1.3.0-wrap.bundles">wicket-examples-1.3.0-wrap.bundles</a>
+file above is a simple text file that lists all the bundles to be
+installed.</p>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to
+<a href="http://localhost:8080/wicket.examples/index.html" class="bare">http://localhost:8080/wicket.examples/index.html</a>. Notice that
+re-packaging of Wicket Examples War may take a while as the war file has
+about 9Mb (depending on your connection speed - file is downloaded from
+maven central repository). Anyhow, this is done just first time you run
+the example and it helps if you already have the war file in your local
+maven repository.</p>
+</div>
+<div class="paragraph">
+<p>You can start it up even simpler by using the new
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">war:</a> protocol
+handler (you need
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+version &gt;= 0.6.0):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run war:mvn:org.apache.wicket/wicket-examples/1.3.0/war --profiles=war</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you will see the war: protocol handler will do all that is necessary
+to directly deploy a war file. Note that in this case the context name
+will be generated automatically, so you should use
+<a href="http://localhost:8080/mvn_org.apache.wicket_wicket-examples_1.3.0_war/index.html" class="bare">http://localhost:8080/mvn_org.apache.wicket_wicket-examples_1.3.0_war/index.html</a>
+to access the application (upcoming version 0.2.0 of war protocol will
+permit context name setup).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="WARExtenderExamples-SpringPetClinic"><a class="anchor" href="#WARExtenderExamples-SpringPetClinic"></a>Spring PetClinic</h5>
+<div class="paragraph">
+<p><a href="http://www.springframework.org/">Spring</a> provides an
+<a href="http://www.springframework.org/docs/petclinic.html">example application
+named PetClinic</a>. The Petclinic sample application is designed to show
+how the Spring application frameworks can be used to build simple, but
+powerful database-oriented enterprise applications.<br>
+ To deploy the PetClinic war you will have first to build it by yourself
+(Spring PetClinic is not available in a maven repository and anyhow it
+needs some small changes):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.springframework.org/docs/petclinic.html">Follow the build
+instructions</a> provided by Spring</p>
+</li>
+<li>
+<p>Before building the war file you have to change
+<em>petclinic-servlet.xml</em> as follows. You have to do this change not
+because of Pax Web but because the <em>&lt;context:component-scan …/&gt;</em> does
+not work in an OSGi environment (Spring DM guys are working on that).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit <em>petclinic-servlet.xml</em></p>
+</li>
+<li>
+<p>Replace line</p>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;context:component-scan base-package="org.springframework.samples.petclinic.web"&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;context:annotation-config/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.ClinicController"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddOwnerForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddPetForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.AddVisitForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.EditOwnerForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.EditPetForm"/&gt;
+&lt;bean class="org.springframework.samples.petclinic.web.FindOwnersForm"/&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save the file and build Spring PetClinic according to instructions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Start the PetClinic database (not required but otherwise you cannot
+use the whole application)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then deploy to your preferred OSGi framework the following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>JSP version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Pax Web Extender - War version &gt;= 0.3.0</p>
+</li>
+<li>
+<p>PetClinic war repackaged as bundle
+(<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources//spring-petclinic-2.5-wrap.bnd">OSGi
+manifest headers added</a>)</p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+(you must start Pax Runner from PetClinic’s dist directory so it can
+find the war file):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/spring-petclinic-2.5-wrap.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://scm.ops4j.org/repos/ops4j/projects/pax/web/samples/provision/src/main/resources/spring-petclinic-2.5-wrap.bundles">spring-petclinic-2.5-wrap.bundles</a>
+file above is a simple text file that lists all the bundles to be
+installed.</p>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to
+<a href="http://localhost:8080/petclinic/index.jsp" class="bare">http://localhost:8080/petclinic/index.jsp</a>. Notice that re-packaging of
+Spring PetClinic war file may take a while as the war file has about
+15Mb. Anyhow, this is done just first time you run the example.</p>
+</div>
+<div class="paragraph">
+<p>Note also then when running under Felix version before 1.0.3 you will
+see quite a lot of stack traces displayed on the screen (if you have
+logging enabled). Just ignore them as they are only log messages from
+Felix shown when a class cannot be found and Spring tries to load
+classes related to bean support, classes that do not exist. This (error
+messages) are all gone if you use Felix &gt;= 1.0.3.</p>
+</div>
+<div class="paragraph">
+<p>You can start it up even simpler by using the new
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">war:</a> protocol
+handler (you need
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>
+version &gt;= 0.6.0):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run war:file:petclinic.war --profiles=war mvn:org.ops4j.pax.web/pax-web-jsp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you will see the war: protocol handler will do all that is necessary
+to directly deploy a war file. Spring PetClinic makes use of JSP so the
+command line provision also <a href="JSP_5047050.html">Pax Web JSP Support</a>.
+Note that in this case the context name will be generated automatically,
+so you should use <a href="http://localhost:8080/file_petclinic.war/" class="bare">http://localhost:8080/file_petclinic.war/</a> to access
+the application (upcoming version 0.2.0 of war protocol will permit
+context name setup).</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Using the above mentioned methods involves that Spring Petclinic WAR
+file is processed first by <code>war:</code> url protocol handler in order to make
+it a bundle. As the WAR file is particularly large it requires
+<code>extensive'' resources to process in terms of memory, so you may
+encounter <code>java.lang.StackOverflowError</code> or <code>java.lang.OutOfMemoryError</code>
+depending on your execution platform (Windows/*nix) as they differ in
+</code>defaults''. To avoid this problems you will have to set some extra
+start up parameters for JVM, such as:
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>java.lang.StackOverflowError</code>: \{-Xss`, as for example <code>-Xss=512k</code></p>
+</li>
+<li>
+<p><code>java.lang.OutOfMemoryError</code>: <code>-Xmx</code>, as for example <code>-Xmx256m</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It may be that the example values are too much or too less for your case
+so feel free to experiment.<br>
+ In order to set this options you have to do the following (example uses
+both settings but you may only need one of them):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>set JAVA_OPTS=-Xss512k -Xmx256m
+pax-run ...</pre>
+</div>
+</div>
+</li>
+<li>
+<p>*nix</p>
+<div class="listingblock">
+<div class="content">
+<pre>export JAVA_OPTS=-Xss512k -Xmx256m
+pax-run ...</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="osgi-fy-your-war"><a class="anchor" href="#osgi-fy-your-war"></a>OSGi-fy your WAR</h4>
+<div class="paragraph">
+<p>This page explains what it takes to make a standard war file deployable
+into OSGi. For detailed information read <em>OSGi Service Platform Core
+Specification</em> section 3.2 — <em>Module Layer — Bundles</em>. The pages
+specified bellow refers to <em>Release 4, Version 4.1 April 2007</em>.</p>
+</div>
+<div class="paragraph">
+<p>The quickest way is for your project to use Maven and utilize Maven
+Bundle Plugin to generate OSGi manifest for your WAR project. See:
+<a href="https://ops4j1.jira.com/wiki/display/ops4j/Getting+the+benefits+of+maven-bundle-plugin+in+other+project+types">Getting
+the benefits of maven-bundle-plugin in other project types</a></p>
+</div>
+<div class="paragraph">
+<p>If you opt for a lower level way, read on…</p>
+</div>
+<div class="paragraph">
+<p>First of all the war has to be a valid OSGi bundle. As minimum the war
+file must contain the following manifest headers in
+<code>META-INF/MANIFEST.MF</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ManifestVersion: 2</em></strong> — This header defines that the bundle
+follows the rules of R4 specification.</p>
+</li>
+<li>
+<p><strong><em>Bundle-SymbolicName</em></strong> — This header specifies a unique,
+non-localizable name for this bundle. This name should be based on the
+reverse domain name convention. See <em>Bundle-SymbolicName</em> on page 35.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Version</em></strong> — This header specifies the version of
+this bundle. The default value is 0.0.0. See <em>Version</em> on page 28.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Name</em></strong> — This header defines a readable name for
+this bundle. This should be a short, human-readable name that can
+contain spaces.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Vendor</em></strong> — This header contains a human-readable
+description of the bundle vendor.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Bundle-Copyright</em></strong> — This header contains the copyright
+specification for this bundle.</p>
+</li>
+<li>
+<p>(optional) <strong><em>Webapp-Context</em></strong> — servlet context path. If not specified
+<em>Bundle-SymbolicName</em> will be used. Note that this header is a War
+extender specific header not an OSGi header.
+<span class="image"><img src="images/images/icons/emoticons/warning.png" alt="(warning)"></span> Deprecated since
+1.0.0 use</p>
+</li>
+<li>
+<p>(optional) <strong><em>Web-ContextPath</em></strong> — servlet context path, as specified in
+the OSGi spec. If not specified <em>Bundle-SymbolicName</em> will be used. Note
+this is a official OSGi header.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have this header, will suffice to deploy the war into OSGi. But
+this is not enough to have it working in most of the situations as OSGi
+has a very strict class loading policy. So next, you will have to
+specify how the classes you need in runtime will be found via the
+following headers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ClassPath</em></strong> — This header defines a comma-separated list of
+JAR file path names or directories (inside the bundle) containing
+classes and resources. The period (’.’) specifies the root directory of
+the bundle’s JAR. The period is also the default. See <em>Bundle Class
+Path</em> on page 49.</p>
+</li>
+<li>
+<p><strong><em>Import-Package</em></strong> — This header declares the imported packages for
+this bundle. See <em>Import-Package Header</em> on page 36.</p>
+</li>
+<li>
+<p>(not recommended) <strong><em>Require-Bundle</em></strong> — This header specifies the
+required exports from another bundle. See <em>Require-Bundle</em> on page 65.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most likely the above headers will have to have the following values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>Bundle-ClassPath</em></strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WEB_INF/classes</code> — this will find any class / file in
+WEB-INF/classes</p>
+</li>
+<li>
+<p><code>lib/&lt;dependency&gt;.jar</code> — you should have an entry for each jar you
+have in your lib directory, where <em>&lt;dependency&gt;</em> is the name of jar<br>
+ So, as an example the header can look like:<br></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>Bundle-ClassPath: WEB-INF/classes,lib/commons-logging.jar,lib/spring.jar</code>
+* <strong><em>Import-Package</em></strong> : should contain any package that your web
+application depends on but is not included into one of your dependencies
+that you listed in the <em>Bundle-ClassPath</em> header. Usually a war will not
+include <em>J2EE</em> apis:
+<strong> <code>javax.servlet</code> - servlet api
+</strong> <code>javax.servlet.http</code> - servlet api<br>
+ So, as an example the header can look like:<br>
+ <code>Import-Package: javax.servlet,javax.servlet.http</code></p>
+</div>
+<div class="paragraph">
+<p>Now you are ready to
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">deploy your
+war</a>. If you still get class loading exceptions then is most likely that
+you did not include all the jars you need in the <em>Bundle-ClassPath</em> or
+<em>Import-Package</em>.</p>
+</div>
+<div class="sect4">
+<h5 id="OSGi-fyyourWAR-Preprocess"><a class="anchor" href="#OSGi-fyyourWAR-Preprocess"></a>Preprocess</h5>
+<div class="paragraph">
+<p>If you find this process hard to grasp or if you cannot change the
+manifest of your war or maybe you simple want to automate it take a look
+at how you can automate it in a
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=static&amp;linkCreation=true&amp;fromPageId=12060384">static</a>
+or
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=dynamic&amp;linkCreation=true&amp;fromPageId=12060384">dynamic</a>
+way. You may also use
+<a href="https://ops4j1.jira.com/wiki/display/paxurl/War+Protocol">War Protocol</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="supported-web-elements"><a class="anchor" href="#supported-web-elements"></a>Supported Web Elements</h4>
+<div class="paragraph">
+<p>The following is a list showing what elements are supported in both
+standard http service and Pax Web. If the
+list bellow does not contain the descriptior element you are looking for
+it means that is not (yet) supported.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>*context name*</em> : name of the context (known as context path)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service
+: servlets/resources will be deployed into the root path (`&#8217;')</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*context params*</em> : &lt;context-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*session timeout*</em> : &lt;session-config&gt; / &lt;session-timeout&gt; element in
+web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web (starting with version 0.4.0)</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets*</em> : &lt;servlet&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets init params*</em> : &lt;servlet&gt;&lt;init-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*servlets mapping*</em> : &lt;servlet-mapping&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service
+: only exact match, no wild card (``*'') support</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters*</em> : &lt;filter&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters init params*</em> : &lt;filter&gt;&lt;init-param&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*filters mapping*</em> : &lt;filter-mapping&gt; elements in web.xml; both
+&lt;url-pattern&gt; and &lt;servlet-name&gt;</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*listeners*</em> : &lt;listener&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*error pages*</em> : &lt;error-page&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*welcome files*</em> : &lt;welcome-file-list&gt; element in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/error.png" alt="(error)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>*mime mappings*</em> : &lt;mime-mapping&gt; elements in web.xml</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span>
+Pax Web</p>
+</li>
+<li>
+<p><span class="image"><img src="images/icons/emoticons/check.png" alt="(tick)"></span> Standard Http Service</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="war-extender-faq"><a class="anchor" href="#war-extender-faq"></a>WAR Extender FAQ</h4>
+<div class="sect4">
+<h5 id="is-the-order-the-bundles-are-installed-started-important"><a class="anchor" href="#is-the-order-the-bundles-are-installed-started-important"></a>Is the order the bundles are installed / started important?</h5>
+<div class="paragraph">
+<p>No. Http service (Pax Web), war extender or
+your war bundle(s) can be installed / uninstalled / started / stopped in
+any order. Everything will function as you expect.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-will-happen-if-i-stop-uninstall-my-war"><a class="anchor" href="#what-will-happen-if-i-stop-uninstall-my-war"></a>What will happen if I stop / uninstall my war?</h5>
+<div class="paragraph">
+<p>All the registered elements for the web application corresponding to the
+stopped war (servlet context, servlets, resources, filters, listeners)
+will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-if-i-restart-it-or-update-it"><a class="anchor" href="#what-if-i-restart-it-or-update-it"></a>What if I restart it? Or update it?</h5>
+<div class="paragraph">
+<p>A new web application corresponding to your war will be registered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-happens-if-i-stop-uninstall-the-http-service"><a class="anchor" href="#what-happens-if-i-stop-uninstall-the-http-service"></a>What happens if I stop / uninstall the http service?</h5>
+<div class="paragraph">
+<p>All deployed web applications will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-if-i-restart-it"><a class="anchor" href="#what-if-i-restart-it"></a>What if I restart it?</h5>
+<div class="paragraph">
+<p>New web applications will be registered for all deployed wars.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-happens-if-i-stop-uninstall-the-pax-war-extender"><a class="anchor" href="#what-happens-if-i-stop-uninstall-the-pax-war-extender"></a>What happens if I stop / uninstall the pax war extender?</h5>
+<div class="paragraph">
+<p>All deployed web applications will be unregistered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="what-if-i-restart-it-2"><a class="anchor" href="#what-if-i-restart-it-2"></a>What if I restart it?</h5>
+<div class="paragraph">
+<p>New web applications will be registered for all deployed wars.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="i-have-a-standard-war-can-i-deploy-it-into-an-osgi-framework"><a class="anchor" href="#i-have-a-standard-war-can-i-deploy-it-into-an-osgi-framework"></a>I have a standard war. Can I deploy it into an OSGi framework?</h5>
+<div class="paragraph">
+<p>Yes,
+OSGi-fy-your-WAR tells you how you can do that.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="i-do-not-want-can-change-the-war-can-i-still-deploy-it"><a class="anchor" href="#i-do-not-want-can-change-the-war-can-i-still-deploy-it"></a>I do not want / can change the war. Can I still deploy it?</h5>
+<div class="paragraph">
+<p>Yes, you can do that in a
+static or dynamic way.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="now-that-i-deployed-my-war-how-can-i-get-a-service-from-osgi-service-registry"><a class="anchor" href="#now-that-i-deployed-my-war-how-can-i-get-a-service-from-osgi-service-registry"></a>Now that I deployed my war, how can I get a service from OSGi Service Registry?</h5>
+<div class="paragraph">
+<p>A deployed war is as any OSGi bundle. A bundle accesses the OSGi
+framework’s services through the bundle’s <em>BundleContext</em>. To enable a
+web application to access its <em>BundleContext</em> you must develop a
+<em>BundleActivator</em> and add the <em>Bundle-Activator</em> manifest header. This
+<em>BundleActivator</em> should store the <em>BundleContext</em> in a location that is
+accessible by the application’s servlets, filters or listeners. You can
+achieve this by using a static field/method set by your
+<em>BundleActivator</em> or store it in a <em>ServletContext</em> attribute.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="my-application-uses-jsps-are-them-supported"><a class="anchor" href="#my-application-uses-jsps-are-them-supported"></a>My application uses JSPs. Are them supported?</h5>
+<div class="paragraph">
+<p>Yes, JSPs are supported via Pax Web
+Extensions. Take a look at how you can enable JSP
+support.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="how-can-i-set-the-servlet-context-path"><a class="anchor" href="#how-can-i-set-the-servlet-context-path"></a>How can I set the servlet context path?</h5>
+<div class="paragraph">
+<p>Pax Web War extender will use as servlet path by default the symbolic
+name of the bundle. If you want to change that you can set the
+<code>Webapp-Context</code> manifest attribute to the name you want. This attribute
+should be set into the manifest (MANIFEST.MF) of the bundle that
+contains the web app (same bundle as the one containing the web.xml
+file). For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Web-ContextPath: myApp</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

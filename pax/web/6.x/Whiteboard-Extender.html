@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>Whiteboard Extender</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,386 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
-</div>
-</div>
-
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-<div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
-</li>
-<li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
-</li>
-<li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<h1>Whiteboard Extender</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#WhiteboardExtender-KeepingtrackofHttpServiceavailability">Keeping track of Http Service availability</a></li>
+<li><a href="#WhiteboardExtender-Howdoesitwork:">How does it work:</a></li>
+<li><a href="#WhiteboardExtender-WhatExtenderwilldo:">What Extender will do:</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponservletregistration">How does it help on servlet registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponresourceregistration">How does it help on resource registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponfilterregistration">How does it help on filter registration</a></li>
+<li><a href="#WhiteboardExtender-Howdoesithelponlistenerregistration">How does it help on listener registration</a></li>
+<li><a href="#WhiteboardExtender-Webelements">Web elements</a>
+<ul class="sectlevel3">
+<li><a href="#whiteboard-examples">Whiteboard Examples</a></li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pax Web Extender Whiteboard is an extender bundle that ease the pain of
+registering servlets, resources, filters and listeners and keeping track
+of Http Service availability.<br>
+ Note it is not mandatory for the extender to work with Pax Web, it can
+work with any Http Service implementation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+starting with Pax Web 6.0.0 the Whiteboard Extender is OSGi R6 compliant.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-KeepingtrackofHttpServiceavailability"><a class="anchor" href="#WhiteboardExtender-KeepingtrackofHttpServiceavailability"></a>Keeping track of Http Service availability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are many situations that you have to handle as a bundle developer
+to keep track of http service availability:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Http Service is not present</p>
+</li>
+<li>
+<p>The Http Service gets started after your bundle starts</p>
+</li>
+<li>
+<p>The service gets unregister during the lifetime of your servlet</p>
+</li>
+<li>
+<p>A new service gets registered</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pax Web Extender handles all of this cases for you. You just have to
+have a servlet <span class="image"><img src="images/icons/emoticons/smile.png" alt="(smile)"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Howdoesitwork:"><a class="anchor" href="#WhiteboardExtender-Howdoesitwork:"></a>How does it work:</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Publish your web elements using one of the
+methods below;</p>
+</li>
+<li>
+<p>Start the Pax Web Extender bundle. It does not matter if the
+Extender starts before or after you bundle or if is not even installed
+by the time your bundle starts.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-WhatExtenderwilldo:"><a class="anchor" href="#WhiteboardExtender-WhatExtenderwilldo:"></a>What Extender will do:</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Once it starts it will find out all published web elements;</p>
+</li>
+<li>
+<p>Once a http service become available (including the moment when
+Extender starts) it will register all the
+published web elements;</p>
+</li>
+<li>
+<p>If the in use http service gets unregister it will automatically
+unregister the (already) registered web elements;</p>
+</li>
+<li>
+<p>If you register a web element as a service it will register it automatically with the http
+service in use (if any);</p>
+</li>
+<li>
+<p>If you unregister a web element it will unregister it automatically from the http service (if
+was registered before);</p>
+</li>
+<li>
+<p>If you stop your bundle all registered web elements are automatically
+unregistered</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Howdoesithelponservletregistration"><a class="anchor" href="#WhiteboardExtender-Howdoesithelponservletregistration"></a>How does it help on servlet registration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Usually you will have to register servlets by getting an http service
+and registering each servlet you have with the http service.<br>
+ By using the whiteboard approach you will just have to register each
+servlet that you expect to be published to an http service under the
+Servlet interface (<a href="http://issues.ops4j.org/jira/browse/PAXWEBEX-2">see in
+jira</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Dictionary props = new Hashtable();
+props.put( "alias", "/whiteboard" );
+props.put("servlet-name", "My Servlet");
+bundleContext.registerService( Servlet.class.getName(), new MyServlet(), props );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is all you have to do to register a servlet. As you can see there
+is no necessity to lookup a http service or to track it’s availability.</p>
+</div>
+<div class="paragraph">
+<p>Nice to know: your bundle will not have to import/depend on Http Service
+packages.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Registering with Servlet names becomes necessary if you want to register a Filter
+against it. See below.</p>
+</li>
+<li>
+<p>Starting with version 4.1.x it is possible to register Annotated Servlets as services.
+Those annotations are interpreted in the same way as properties. This way properties
+may be neglected.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Howdoesithelponresourceregistration"><a class="anchor" href="#WhiteboardExtender-Howdoesithelponresourceregistration"></a>How does it help on resource registration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Usually you will have to register resources by getting an http service
+and registering each resource dir you have with the http service.<br>
+ By using the whiteboard approach you will just have to register each
+resource dir that you expect to be published to an http service under
+the Resources class (<a href="http://issues.ops4j.org/jira/browse/PAXWEBEX-4">see
+in jira</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import org.ops4j.pax.web.service.whiteboard.ResourceMapping;
+import org.ops4j.pax.web.extender.whiteboard.runtime.DefaultResourceMapping;
+...
+DefaultResourceMapping resourceMapping = new DefaultResourceMapping();
+resourceMapping.setAlias( "/whiteboardresources" );
+resourceMapping.setPath( "/images" );
+bundleContext=bundleContext.registerService( ResourceMapping.class.getName(), resourceMapping, null );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Don’t forget to import org.ops4j.pax.web.service.whiteboard package.</p>
+</div>
+<div class="paragraph">
+<p>This is all you have to do to register resources. As you can see there
+is no necesity to lookup a http service or to track it’s availablity.
+The resources are served upon exact match, so listing directories in
+this fashion is not supported right now.</p>
+</div>
+<div class="paragraph">
+<p>Note: your bundle must import org.ops4j.pax.web.service.whiteboard
+package.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Howdoesithelponfilterregistration"><a class="anchor" href="#WhiteboardExtender-Howdoesithelponfilterregistration"></a>How does it help on filter registration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Filters can be registered against URL Patterns and/or against Servlets
+(identified using their names).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Dictionary props = new Hashtable();
+String[] urls = {"/foo", "/protected"};
+String[] servlets = {"My Servlet", "Faces Servlet"};
+props.put("filter-name", "My Crazy Filter");
+props.put("urlPatterns", urls);
+props.put("servletNames", servlets);
+bundleContext.registerService(Filter.class.getName(), new MyCrazyFilter(), props );</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For URL Patterns, the pattern registered must be already mapped,
+either as Resource or a Servlet alias - e.g there should already be a
+Resource or aServlet registered to the path <code>/foo</code>.</p>
+</li>
+<li>
+<p>For Servlet names, the names used should have been the name that has
+been explicitly given to the Servlet (as <code>servlet-name</code>), when
+registering.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Howdoesithelponlistenerregistration"><a class="anchor" href="#WhiteboardExtender-Howdoesithelponlistenerregistration"></a>How does it help on listener registration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following specialization of java.util.EventListener are
+tracked by the Whiteboard-Extender:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>javax.servlet.ServletContextListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletContextAttributeListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestListener</p>
+</li>
+<li>
+<p>javax.servlet.ServletRequestAttributeListener</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="WhiteboardExtender-Webelements"><a class="anchor" href="#WhiteboardExtender-Webelements"></a>Web elements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By web elements we mean any of http context, servlet, resources, filter,
+listener.</p>
+</div>
+<div class="sect3">
+<h4 id="whiteboard-examples"><a class="anchor" href="#whiteboard-examples"></a>Whiteboard Examples</h4>
+<div class="paragraph">
+<p>Whiteboard Extender includes a set of examples that demonstrates its usage.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The following is outdated and subject to change.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="WhiteboardExamples-Whiteboard"><a class="anchor" href="#WhiteboardExamples-Whiteboard"></a>Whiteboard</h5>
+<div class="paragraph">
+<p>The whiteboard example publishes web elements supported by whiteboard
+extender. To run the example you have to deploy to your preferred OSGi
+framework the following bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Web version &gt;= 0.3.1</p>
+</li>
+<li>
+<p>Whiteboard Extender version &gt;= 0.3.0</p>
+</li>
+<li>
+<p><a href="https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples/whiteboard/">Whiteboard
+example</a></p>
+</li>
+<li>
+<p>(optional)
+<a href="https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging">Pax Logging</a>
+— if you want to see also the log output</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively you can easy do the deployment using
+<a href="https://ops4j1.jira.com/wiki/display/paxrunner/Pax+Runner">Pax Runner</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pax-run scan-file:jar:mvn:org.ops4j.pax.web-extender.samples/provision!/sample-whiteboard.bundles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have everything running point your browser to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://localhost:8080/whiteboard" class="bare">http://localhost:8080/whiteboard</a> — to see a simple servlet output</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> — to see a simple servlet output mapped to root</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/whiteboardresources/ops4j.png" class="bare">http://localhost:8080/whiteboardresources/ops4j.png</a> – to get a logo
+registered by publishing a resource</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/forbidden/" class="bare">http://localhost:8080/forbidden/</a> — to try to access a security
+protected servlet</p>
+</li>
+<li>
+<p><a href="http://localhost:8080/whiteboard/filtered" class="bare">http://localhost:8080/whiteboard/filtered</a> — to access the whiteboard
+filter (see above) but through a filter</p>
+</li>
+<li>
+<p>on any request you can take a look in the java console to see a
+request filter in action</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="OPS4j">
-<title>OPS4j Documentations</title>
+<meta name="generator" content="Asciidoctor 1.5.2">
+<title>JSP</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -408,6 +408,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -502,46 +503,174 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>OPS4j Pax Web</h1>
-<div class="details">
-<span id="author" class="author">OPS4j</span><br>
+<h1>JSP</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#JSP-Why">Why</a></li>
+<li><a href="#JSP-Howdoesitwork">How does it work</a>
+<ul class="sectlevel2">
+<li><a href="#JSP-TagLibs">Tag Libs</a></li>
+</ul>
+</li>
+<li><a href="#JSP-EnableJSPsupport">Enable JSP support</a></li>
+<li><a href="#JSP-DisableJSPsupport">Disable JSP support</a></li>
+</ul>
 </div>
 </div>
-
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
 <div class="paragraph">
-<p><span class="image"><img src="images/pax-web.png" alt="image"></span><br>
-<a href="http://www.osgi.org">OSGi</a> R4 and higher Http Service and Web Applications (OSGi Enterprise Release chapter 128) implementation using
-<a href="http://www.eclipse.org/jetty/">Jetty</a>, <a href="http://tomcat.apache.org">Tomcat</a> or Undertow (since 6.0.0)</p>
+<p>Pax Web has support for Java Server Pages
+(JSP) via using
+<a href="http://tomcat.apache.org/tomcat-6.0-doc/jasper-howto.html">Tomcat Jasper
+2</a></p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSP-Why"><a class="anchor" href="#JSP-Why"></a>Why</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Quoted from <a href="http://java.sun.com/products/jsp/">Java Server Pages home
+page</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>JavaServer Pages (JSP) technology provides a simplified, fast way to
+create dynamic web content. JSP technology enables rapid development of
+web-based applications that are server- and platform-independent.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSP-Howdoesitwork"><a class="anchor" href="#JSP-Howdoesitwork"></a>How does it work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First of all you must have your JSPs (not mandatory but useful). Then
+you have to let Pax Web know that you have
+jsps by calling the <code>registerJsps()</code> method on <em>WebContainer</em>.<br>
+ At runtime you have to also deploy the jsp support bundle
+<strong><em>org.ops4j.pax.web.jsp</em></strong> (see installation
+instructions bellow) together with Pax
+Web.<br>
+ You can find an example of the
+<a href="Examples_5046927.html#Examples-helloworld-jsp">example page</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="JSP-TagLibs"><a class="anchor" href="#JSP-TagLibs"></a>Tag Libs</h3>
+<div class="paragraph">
+<p>In order to get your custom tag libs working your TLD files will have to
+be reachable in your bundle in &#8220;special&#8221; places:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="./SNAPSHOT/index.html">Pax Web - SNAPSHOT (latest snapshot from master)</a></p>
+<p>all <em>tld</em> files in any jar referenced by your <strong><em>Bundle-ClassPath</em></strong>
+manifest entry</p>
 </li>
 <li>
-<p><a href="./6.x/index.html">Pax Web - 6.x</a></p>
-</li>
-<li>
-<p><a href="./4.x/index.html">Pax Web - 4.x</a></p>
-</li>
-<li>
-<p><a href="./5.x/index.html">Pax Web - 5.x (Innofficial branch release)</a></p>
-</li>
-<li>
-<p><a href="./4.2.x/index.html">Pax Web - 4.2.x</a></p>
-</li>
-<li>
-<p><a href="./4.0.2/index.html">Pax Web - 4.0.2</a></p>
-</li>
-<li>
-<p><a href="./4.0.1/index.html">Pax Web - 4.0.1</a></p>
+<p>all <em>tld</em> files in <strong><em>WEB-INF</em></strong> directory or sub-directory of <em>WEB-INF</em>
+in your bundle jar</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Imported packages
+are being searched too as of 1.1.2 and 2.0.0. See PAXWEB-86 and
+PAXWEB-130. PAX Web JSP’s only scans the META-INF/ directory within each
+imported (Import-Package) or required bundle (Require-Bundle), thus
+mimicking Jasper’s behaviour when searching JAR files for TLDs.
+</td>
+</tr>
+</table>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSP-EnableJSPsupport"><a class="anchor" href="#JSP-EnableJSPsupport"></a>Enable JSP support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>public void registerJsps( String[] urlPatterns, HttpContext httpContext )</code></p>
+</div>
+<div class="paragraph">
+<p>Enables jsp support. For more details take a look
+<a href="/wiki/pages/createpage.action?spaceKey=paxweb&amp;title=Pax+Web+-+Jsp&amp;linkCreation=true&amp;fromPageId=5047050">here</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urlPatterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of url patterns this jsp support maps to. If
+null, a default &#8220;*.jsp&#8221; will be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context for which the jsp support should be
+enabled. If null a default http context will be used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnsupportedOperationException — If jsp support is not available
+(optional org.ops4j.pax.web.jsp package is not resolved)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JSP-DisableJSPsupport"><a class="anchor" href="#JSP-DisableJSPsupport"></a>Disable JSP support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>public void unregisterJsps( HttpContext httpContext )</code></p>
+</div>
+<div class="paragraph">
+<p>Disable jsp support.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpContext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The http context for which the jsp support should be
+disabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IllegalArgumentException — If http context is null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnsupportedOperationException — If jsp support is not available
+(optional org.ops4j.pax.web.jsp package is not resolved)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-12 11:49:32 +01:00
+</div>
+</div>
+</body>
 </html>
