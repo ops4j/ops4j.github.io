@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Pax UserAdmin - </title>
+    <style type="text/css" media="all">
+      @import url("../../css/maven-base.css");
+      @import url("../../css/maven-theme.css");
+      @import url("../../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../../css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            org.ops4j.pax.useradmin
+    
+            </span>
+                        <a href="" id="bannerRight">
+    
+                                            <img src="../../images/ops4j-logo.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 2017-01-11
+                  &nbsp;| Version: 1.0.0-SNAPSHOT
+                      </div>
+            <div class="xright">            <a href="http://wiki.ops4j.org/display/ops4j/Pax" class="externalLink">Pax</a>
+            |
+                <a href="http://www.osgi.org/" class="externalLink">OSGi</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Pax UserAdmin</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../../quickstart.html">Quickstart</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../../userguide.html">User Guide</a>
+          </li>
+          </ul>
+              <h5>Bundles</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../../bundles/service.html">pax-useradmin-service</a>
+          </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../../bundles/provider-preferences/overview.html">pax-useradmin-provider-preferences</a>
+                </li>
+              
+                
+              
+            
+            
+      
+              
+            <li class="expanded">
+                    <a href="../../bundles/provider-ldap/overview.html">pax-useradmin-provider-ldap</a>
+                  <ul>
+                  
+    <li class="none">
+              <strong>Storage Layout</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../../bundles/provider-ldap/configuration.html">Configuration</a>
+          </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../../bundles/command.html">pax-useradmin-command</a>
+          </li>
+          </ul>
+              <h5>Other resources</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="http://wiki.ops4j.org/confluence/display/ops4j/Pax+UserAdmin" class="externalLink">Wiki</a>
+          </li>
+          </ul>
+              <h5>Project Reports</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../../reports/basic-reports.html">Basic Information</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../../reports/dependency-reports.html">Dependencies</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../../reports/sourceref-reports.html">JavaDoc & Source Xref</a>
+                </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+                    <a href="../../reports/management-reports.html">Project Management</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../../dashboard-report.html">Code Analysis DashBoard</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../jira-report.html">Jira Issues</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../changelog.html">Change Log</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../dev-activity.html">Developer Activity</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../file-activity.html">File Activity</a>
+          </li>
+              </ul>
+        </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>LDAP Storage Layout</h2>
+<p>The LDAP provider uses two root nodes to store its data: a <i>users</i> node and a <i>groups</i> node.</p>
+</div>
+<div class="section"><h2>Users Node</h2>
+<p>The users node contains all user entries. There is no further grouping - all user entries are on the same level.</p>
+<p>The LDAP storage for the users from the example in chapter 107.3.2 of the OSGI companion spec would look like:</p>
+<div class="source"><pre>- &lt;users-root&gt;.&lt;domain&gt;
+   
+  - elmer
+  - fudd
+  - marvin
+  - pepe
+  - daffy
+  - foghorn</pre>
+</div>
+</div>
+<div class="section"><h2>Groups Node</h2>
+<p>Since groups can have <i>basic</i> and <i>required</i> members the organization of the groups tree is a bit more complex: the groups root node contains an organizational node for each group. Each of those nodes may contain group entries of type <i>basic</i> or <i>required</i>.</p>
+<p>The LDAP storage for the example groups from table 107.14 in the OSGI companion specification would look like:</p>
+<div class="source"><pre>- &lt;groups-root&gt;.&lt;domain&gt;
+   
+  - residents
+    - residents.basic
+      - elmer
+      - fudd
+      - marvin
+      - pepe
+
+  - buddies
+    - buddies.basic
+      - daffy
+      - foghorn
+   
+  - children
+    - children.basic
+      - marvin
+      - pepe
+   
+  - adults
+    - adults.basic
+      - elmer
+      - fudd
+
+  - administrators
+    - administrators.basic
+      - elmer
+</pre>
+</div>
+<p>And the action groups from table 107.15 would look like:</p>
+<div class="source"><pre>
+  - alarmSystemControl
+    - alarmSystemControl.basic
+      - residents
+    - alarmSystemControl.required
+      - administrators
+
+  - internetAccess
+    - internetAccess.basic
+      - residents
+    - internetAccess.required
+      - adults
+
+  - temperatureControl
+    - temperatureControl.basic
+      - residents
+    - temperatureControl.required
+      - adults
+
+  - photoAlbumEdit
+    - photoAlbumEdit.basic
+      - residents
+      - children
+      - adults
+
+  - photoAlbumView
+    - photoAlbumView.basic
+      - residents
+      - buddies
+
+  - portForwarding
+    - portForwarding.basic
+      - residents
+    - portForwarding.required
+      - administrators
+</pre>
+</div>
+</div>
+<div class="section"><h2>LDIF Example</h2>
+<p>To see what this looks like in the LDAP tree let's start to create an LDIF file for the example mentioned above.</p>
+<p>We assume an organization (osgi.org) which stores the users and group nodes directly in the organization root node and uses the default configuration settings whenever possible:</p>
+<div class="source"><pre># ------------------------
+# Example root context entry
+# ------------------------
+dn: dc=osgi,dc=org
+objectClass: top
+objectClass: organization
+objectClass: dcObject
+dc: osgi
+o: OSGi
+description: The context entry for suffix dc=osgi,dc=org
+
+# The people ...
+dn: ou=people,dc=osgi,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+description: The people at osgi.org
+
+# The groups ...
+dn: ou=groups,dc=osgi,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+description: The groups at osgi.org</pre>
+</div>
+<p>All that is left now to make the UserAdmin service working on an empty system is to add the initial user: the <i>user.anyone</i> role defined in the Role interface:</p>
+<div class="source"><pre>dn: uid=user.anyone,ou=people,dc=ops4j,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: user.anyone
+cn: user.anyone
+sn: user.anyone
+# note: userPassword contains credential tuples consisting of an ID and a password. The ID may be the wildcard char '*' which matches all IDs.
+#       Therefor the second credential is superfluous - it's just used for testing
+#
+userPassword: *,notNeededForThisUser
+userPassword: some authority;testPwd</pre>
+</div>
+<p>This is the minimal initial structure needed to store user data.</p>
+<p>Now we can start to add other users (Elmer, Fudd, ...) and then add the basic example groups, i.e. <i>Residents</i>:</p>
+<div class="source"><pre>#
+# The residents group
+#
+dn: ou=residents,ou=groups,dc=osgi,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: residents
+description: The residents group at osgi.org
+#
+# - basic members sub-group
+#
+dn: cn=residents.basic,ou=users,ou=groups,dc=osgi,dc=org
+objectclass: top
+objectclass: simpleSecurityObject
+objectClass: groupOfNames
+cn: residents.basic
+userPassword: some authority;testPwd
+member: uid=elmer,ou=people,dc=osgi,dc=org</pre>
+</div>
+<p>The other example groups can be added the same way.</p>
+<p>Now the real fun starts - let's add a action group that not only relies on other groups, but also has required members:</p>
+<div class="source"><pre>#
+# The alarmSystemControl group
+#
+dn: ou=alarmSystemControl,ou=groups,dc=osgi,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: alarmSystemControl
+description: The alarmSystemControl group at osgi.org
+#
+# - basic members sub-group
+#
+dn: cn=alarmSystemControl.basic,ou=users,ou=groups,dc=osgi,dc=org
+objectclass: top
+objectclass: simpleSecurityObject
+objectClass: groupOfNames
+cn: alarmSystemControl.basic
+userPassword: some authority;testPwd
+member: ou=residents,ou=groups,dc=osgi,dc=org
+#
+# - required members sub-group
+#
+dn: cn=alarmSystemControl.required,ou=users,ou=groups,dc=osgi,dc=org
+objectclass: top
+objectclass: simpleSecurityObject
+objectClass: groupOfNames
+cn: alarmSystemControl.required
+userPassword: some authority;testPwd
+member: ou=administrators,ou=groups,dc=osgi,dc=org</pre>
+</div>
+<p>This allows only <i>residents</i> that also are included in the <i>administrators</i> group to access the alarm system.</p>
+<p>Cool, isn't it :-)</p>
+<p>And there's another goodie: most LDAP configuration (objectclasses, DNs and attributes) are configurable: check out the <a href="configuration.html">configuration page</a> for details.</p>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009-2017
+    
+          OPS4J - Open Participation Software for Java
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
