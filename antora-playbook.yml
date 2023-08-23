@@ -1,0 +1,25 @@
+site:
+  title: OPS4J Documentation
+  start_page: ops4j::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD]
+      start_path: documentation
+    - url: https://github.com/ops4j/org.ops4j.pax.exam2
+      branches: [v4.x]
+      start_path: documentation
+    - url: https://github.com/ops4j/org.ops4j.pax.tinybundles
+      branches: [master]
+      start_path: documentation
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files:
+    - path: partials/header-content.hbs
+      contents: supplemental-ui/partials/header-content.hbs
+    - path: partials/footer-content.hbs
+      contents: |
