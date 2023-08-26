@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pax TinyBundles :: OPS4J Documentation</title>
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">OPS4J Documentation</a>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="pax-tinybundles" data-version="4.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-explore is-active" data-panel="explore">
+  <div class="context">
+    <span class="title">Pax TinyBundles</span>
+    <span class="version">4.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../ops4j/main/index.html">OPS4J</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ops4j/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../pax-exam/4/index.html">Pax Exam</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../pax-exam/4/index.html">4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Pax TinyBundles</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">4.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../ops4j/main/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ops4j/org.ops4j.pax.tinybundles/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Pax TinyBundles</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/ops4j/org.ops4j.pax.tinybundles">TinyBundles</a> is a library to create and modify <a href="https://www.osgi.org/">OSGi</a> bundles on the fly using fluent Java API.</p>
+</div>
+<div class="paragraph">
+<p>The API is exposed via an OSGi service <code>TinyBundlesFactory</code> and static methods in <code>TinyBundles</code>.</p>
+</div>
+<div class="paragraph">
+<p>TinyBundles provides two builders to compile bundles: Raw builder and <a href="https://bnd.bndtools.org/">bnd</a> builder.
+Since TinyBundles 4.0.0 bnd builder is the default.
+Bnd builder supports processing of <a href="https://docs.osgi.org/specification/osgi.cmpn/8.0.0/service.component.html">Declarative Services</a> <a href="https://docs.osgi.org/specification/osgi.cmpn/8.0.0/service.component.html#service.component-component.annotations">component annotations</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_tinybundles"><a class="anchor" href="#_using_tinybundles"></a>Using TinyBundles</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add TinyBundles dependency</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;org.ops4j.pax.tinybundles&lt;/groupId&gt;
+      &lt;artifactId&gt;tinybundles&lt;/artifactId&gt;
+      &lt;version&gt;4.0.0&lt;/version&gt;
+    &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Import <code>TinyBundles</code></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import static org.ops4j.pax.tinybundles.TinyBundles.bundle;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create an empty TinyBundle</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    TinyBundle bundle = bundle();</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Prepare the bundle</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Optionally fill the bundle up from an existing bundle or plain Java archive</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    JarInputStream source = new JarInputStream(…);
+    bundle.read(source);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set bundle headers and add/remove classes</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    bundle.set(Constants.BUNDLE_VENDOR, "OPS4J");
+    bundle.add(HelloWorld.class);</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Build the bundle</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    InputStream inputStream = bundle.build();</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>See <a href="examples.html" class="xref page">Examples</a> for more detailed examples showing usage of fluent API.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

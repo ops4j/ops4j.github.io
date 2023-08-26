@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pax TinyBundles :: OPS4J Documentation</title>
+    <title>Examples :: OPS4J Documentation</title>
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -16,13 +16,13 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="pax-tinybundles" data-version="4">
+<div class="nav-container" data-component="pax-tinybundles" data-version="4.0.0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-explore is-active" data-panel="explore">
   <div class="context">
     <span class="title">Pax TinyBundles</span>
-    <span class="version">4</span>
+    <span class="version">4.0.0</span>
   </div>
   <ul class="components">
     <li class="component">
@@ -45,7 +45,7 @@
       <a class="title" href="index.html">Pax TinyBundles</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">4</a>
+          <a href="index.html">4.0.0</a>
         </li>
       </ul>
     </li>
@@ -60,15 +60,65 @@
   <a href="../../ops4j/main/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ops4j/org.ops4j.pax.tinybundles/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ops4j/org.ops4j.pax.tinybundles/edit/master/documentation/modules/ROOT/pages/examples.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Pax TinyBundles</h1>
-
+<h1 class="page">Examples</h1>
+<hr>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        InputStream inputStream = bundle()
+            .activator(HelloWorldActivator.class)
+            .add(HelloWorld.class)
+            .add(HelloWorldImpl.class)
+            .add(DsService.class)
+            .symbolicName("Hello World Bundle")
+            .set(Constants.EXPORT_PACKAGE, "")
+            .set(Constants.IMPORT_PACKAGE, "*")
+            .build(bndBuilder());</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setting <code>Bundle-Activator</code> and <code>Bundle-SymbolicName</code> via dedicated methods</p>
+</li>
+<li>
+<p>Adding a service with Declarative Services component annotations</p>
+</li>
+<li>
+<p>Building with bnd builder</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        InputStream inputStream = bundle()
+            .add(HelloWorldActivator.class)
+            .add(HelloWorld.class)
+            .add(HelloWorldImpl.class)
+            .set(Constants.BUNDLE_SYMBOLICNAME, "Hello World Bundle")
+            .set(Constants.EXPORT_PACKAGE, "demo")
+            .set(Constants.IMPORT_PACKAGE, "demo")
+            .set(Constants.BUNDLE_ACTIVATOR, HelloWorldActivator.class.getName())
+            .build(rawBuilder());</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setting <code>Bundle-Activator</code> and <code>Bundle-SymbolicName</code> manually</p>
+</li>
+<li>
+<p>Building with raw builder</p>
+</li>
+</ul>
+</div>
 </article>
   </div>
 </main>
