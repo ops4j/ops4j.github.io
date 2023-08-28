@@ -2,6 +2,10 @@ site:
   title: OPS4J Documentation
   start_page: ops4j::index.adoc
 
+antora:
+  extensions:
+    - require: '@antora/lunr-extension'
+
 content:
   sources:
     - url: .

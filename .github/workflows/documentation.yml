@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm i antora
+      - run: npm i antora @antora/lunr-extension
       - run: npx --fetch antora antora-playbook.yml
       - uses: peaceiris/actions-gh-pages@v3
         with:
