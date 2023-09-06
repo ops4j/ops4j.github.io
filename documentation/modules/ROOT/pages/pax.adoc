@@ -1,0 +1,10 @@
+= Pax
+
+Pax is the umbrella for all https://www.osgi.org[OSGi] projects at https://github.com/ops4j[OPS4J].
+OSGi is a runtime platform that allows for a much higher degree of dynamicity and modularity than any other container architecture and is well suited for both client and server applications.
+
+https://www.eclipse.org[Eclipse] is the most visible OSGi ecosystem on the market, housing many UI driven OSGi projects including a runtime framework. https://knopflerfish.org[Knopflerfish] as well as https://felix.apache.org/[Apache Felix] are other runtime platforms, with their respective standard services.
+
+Pax intends to be complimentary to all these efforts and main focus are on good practices and technology integration.
+
+Feel free to start or suggest additional subprojects.

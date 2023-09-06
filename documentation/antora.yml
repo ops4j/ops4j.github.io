@@ -1,3 +1,5 @@
 name: ops4j
 title: OPS4J
 version: main
+nav:
+  - modules/ROOT/nav.adoc
