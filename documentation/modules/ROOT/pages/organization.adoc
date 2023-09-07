@@ -1,0 +1,3 @@
+= Organization
+
+OPS4J is a non-registered, umbrella organization for individuals who are interested in Open Participation Software and the Java programming platform.
