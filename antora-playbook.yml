@@ -17,6 +17,9 @@ content:
     - url: https://github.com/ops4j/org.ops4j.pax.exam2
       branches: [v4.x]
       start_path: documentation
+    - url: https://github.com/ops4j/org.ops4j.pax.swissbox
+      branches: [master]
+      start_path: documentation
     - url: https://github.com/ops4j/org.ops4j.pax.tinybundles
       branches: [master]
       start_path: documentation
