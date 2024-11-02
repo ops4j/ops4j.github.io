@@ -50,9 +50,6 @@
     <a class="nav-link" href="lifecycle.html">Lifecycle</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="optional-jcl.html">Optional JCL</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="property.html">Property</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -127,8 +124,110 @@
 </aside>
 <article class="doc">
 <h1 class="page">Pax Swissbox Extender</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Utilities related to extender pattern.</p>
+<p>Utilities related to <a href="https://enroute.osgi.org/FAQ/400-patterns.html#extender-pattern">extender pattern</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bundlemanifestscanner"><a class="anchor" href="#_bundlemanifestscanner"></a><code>BundleManifestScanner</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should use the <code>BundleManifestScanner</code> if you wish to implement an extender that is triggered by existence of specific entries in bundle manifest (<code>META-INF/MANIFEST.MF</code>).</p>
+</div>
+<div class="paragraph">
+<p>Usually in your extender <code>BundleActivator</code> you will create and start an instance of <code>BundleWatcher</code> by passing in a <code>BundleManifestScanner</code> and your extender specific <code>BundleObserver</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">new BundleWatcher&lt;ManifestEntry&gt;(
+    bundleContext,
+    // bundle manifest scanner
+    new BundleManifestScanner(...),
+    // customizer for scanned entries
+    new BundleObserver&lt;ManifestEntry&gt;() {
+        public void addingEntries(Bundle bundle, List&lt;ManifestEntry&gt; entries) {
+            // your specific code, doing something with the manifest entries
+        }
+        public void removingEntries(Bundle bundle, List&lt;ManifestEntry&gt; entries) {
+            // revert actions (if required)
+        }
+    }
+);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bundlemanifestscanner_2"><a class="anchor" href="#_bundlemanifestscanner_2"></a><code>BundleManifestScanner</code></h3>
+<div class="paragraph">
+<p>This scanner takes the starting bundle manifest entries and makes use of provided <code>ManifestFilter</code> to find out if the current bundle manifest contains expected entries.
+If there are any entries matched by the manifest filter it will create for each one a <code>ManifestEntry</code> which is a simple pair between manifest header name and value.
+Below is an example of creating a <code>BundleManifestScanner</code> that uses a regular expression based manifest filter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">new BundleManifestScanner(
+    new RegexKeyManifestFilter(
+        "Bundle-.*"
+    )
+);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifestfilter"><a class="anchor" href="#_manifestfilter"></a><code>ManifestFilter</code></h3>
+<div class="paragraph">
+<p>Manifest filters scope is to filter the manifest entries to the set required by your extender.
+You can implement your own filter and/or make use of the built-in ones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RegexKeyManifestFilter</code> — matches manifest headers name against a regular expression</p>
+</li>
+<li>
+<p>&#8230;&#8203; more to come</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bundleurlscanner"><a class="anchor" href="#_bundleurlscanner"></a><code>BundleURLScanner</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should use the <code>BundleURLScanner</code> if you wish to implement an extender that is triggered by existence of specific files or directories in bundles.</p>
+</div>
+<div class="sect2">
+<h3 id="_example_war_extender"><a class="anchor" href="#_example_war_extender"></a>Example WAR Extender</h3>
+<div class="paragraph">
+<p>The following is an example of how you can implement an extender bundle for war files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>new BundleWatcher&lt;URL&gt;(
+    bundleContext,
+    new BundleURLScanner(
+        "WEB-INF/",
+        "web.xml",
+        false // do not recurse
+    ),
+    new BundleObserver&lt;URL&gt;() {
+        public void addingEntries(Bundle bundle, List&lt;URL&gt; entries) {
+            // process web xml, as for example parsing and registering servlets
+        }
+
+        public void removingEntries(Bundle bundle, List&lt;URL&gt; entries) {
+            // revert processing of web xml
+        }
+    }
+).start();</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </article>
   </div>
