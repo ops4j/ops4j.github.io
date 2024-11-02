@@ -18,10 +18,10 @@ content:
       branches: [v4.x]
       start_path: documentation
     - url: https://github.com/ops4j/org.ops4j.pax.swissbox
-      branches: [master]
+      branches: [main]
       start_path: documentation
     - url: https://github.com/ops4j/org.ops4j.pax.tinybundles
-      branches: [master]
+      branches: [main]
       start_path: documentation
 
 ui:
