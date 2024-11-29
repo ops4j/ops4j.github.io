@@ -21,7 +21,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="pax-exam" data-version="4">
+<div class="nav-container" data-component="pax-exam" data-version="v4.x">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -34,6 +34,45 @@
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="index.html">Pax Exam</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="containers.html">Containers</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="containers/native.html">Native Container</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="containers/forked.html">Forked Container</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="containers/karaf.html">Karaf Container</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="drivers.html">Drivers</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="drivers/junit4.html">JUnit Driver</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="drivers/testng.html">TestNG Driver</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="drivers/servlet-bridge.html">Servlet Bridge Driver</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="reactor.html">Reactor</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="logging.html">Logging</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -42,7 +81,7 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Pax Exam</span>
-    <span class="version">4</span>
+    <span class="version">v4.x</span>
   </div>
   <ul class="components">
     <li class="component">
@@ -57,7 +96,7 @@
       <div class="title"><a href="index.html">Pax Exam</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">4</a>
+          <a href="index.html">v4.x</a>
         </li>
       </ul>
     </li>
@@ -65,7 +104,7 @@
       <div class="title"><a href="../pax-swissbox/index.html">Pax Swissbox</a></div>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="../pax-swissbox/index.html">master</a>
+          <a href="../pax-swissbox/index.html">main</a>
         </li>
       </ul>
     </li>
@@ -73,7 +112,7 @@
       <div class="title"><a href="../pax-tinybundles/index.html">Pax TinyBundles</a></div>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="../pax-tinybundles/index.html">4.0.0</a>
+          <a href="../pax-tinybundles/index.html">main</a>
         </li>
       </ul>
     </li>
@@ -91,7 +130,7 @@
     <li><a href="index.html">Pax Exam</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ops4j/org.ops4j.pax.exam2/edit/v4.x/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ops4j/org.ops4j.pax.exam/edit/v4.x/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -99,7 +138,116 @@
 </aside>
 <article class="doc">
 <h1 class="page">Pax Exam</h1>
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pax Exam is an in-container testing framework for <a href="https://www.osgi.org">OSGi</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pax Exam lets you take control of the OSGi framework, the test framework (e.g. JUnit) and your system under test at the same time.</p>
+</li>
+<li>
+<p>Pax Exam is also able to bootstrap an <a href="https://karaf.apache.org">Apache Karaf</a> container allowing you to directly execute commands, deploy features, etc.</p>
+</li>
+<li>
+<p>Pax Exam has a test driver and a test container. The driver launches the OSGi framework and the system under test. It builds on-the-fly bundles from your test cases and injects them into the container. The driver is a plain old Java application and does not itself require an OSGi framework.</p>
+</li>
+<li>
+<p>The test container comes in two flavours: The Native Container launches an embedded OSGi framework in the test driver VM. With the Forked Container, the system under test runs in a separate Java virtual machine under remote control from the test driver.</p>
+</li>
+<li>
+<p>Test containers support different strategies for restarting or reusing the running OSGi framework for each test.</p>
+</li>
+<li>
+<p>With the Pax Exam JUnit runner, you simply need to add some special annotations and a configuration method to a JUnit class to run your OSGi tests. Thanks to this runner, any JUnit integration (e.g. in Eclipse or Maven Surefire) works with Pax Exam out of the box.</p>
+</li>
+<li>
+<p>Pax Exam itself is distributed as Maven artifacts and lets you provision Maven bundles to your OSGi framework directly from local or remote Maven repositories.</p>
+</li>
+<li>
+<p>Pax Exam supports all major OSGi frameworks (<a href="https://eclipse.dev/equinox/">Equinox</a>, <a href="https://felix.apache.org">Felix</a>, <a href="https://www.knopflerfish.org">Knopflerfish</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_framework"><a class="anchor" href="#_framework"></a>Framework</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the context of Pax Exam, the term framework usually refers to the OSGi framework running the system under test.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_system_under_test"><a class="anchor" href="#_system_under_test"></a>System under test</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The system under test is the collection of your application and library bundles.
+Pax Exam aims at executing black box tests, but in fact the box (i.e. the container) is slightly grey, as Pax Exam adds some bundles of its own and the probe.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_container"><a class="anchor" href="#_test_container"></a>Test Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The test container is a thin wrapper around the framework, the system under test and the probe, adding the ability to communicate with the driver and the
+outside world in general.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reactor"><a class="anchor" href="#_reactor"></a>Reactor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The reactor manages the collection of all tests to be executed in one or more different containers. The reactor starts and stops the required containers and
+provisions bundles and probes to the containers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_driver"><a class="anchor" href="#_driver"></a>Driver</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The driver is the entry point into Pax Exam. It evaluates configuration options and creates a reactor based on these options. The driver receives the test
+results and handles them in an implementation dependent way.</p>
+</div>
+<div class="paragraph">
+<p>Pax Exam includes different drivers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The JUnit driver integrates Pax Exam with <a href="https://junit.org">JUnit</a>.</p>
+</li>
+<li>
+<p>The TestNG driver integrates Pax Exam with <a href="https://testng.org">TestNG</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_probe"><a class="anchor" href="#_probe"></a>Probe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The probe is a synthetic artifact which Pax Exam adds to the system under test.
+Pax Exam creates the probe on the fly with the help of <a href="https://github.com/ops4j/org.ops4j.pax.tinybundles">Tinybundles</a>. The probe contains the current test class and all classes and resources found under the same root.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The configuration determines the set of bundles provisioned to the container, and some system and environment properties.
+Use one or more methods annotated by <code>@Configuration</code> with return type <code>Option[]</code>.</p>
+</div>
+</div>
+</div>
 </article>
   </div>
 </main>
